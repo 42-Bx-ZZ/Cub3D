@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/12 17:28:34 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/05/13 00:31:22 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ typedef struct s_map
 typedef struct s_data
 {
 	t_map	map;
+	char	**cub_file;
 }	t_data;
 
 void	check_args(int ac, char **av);
+void	extract_cub_data(t_data *data, char *file);
 
 #endif
