@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
+#    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/05/12 02:21:09 by lowatell         ###   ########.fr        #
+#    Updated: 2025/05/12 02:30:40 by zaiicko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ else
 endif
 
 SRCS =	main.c\
+		args_checker.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
