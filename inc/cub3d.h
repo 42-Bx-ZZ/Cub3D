@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/12 02:30:27 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/05/12 17:28:34 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,27 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+
+typedef struct s_textures
+{
+	char	*north_path;
+	char	*south_path;
+	char	*west_path;
+	char	*east_path;
+	int		floor_color[3];
+	int		ceiling_color[3];
+}	t_textures;
+
+typedef struct s_map
+{
+	char		**setup;
+	t_textures	textures;
+}	t_map;
+
+typedef struct s_data
+{
+	t_map	map;
+}	t_data;
 
 void	check_args(int ac, char **av);
 
