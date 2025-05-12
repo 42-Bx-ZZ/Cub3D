@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/05/12 01:27:28 by lowatell         ###   ########.fr        #
+#    Updated: 2025/05/12 02:17:37 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,18 +22,18 @@ SRC_DIR = srcs
 OBJ_DIR = obj
 RM = rm -rf
 
-LINUX_MLX = minilibx-linux/
+LINUX_MLX = minilibx-linux
 LINUX_FLAGS = -lmlx -lXext -lX11 -L $(LINUX_MLX)
 
-MAC_MLX = minilibx_opengl_20191021/
+MAC_MLX = minilibx_opengl_20191021
 MAC_FLAGS = -lmlx -framework OpenGL -framework AppKit -L $(MAC_MLX)
 
 ifeq ($(shell uname -s), Linux)
-	make -C $(LINUX_MLX) --no-print-directory
+	MLX = $(LINUX_MLX)
 	MLXA = $(LINUX_MLX)/*.a
 	FLAGS = $(LINUX_FLAGS)
 else ifeq ($(shell uname -s), Darwin)
-	make -C $(MAC_MLX) --no-print-directory
+	MLX = $(MAC_MLX)
 	MLXA = $(MAC_MLX)/*.a
 	FLAGS = $(MAC_FLAGS)
 else
@@ -49,7 +49,10 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: logo $(NAME)
 
-$(NAME):	$(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT)
+		@mkdir -p tmp
+		@touch tmp/t && chmod 777 tmp/t
+		@make 2>/tmp/t -sC $(MLX) --no-print-directory
 		@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXA) -o $(NAME) $(FLAGS)
 
 $(LIBFT):
@@ -63,11 +66,13 @@ $(OBJ_DIR):
 		@mkdir -p $(OBJ_DIR)
 
 clean:
-			@$(RM) $(OBJ_DIR)
-			@make clean -C $(LIBFT_DIR) --no-print-directory
+		@$(RM) $(OBJ_DIR)
+		@make clean -C $(MLX) --no-print-directory
+		@make clean -C $(LIBFT_DIR) --no-print-directory
 
 fclean: clean
 		@$(RM) $(NAME)
+		@$(RM) tmp
 		@make fclean -C $(LIBFT_DIR) --no-print-directory
 
 re:		fclean all
