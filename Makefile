@@ -6,7 +6,7 @@
 #    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/05/13 00:25:46 by zaiicko          ###   ########.fr        #
+#    Updated: 2025/05/17 13:54:47 by zaiicko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ endif
 SRCS =	main.c\
 		args_checker.c\
 		parsing/cub_map_checker.c\
+		utils.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
