@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_map_checker.c                                  :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/17 13:50:47 by zaiicko          ###   ########.fr       */
+/*   Created: 2025/05/12 17:02:22 by zaiicko           #+#    #+#             */
+/*   Updated: 2025/05/18 01:28:58 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	count_file_lines(char *file)
 	return (i);
 }
 
-void	extract_cub_data(t_data *data, char *file)
+void	extract_all_cub_data(t_data *data, char *file)
 {
 	int		fd;
 	int		i;
