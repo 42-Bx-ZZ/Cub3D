@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/18 01:37:09 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/05/18 18:08:14 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void	free_all_data(t_data *data);
 void	free_all_and_print_exit(t_data *data, char *msg);
 void	check_and_parse_cub_file(t_data *data);
 void	check_and_parse_wall_path(t_data *data, char *line, char *type);
+void	check_and_parse_fc_colors(t_data *data, char *line, char type);
 
 #endif

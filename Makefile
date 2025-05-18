@@ -6,7 +6,7 @@
 #    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/05/18 01:32:08 by zaiicko          ###   ########.fr        #
+#    Updated: 2025/05/18 22:49:46 by zaiicko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCS =	main.c\
 		utils.c\
 		parsing/parsing_utils.c\
 		parsing/wall_path_handler.c\
+		parsing/fc_colors_handler.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
