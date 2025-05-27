@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/27 19:05:06 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:10:05 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_data
 
 int	    clean_exit(t_data *data);
 int     setup_mlx(t_data *data);
+int     moves(int key, t_data *data);
 void	check_args(int ac, char **av);
 void	extract_all_cub_data(t_data *data, char *file);
 void	free_all_data(t_data *data);
