@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/18 18:08:14 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/05/27 19:05:06 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,20 @@
 # endif
 
 # define CLOSEBTN 17
+# define WIDTH 848
+# define HEIGHT 480
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+
+typedef struct s_game
+{
+    float   p_x;
+    float   p_y;
+}   t_game;
+
 
 typedef struct s_textures
 {
@@ -56,10 +65,14 @@ typedef struct s_map
 
 typedef struct s_data
 {
+    void    *mlx;
+    void    *win;
 	t_map	map;
 	char	**cub_file;
 }	t_data;
 
+int	    clean_exit(t_data *data);
+int     setup_mlx(t_data *data);
 void	check_args(int ac, char **av);
 void	extract_all_cub_data(t_data *data, char *file);
 void	free_all_data(t_data *data);

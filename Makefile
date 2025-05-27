@@ -48,6 +48,7 @@ SRCS =	main.c\
 		parsing/parsing_utils.c\
 		parsing/wall_path_handler.c\
 		parsing/fc_colors_handler.c\
+		graphics/setup_mlx.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 

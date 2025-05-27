@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/27 19:04:53 by lowatell         ###   ########.fr       */
+/*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
+/*   Updated: 2025/05/27 19:07:14 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
-int	clean_exit(t_data *data)
+int setup_mlx(t_data *data)
 {
-	if (data && data->mlx && data->win)
-		mlx_destroy_display(data->mlx);
-	if (data && data->mlx && data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	exit(1);
-}
-
-int	main(int ac, char **av)
-{
-	t_data	data;
-
-	if (ac != 2 && av[1])
-		return (0);
-	ft_memset(&data, 0, sizeof(data));
-	setup_mlx(&data);
+    data->mlx = mlx_init();
+	if (!data->mlx)
+		return (1);
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3D");
+	if (!data->win)
+		return (1);
+    mlx_hook(data->win, CLOSEBTN, 0, clean_exit, data);
+	mlx_loop(data->mlx);
+    return (0);
 }
