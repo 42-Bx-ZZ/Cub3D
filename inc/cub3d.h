@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/27 19:10:05 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:38:36 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #  define DOWN 115
 #  define RIGHT 100
 #  define ESC 65307
+#  define L_ARROW 65361
+#  define R_ARROW 65363
 #  define LINUX 1
 # else
 #  include "../minilibx_opengl_20191021/mlx.h"
@@ -28,12 +30,15 @@
 #  define RIGHT 2
 #  define DOWN 1
 #  define ESC 53
+#  define L_ARROW 0
+#  define R_ARROW 0
 #  define LINUX 0
 # endif
 
 # define CLOSEBTN 17
 # define WIDTH 848
 # define HEIGHT 480
+# define STEP 0.5
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
@@ -72,6 +77,7 @@ typedef struct s_data
 }	t_data;
 
 int	    clean_exit(t_data *data);
+char    **get_map(char *file);
 int     setup_mlx(t_data *data);
 int     moves(int key, t_data *data);
 void	check_args(int ac, char **av);
