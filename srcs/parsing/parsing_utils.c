@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:22 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/18 01:28:58 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/05/29 15:09:36 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	extract_all_cub_data(t_data *data, char *file)
 	int		i;
 
 	data->cub_file = (char **)malloc(sizeof(char *)
-			* (count_file_lines(file)));
+			* (count_file_lines(file) + 1));
 	if (!data->cub_file)
 		ft_print_exit("Error\nMalloc failed\n");
 	fd = open(file, O_RDONLY);
@@ -54,5 +54,6 @@ void	extract_all_cub_data(t_data *data, char *file)
 		i++;
 		data->cub_file[i] = get_next_line(fd);
 	}
+	data->cub_file[i] = NULL;
 	close(fd);
 }
