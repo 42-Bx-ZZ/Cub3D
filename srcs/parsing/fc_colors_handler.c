@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:05:51 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/19 00:54:51 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/05/29 01:59:48 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*verif_and_extract(t_data *data, int *i, char *line, int int_flag)
 	j = *i;
 	while (ft_isdigit(line[j]))
 		j++;
-	if (line[j] == ',' || (int_flag > 0 && line[j] == '\0'))
+	if ((line[j] == ',' && line[j + 1]) || (int_flag == 2 && line[j] == '\0'))
 		value = color_protect_substr(data, line, *i, j);
 	else
 		free_all_and_print_exit(data, "Error\nCub file data are not valid");
