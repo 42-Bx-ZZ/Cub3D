@@ -1,0 +1,21 @@
+/* filepath: white_circle_15x15.xpm */
+static char *white_circle_15x15[] = {
+"15 15 2 1",
+". c #000000",  /* Fond noir */
+"o c #FFFFFF",  /* Cercle blanc */
+"...............",
+".......o.......",
+".....ooooo.....",
+"....ooooooo....",
+"...ooooooooo...",
+"...ooooooooo...",
+"..ooooooooooo..",
+"..ooooooooooo..",
+"..ooooooooooo..",
+"...ooooooooo...",
+"...ooooooooo...",
+"....ooooooo....",
+".....ooooo.....",
+".......o.......",
+"...............",
+};

@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/05/28 17:02:27 by lowatell         ###   ########.fr        #
+#    Updated: 2025/06/02 16:40:36 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,8 @@ SRCS =	main.c\
 		graphics/setup_mlx.c\
 		moves/moves.c\
 		graphics/get_map.c\
+		graphics/load_sprites.c\
+		graphics/draw_map.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
