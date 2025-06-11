@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/02 16:50:05 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/02 17:42:00 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ int	load_xpm(t_img *img, char *file, t_data *data)
 {
 	if (!file)
 		return (1);
-	img->ptr = mlx_xpm_file_to_image(data->mlx, file, &img->width, &img->height);
+	img->ptr = mlx_xpm_file_to_image(data->mlx, file,
+		&img->width, &img->height);
 	if (!img->ptr)
 		return (1);
-	img->data = (int *)mlx_get_data_addr(img->ptr, &img->bpp, &img->size_line, &img->endian);
+	img->data = (int *)mlx_get_data_addr(img->ptr, &img->bpp,
+		&img->size_line, &img->endian);
 	if (!img->data)
 		return (1);
 	return (0);
@@ -29,10 +31,12 @@ int	load_xpm(t_img *img, char *file, t_data *data)
 // {
 // 	if (!file)
 // 		return (1);
-// 	img->ptr = mlx_png_file_to_image(data->mlx, file, &img->width, &img->height);
+// 	img->ptr = mlx_png_file_to_image(data->mlx,
+//		file, &img->width, &img->height);
 // 	if (!img->ptr)
 // 		return (1);
-// 	img->data = (int *)mlx_get_data_addr(img->ptr, &img->bpp, &img->size_line, &img->endian);
+// 	img->data = (int *)mlx_get_data_addr(img->ptr,
+//		&img->bpp, &img->size_line, &img->endian);
 // 	if (!img->data)
 // 		return (1);
 // 	return (0);

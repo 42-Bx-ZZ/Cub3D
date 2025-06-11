@@ -4,11 +4,11 @@ static char *white_circle_15x15[] = {
 ". c #000000",  /* Fond noir */
 "o c #FFFFFF",  /* Cercle blanc */
 "...............",
-".......o.......",
-".....ooooo.....",
-"....ooooooo....",
-"...ooooooooo...",
-"...ooooooooo...",
+"......ooo......",
+"......ooo......",
+"......ooo......",
+"......ooo......",
+"......ooo......",
 "..ooooooooooo..",
 "..ooooooooooo..",
 "..ooooooooooo..",

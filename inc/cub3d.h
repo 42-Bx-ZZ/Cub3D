@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/02 16:52:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/11 20:35:27 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 #  define RIGHT 2
 #  define DOWN 1
 #  define ESC 53
-#  define L_ARROW 0
-#  define R_ARROW 0
+#  define L_ARROW 123
+#  define R_ARROW 124
 #  define LINUX 0
 # endif
 
@@ -60,6 +60,7 @@ typedef struct s_game
 {
     float   p_x;
     float   p_y;
+	float	dir;
 	double	dir_x;
 	double	dir_y;
 }   t_game;
@@ -97,6 +98,7 @@ typedef struct s_data
 	char	**cub_file;
 }	t_data;
 
+void	draw_view(t_data *data, int i);
 void	draw_map(t_data *data);
 int		load_sprites(t_data *data);
 int	    clean_exit(t_data *data);
