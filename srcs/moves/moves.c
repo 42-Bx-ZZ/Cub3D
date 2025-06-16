@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:09:13 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/11 20:50:30 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/16 09:53:30 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	moves(int key, t_data *data)
 
 void	view(int key, t_data *data)
 {
-	if (key == L_ARROW)
+	if (key == R_ARROW)
 	{
 		draw_view(data, 0);
 		data->game.dir += 0.5;
 		draw_view(data, 1);
 	}
-	if (key == R_ARROW)
+	if (key == L_ARROW)
 	{
 		draw_view(data, 0);
 		data->game.dir -= 0.5;
@@ -43,15 +43,9 @@ void	view(int key, t_data *data)
 int keys_hook(int key, t_data *data)
 {
 	if (key == UP || key == DOWN || key == LEFT || key == RIGHT)
-	{
-		printf("move\n");
 		moves(key, data);
-	}
     else if (key == L_ARROW || key == R_ARROW)
-	{
-		printf("view\n");
 		view(key, data);
-	}
     if (key == ESC)
         clean_exit(data);
     return (0);

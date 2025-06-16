@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/11 20:35:46 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/16 09:52:20 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	draw_fov_view(t_data *data, float fov_deg, int nb_rays, int i)
 {
-    float	px = data->game.p_x + 0.5;
-    float	py = data->game.p_y + 0.5;
+    float	px = data->game.p_x;
+    float	py = data->game.p_y;
     char	**map = data->map.setup;
-    float	fov = fov_deg * M_PI / 150;
+    float	fov = fov_deg * M_PI / 180;
     float	start_angle = data->game.dir - fov / 2.0;
     float	angle_step = fov / nb_rays;
 
@@ -67,8 +67,8 @@ void	put_pixel(t_data *data, char c, int i, int j)
 		data->game.p_x = i;
 		data->game.p_y = j;
 		mlx_put_image_to_window(data->mlx, data->win,
-			data->map.textures.m_player.ptr, i * data->map.textures.m_player.width,
-			j * data->map.textures.m_player.height);
+			data->map.textures.m_floor.ptr, i * data->map.textures.m_floor.width,
+			j * data->map.textures.m_floor.height);
 	}
 }
 
@@ -86,5 +86,4 @@ void	draw_map(t_data *data)
 		while (map[i][++j])
 			put_pixel(data, map[i][j], j, i);
 	}
-	printf("%f\n%f\n", data->game.p_x, data->game.p_y);
 }

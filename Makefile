@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/06/02 16:40:36 by lowatell         ###   ########.fr        #
+#    Updated: 2025/06/16 09:50:48 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
+MATH_FLAG = -lm
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 INC_DIR = inc
@@ -64,7 +65,7 @@ $(NAME): $(OBJ) $(LIBFT)
 		@mkdir -p tmp
 		@touch tmp/t && chmod 777 tmp/t
 		@make 2>/tmp/t -sC $(MLX) --no-print-directory
-		@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXA) -o $(NAME) $(FLAGS)
+		@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXA) -o $(NAME) $(FLAGS) $(MATH_FLAG)
 
 $(LIBFT):
 		@make -C $(LIBFT_DIR) --no-print-directory
