@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/11 20:35:27 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/16 18:23:54 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #  define ESC 65307
 #  define L_ARROW 65361
 #  define R_ARROW 65363
+#  define P 112
 #  define LINUX 1
 # else
 #  include "../minilibx_opengl_20191021/mlx.h"
@@ -38,7 +39,7 @@
 # define CLOSEBTN 17
 # define WIDTH 848
 # define HEIGHT 480
-# define STEP 0.5
+# define STEP 0.1
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
