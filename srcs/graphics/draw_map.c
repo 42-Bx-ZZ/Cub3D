@@ -6,11 +6,22 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/16 09:52:20 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:50:25 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+float	get_dir(char c)
+{
+	if (c == 'N')
+		return (4.71);
+	if (c == 'S')
+		return (1.57);
+	if (c == 'W')
+		return (3.14);
+	return (0);
+}
 
 void	draw_fov_view(t_data *data, float fov_deg, int nb_rays, int i)
 {
@@ -66,6 +77,7 @@ void	put_pixel(t_data *data, char c, int i, int j)
 	{
 		data->game.p_x = i;
 		data->game.p_y = j;
+		data->game.dir = get_dir(c);
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->map.textures.m_floor.ptr, i * data->map.textures.m_floor.width,
 			j * data->map.textures.m_floor.height);
