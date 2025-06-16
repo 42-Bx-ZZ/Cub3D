@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/16 18:03:43 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/16 22:43:06 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	draw_fov_view(t_data *data, float fov_deg, int nb_rays, int i)
 					ray_x * data->map.textures.m_wall.width,
 					ray_y * data->map.textures.m_wall.height,
 					0x000000);
-            ray_x += 0.005 * cos(ray_angle);
-            ray_y += 0.005 * sin(ray_angle);
+            ray_x += 0.05 * cos(ray_angle);
+            ray_y += 0.05 * sin(ray_angle);
         }
     }
 }

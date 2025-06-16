@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/16 18:23:54 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/16 22:40:21 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define CLOSEBTN 17
 # define WIDTH 848
 # define HEIGHT 480
-# define STEP 0.1
+# define STEP 0.2333333
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
