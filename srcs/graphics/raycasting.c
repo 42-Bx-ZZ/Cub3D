@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/17 19:14:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/17 20:27:05 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_ceiling(t_data *data, int r, int size[2], int color)
 	int	y;
 
 	y = 0;
-	while (y < size[1])
+	while (y < size[0])
 	{
 		mlx_pixel_put(data->mlx, data->win, r, y, color);
 		y++;
@@ -65,7 +65,7 @@ void	raycasting(t_data *data, float ray_angle, float rays[2], int r)
 	size[1] = (HEIGHT / 2) + (wall_height / 2);
 	if (size[1] > HEIGHT)
 		size[1] = HEIGHT;
-	draw_ceiling(data, r, size, 0x000000);
-	draw_wall(data, r, size, 0x00FF00);
-	draw_floor(data, r, size, 0x000000);
+	draw_ceiling(data, r, size, 0xFFFFF);
+	draw_wall(data, r, size, 0x000000);
+	draw_floor(data, r, size, 0x00FF00);
 }

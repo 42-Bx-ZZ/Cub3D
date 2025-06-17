@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/16 22:40:21 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/17 20:24:04 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@
 # define CLOSEBTN 17
 # define WIDTH 848
 # define HEIGHT 480
-# define STEP 0.2333333
+# define STEP 0.1
+# define FOV 60
+# define VIEW 0.1
+# define RAYS WIDTH
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
@@ -66,6 +69,15 @@ typedef struct s_game
 	double	dir_y;
 }   t_game;
 
+typedef struct s_keys
+{
+	int		up;
+	int		down;
+	int		left;
+	int		right;
+	int		l_arrow;
+	int		r_arrow;
+}	t_keys;
 
 typedef struct s_textures
 {
@@ -96,10 +108,18 @@ typedef struct s_data
     void    *win;
 	t_map	map;
 	t_game	game;
+	t_keys	keys;
 	char	**cub_file;
 }	t_data;
 
-void	draw_view(t_data *data, int i);
+int		update_move(t_data *data);
+int		key_press(int key, t_data *data);
+int		key_release(int key, t_data *data);
+void	raycasting(t_data *data, float ray_angle, float rays[2], int r);
+float	get_dir(char c);
+void	moves(int key, t_data *data);
+void	view(int key, t_data *data);
+void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map);
 void	draw_map(t_data *data);
 int		load_sprites(t_data *data);
 int	    clean_exit(t_data *data);

@@ -6,81 +6,70 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/16 22:43:06 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/17 20:24:34 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-float	get_dir(char c)
-{
-	if (c == 'N')
-		return (4.71);
-	if (c == 'S')
-		return (1.57);
-	if (c == 'W')
-		return (3.14);
+int	ray_size_check(float rays[2], char **map)
+{            
+	int mx;
+    int my;
+    
+	mx = (int)rays[0];
+	my = (int)rays[1];
+	if (mx < 0 || my < 0 || !map[my] || !map[my][mx] || map[my][mx] == '1')
+		return (1);
 	return (0);
 }
 
-void	draw_fov_view(t_data *data, float fov_deg, int nb_rays, int i)
+void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map)
 {
-    float	px = data->game.p_x;
-    float	py = data->game.p_y;
-    char	**map = data->map.setup;
-    float	fov = fov_deg * M_PI / 180;
-    float	start_angle = data->game.dir - fov / 2.0;
-    float	angle_step = fov / nb_rays;
-
-    for (int r = 0; r < nb_rays; r++)
+    float	start_angle;
+    float	angle_step;
+	float 	ray_angle;
+	float 	rays[2];
+	int		r;
+	
+	angle_step = (fov_deg * M_PI / 180) / nb_rays;
+	start_angle = data->game.dir - (fov_deg * M_PI / 180) / 2.0;
+	r = -1;
+    while (++r < nb_rays)
     {
-        float ray_angle = start_angle + r * angle_step;
-        float ray_x = px, ray_y = py;
-        while (1)
+        ray_angle = start_angle + r * angle_step;
+        rays[0] = data->game.p_x;
+		rays[1] = data->game.p_y;
+        while (!ray_size_check(rays, map))
         {
-            int mx = (int)ray_x;
-            int my = (int)ray_y;
-            if (mx < 0 || my < 0 || !map[my] || !map[my][mx] || map[my][mx] == '1')
-                break;
-			if (i == 1)
-				mlx_pixel_put(data->mlx, data->win,
-					ray_x * data->map.textures.m_wall.width,
-					ray_y * data->map.textures.m_wall.height,
-					0xFFFF00);
-			else
-				mlx_pixel_put(data->mlx, data->win,
-					ray_x * data->map.textures.m_wall.width,
-					ray_y * data->map.textures.m_wall.height,
-					0x000000);
-            ray_x += 0.05 * cos(ray_angle);
-            ray_y += 0.05 * sin(ray_angle);
+            rays[0] += 0.01 * cos(ray_angle);
+            rays[1] += 0.01 * sin(ray_angle);
         }
+		raycasting(data, ray_angle, rays, r);
     }
-}
-
-void	draw_view(t_data *data, int i)
-{
-	draw_fov_view(data, 60, 120, i);
 }
 
 void	put_pixel(t_data *data, char c, int i, int j)
 {
-	if (c == '1')
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->map.textures.m_wall.ptr, i * data->map.textures.m_wall.width,
-			j * data->map.textures.m_wall.height);
-	if (c == '0')
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->map.textures.m_floor.ptr, i * data->map.textures.m_floor.width,
-			j * data->map.textures.m_floor.height);
+	// if (c == '1')
+	// 	mlx_put_image_to_window(data->mlx, data->win,
+	// 		data->map.textures.m_wall.ptr,
+	// 		i * data->map.textures.m_wall.width,
+	// 		j * data->map.textures.m_wall.height);
+	// if (c == '0')
+	// 	mlx_put_image_to_window(data->mlx, data->win,
+	// 		data->map.textures.m_floor.ptr,
+	// 		i * data->map.textures.m_floor.width,
+	// 		j * data->map.textures.m_floor.height);
 	if (c == 'W' || c == 'N' || c == 'E' || c == 'S')
 	{
 		data->game.p_x = i;
 		data->game.p_y = j;
 		data->game.dir = get_dir(c);
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->map.textures.m_floor.ptr, i * data->map.textures.m_floor.width,
-			j * data->map.textures.m_floor.height);
+		// mlx_put_image_to_window(data->mlx, data->win,
+		// 	data->map.textures.m_floor.ptr,
+		// 	i * data->map.textures.m_floor.width,
+		// 	j * data->map.textures.m_floor.height);
 	}
 }
 

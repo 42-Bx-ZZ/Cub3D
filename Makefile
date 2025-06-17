@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/06/16 09:50:48 by lowatell         ###   ########.fr        #
+#    Updated: 2025/06/17 19:43:51 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,14 @@ SRCS =	main.c\
 		parsing/parsing_utils.c\
 		parsing/wall_path_handler.c\
 		parsing/fc_colors_handler.c\
-		graphics/setup_mlx.c\
+		engine/setup_mlx.c\
 		moves/moves.c\
-		graphics/get_map.c\
-		graphics/load_sprites.c\
+		engine/get_map.c\
+		engine/load_sprites.c\
+		engine/keys.c\
 		graphics/draw_map.c\
+		graphics/view.c\
+		graphics/raycasting.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
