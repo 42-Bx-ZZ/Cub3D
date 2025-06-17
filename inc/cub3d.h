@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/18 18:08:14 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/18 00:23:33 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # endif
 
 # define CLOSEBTN 17
+# define VALID_CHARS "0 1NSEW"
+# define PLAYER_CHARS "NSEW"
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
@@ -51,6 +53,7 @@ typedef struct s_textures
 typedef struct s_map
 {
 	char		**setup;
+	char		player;
 	t_textures	textures;
 }	t_map;
 
@@ -67,5 +70,6 @@ void	free_all_and_print_exit(t_data *data, char *msg);
 void	check_and_parse_cub_file(t_data *data);
 void	check_and_parse_wall_path(t_data *data, char *line, char *type);
 void	check_and_parse_fc_colors(t_data *data, char *line, char type);
+void	check_and_parse_map(t_data *data, int *i);
 
 #endif

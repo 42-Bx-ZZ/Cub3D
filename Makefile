@@ -6,7 +6,7 @@
 #    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/05/18 22:49:46 by zaiicko          ###   ########.fr        #
+#    Updated: 2025/05/31 16:33:34 by zaiicko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,12 @@ endif
 
 SRCS =	main.c\
 		args_checker.c\
-		parsing/cub_map_handler.c\
+		parsing/cub_file_handler.c\
 		utils.c\
 		parsing/parsing_utils.c\
 		parsing/wall_path_handler.c\
 		parsing/fc_colors_handler.c\
+		parsing/map_handler.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
