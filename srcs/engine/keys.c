@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:43:16 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/17 20:09:10 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/17 20:49:23 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	update_move(t_data *data)
 	if (data->keys.up || data->keys.down || data->keys.left || data->keys.right
 		|| data->keys.l_arrow || data->keys.r_arrow)
 		moved = 1;
-	if (moved)
+	if (moved || data->keys.f)
 		draw_view(data, FOV, RAYS, data->map.setup);
-	return (0);
+	return (data->keys.f = 0, 0);
 }

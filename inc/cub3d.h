@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/17 20:24:04 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/17 20:49:35 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_keys
 	int		down;
 	int		left;
 	int		right;
+	int		f;
 	int		l_arrow;
 	int		r_arrow;
 }	t_keys;
