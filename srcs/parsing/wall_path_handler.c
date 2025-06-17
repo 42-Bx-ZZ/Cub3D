@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/18 01:45:47 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/18 01:50:50 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,6 @@ static char	*verif_and_extract(t_data *data, int i, char *line)
 		free_all_and_print_exit(data, "Error\nMalloc failed");
 	return (wall_path);
 }
-
-// void	check_path_nbr(t_data *data, char *type)
-// {
-// 	if (type == "NO")
-// }
 
 void	check_and_parse_wall_path(t_data *data, char *line, char *type)
 {
