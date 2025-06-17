@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/18 01:33:10 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/18 01:45:47 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,29 @@
 static void	parse_wall_path(t_data *data, char *path, char *type)
 {
 	if (ft_strncmp(type, "NO", 2) == 0)
+	{
+		if (data->map.textures.north_path)
+			free_all_and_print_exit(data, "Error\nToo much wall path\n");
 		data->map.textures.north_path = path;
+	}
 	else if (ft_strncmp(type, "SO", 2) == 0)
+	{
+		if (data->map.textures.south_path)
+			free_all_and_print_exit(data, "Error\nToo much wall path\n");
 		data->map.textures.south_path = path;
+	}
 	else if (ft_strncmp(type, "WE", 2) == 0)
+	{
+		if (data->map.textures.west_path)
+			free_all_and_print_exit(data, "Error\nToo much wall path\n");
 		data->map.textures.west_path = path;
+	}
 	else if (ft_strncmp(type, "EA", 2) == 0)
+	{
+		if (data->map.textures.east_path)
+			free_all_and_print_exit(data, "Error\nToo much wall path\n");
 		data->map.textures.east_path = path;
+	}
 }
 
 static char	*verif_and_extract(t_data *data, int i, char *line)
@@ -46,6 +62,11 @@ static char	*verif_and_extract(t_data *data, int i, char *line)
 		free_all_and_print_exit(data, "Error\nMalloc failed");
 	return (wall_path);
 }
+
+// void	check_path_nbr(t_data *data, char *type)
+// {
+// 	if (type == "NO")
+// }
 
 void	check_and_parse_wall_path(t_data *data, char *line, char *type)
 {
