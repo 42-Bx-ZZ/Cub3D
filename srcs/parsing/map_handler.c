@@ -6,32 +6,11 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 01:23:10 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/18 01:27:58 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/18 03:42:36 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-static int	count_map_lenght(t_data *data, int i)
-{
-	int	len;
-
-	len = 0;
-	while (data->cub_file[i])
-	{
-		if (data->cub_file[i][0])
-		{
-			i++;
-			len++;
-		}
-		else if (data->cub_file[i][0] == 0 && data->cub_file[i + 1])
-			free_all_and_print_exit(data,
-				"Error\nMap can't be separeted by '\\n'\n");
-		else
-			break ;
-	}
-	return (len);
-}
 
 static void	extract_map(t_data *data, int *i)
 {

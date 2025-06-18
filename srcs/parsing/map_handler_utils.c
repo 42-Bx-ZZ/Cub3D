@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_checker.c                                     :+:      :+:    :+:   */
+/*   map_handler_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 02:27:07 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/12 17:25:46 by zaiicko          ###   ########.fr       */
+/*   Created: 2025/06/18 03:41:56 by zaiicko           #+#    #+#             */
+/*   Updated: 2025/06/18 03:42:46 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
-void	check_args(int ac, char **av)
+int	count_map_lenght(t_data *data, int i)
 {
-	if (ac == 2 && ft_strncmp(&av[1][ft_strlen(av[1]) - 4], ".cub", 4) == 0)
-		return ;
-	else
-		ft_print_exit("Error\nWrong arguments : ./cub3d <maps/map1.cub>");
+	int	len;
+
+	len = 0;
+	while (data->cub_file[i])
+	{
+		if (data->cub_file[i][0])
+		{
+			i++;
+			len++;
+		}
+		else if (data->cub_file[i][0] == 0 && data->cub_file[i + 1])
+			free_all_and_print_exit(data,
+				"Error\nMap can't be separeted by '\\n'\n");
+		else
+			break ;
+	}
+	return (len);
 }
