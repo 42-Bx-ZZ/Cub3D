@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:05:51 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/29 01:59:48 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/18 03:30:12 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,22 @@ static char	*verif_and_extract(t_data *data, int *i, char *line, int int_flag)
 	return (value);
 }
 
+static void	verif_color_flag(t_data *data, char type)
+{
+	if (type == 'C')
+	{
+		if (data->map.textures.c_flag == 1)
+			free_all_and_print_exit(data, "Error\nToo much colors infos\n");
+		data->map.textures.c_flag = 1;
+	}
+	else if (type == 'F')
+	{
+		if (data->map.textures.f_flag == 1)
+			free_all_and_print_exit(data, "Error\nToo much colors infos\n");
+		data->map.textures.f_flag = 1;
+	}
+}
+
 void	check_and_parse_fc_colors(t_data *data, char *line, char type)
 {
 	int		i;
@@ -63,6 +79,7 @@ void	check_and_parse_fc_colors(t_data *data, char *line, char type)
 
 	j = 0;
 	i = 2;
+	verif_color_flag(data, type);
 	while (line[i])
 	{
 		value = verif_and_extract(data, &i, line, j);
