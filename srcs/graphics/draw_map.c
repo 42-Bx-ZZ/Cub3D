@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/17 20:24:34 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/19 18:46:20 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map)
     float	start_angle;
     float	angle_step;
 	float 	ray_angle;
-	float 	rays[2];
+	float 	rays[4];
 	int		r;
 	
 	angle_step = (fov_deg * M_PI / 180) / nb_rays;
@@ -42,8 +42,10 @@ void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map)
 		rays[1] = data->game.p_y;
         while (!ray_size_check(rays, map))
         {
-            rays[0] += 0.01 * cos(ray_angle);
-            rays[1] += 0.01 * sin(ray_angle);
+			rays[2] = rays[0];
+			rays[3] = rays[1];
+            rays[0] += 0.025 * cos(ray_angle);
+            rays[1] += 0.025 * sin(ray_angle);
         }
 		raycasting(data, ray_angle, rays, r);
     }

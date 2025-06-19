@@ -6,16 +6,53 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/17 20:27:05 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:11:37 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	draw_wall(t_data *data, int r, int size[2], int color)
+char	wall_side(float rays[4])
+{
+	int	x;
+	int	y;
+	int	prev_x;
+	int	prev_y;
+
+	x = (int)rays[0];
+	y = (int)rays[1];
+	prev_x = (int)rays[2];
+	prev_y = (int)rays[3];
+	if (x != prev_x)
+	{
+		if (x > prev_x)
+			return ('W');
+		else
+			return ('E');
+	}
+	else
+	{
+		if (y > prev_y)
+			return ('N');
+		else
+			return ('S');
+	}
+	return ('N');
+}
+
+void	draw_wall(t_data *data, int r, int size[2], char w)
 {
 	int	y;
+	int	color;
 
+	if (w == 'N')
+		color = 0xF20000;
+	else if (w == 'S')
+		color = 0xFF69B4;
+	else if (w == 'E')
+		color = 0x0000FF;
+	else
+		color = 0x000000;
 	y = size[0];
 	while (y < size[1])
 	{
@@ -48,7 +85,7 @@ void	draw_floor(t_data *data, int r, int size[2], int color)
 	}
 }
 
-void	raycasting(t_data *data, float ray_angle, float rays[2], int r)
+void	raycasting(t_data *data, float ray_angle, float rays[4], int r)
 {
 	float	ray_size;
 	float	corrected_size;
@@ -66,6 +103,6 @@ void	raycasting(t_data *data, float ray_angle, float rays[2], int r)
 	if (size[1] > HEIGHT)
 		size[1] = HEIGHT;
 	draw_ceiling(data, r, size, 0xFFFFF);
-	draw_wall(data, r, size, 0x000000);
+	draw_wall(data, r, size, wall_side(rays));
 	draw_floor(data, r, size, 0x00FF00);
 }

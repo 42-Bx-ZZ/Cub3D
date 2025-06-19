@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/17 20:49:35 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/19 18:20:20 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 
 typedef struct s_img
 {
-	void	*ptr;
+	int		*ptr;
 	int		*data;
 	int		bpp;
 	int		size_line;
@@ -116,7 +116,7 @@ typedef struct s_data
 int		update_move(t_data *data);
 int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
-void	raycasting(t_data *data, float ray_angle, float rays[2], int r);
+void	raycasting(t_data *data, float ray_angle, float rays[4], int r);
 float	get_dir(char c);
 void	moves(int key, t_data *data);
 void	view(int key, t_data *data);
