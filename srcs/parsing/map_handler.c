@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 01:23:10 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/18 03:42:36 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/20 14:53:11 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ static void	check_player(t_data *data)
 
 void	check_and_parse_map(t_data *data, int *i)
 {
+	map_placement_checking(data);
 	extract_map(data, i);
 	verif_if_valid_char(data);
 	check_player(data);

@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 03:41:56 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/20 14:36:33 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/20 14:52:45 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,13 @@ int	count_map_lenght(t_data *data, int i)
 			break ;
 	}
 	return (len);
+}
+
+void	map_placement_checking(t_data *data)
+{
+	if (!data->map.textures.east_path || !data->map.textures.west_path
+		|| !data->map.textures.south_path || !data->map.textures.north_path
+		|| data->map.textures.c_flag == 0 || data->map.textures.f_flag == 0)
+		free_all_and_print_exit(data,
+			"Error\n Map aren't in the end of cub file\n");
 }
