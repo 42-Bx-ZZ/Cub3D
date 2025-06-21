@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/21 10:23:20 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/21 10:33:21 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map)
 		{
 			rays[2] = rays[0];
 			rays[3] = rays[1];
-			rays[0] += 0.025 * cos(ray_angle);
-			rays[1] += 0.025 * sin(ray_angle);
+			rays[0] += 0.015 * cosf(ray_angle);
+			rays[1] += 0.015 * sinf(ray_angle);
 		}
 		raycasting(data, ray_angle, rays, r);
 	}

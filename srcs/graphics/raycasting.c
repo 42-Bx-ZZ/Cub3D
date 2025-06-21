@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/21 10:19:40 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/21 10:31:38 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	raycasting(t_data *data, float ray_angle, float rays[4], int r)
 	int		wall_height;
 	int		size[2];
 
-	ray_size = sqrt((rays[0] - data->game.p_x) * (rays[0] - data->game.p_x)
+	ray_size = sqrtf((rays[0] - data->game.p_x) * (rays[0] - data->game.p_x)
 			+ (rays[1] - data->game.p_y) * (rays[1] - data->game.p_y));
 	corrected_size = ray_size * cos(ray_angle - data->game.dir);
 	wall_height = (int)(HEIGHT / corrected_size);
