@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 01:23:10 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/20 14:53:11 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/21 11:08:00 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	extract_map(t_data *data, int *i)
 	tmp = *i;
 	j = 0;
 	map_len = count_map_lenght(data, *i);
-	data->map.setup = (char **)malloc(sizeof(char *) * map_len);
+	data->map.setup = (char **)malloc(sizeof(char *) * map_len + 1);
 	if (!data->map.setup)
 		free_all_and_print_exit(data, "Error\nMalloc failed\n");
 	while (j < map_len)
@@ -30,6 +30,7 @@ static void	extract_map(t_data *data, int *i)
 		j++;
 		tmp++;
 	}
+	data->map.setup[j] = "\0";
 	*i = tmp - 1;
 }
 
