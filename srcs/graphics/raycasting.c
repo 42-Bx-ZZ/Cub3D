@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/21 10:31:38 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/21 10:48:15 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	wall_side(float rays[4])
 	{
 		if (x > prev_x)
 			return ('W');
-		else
+		else 
 			return ('E');
 	}
 	else
@@ -94,7 +94,7 @@ void	raycasting(t_data *data, float ray_angle, float rays[4], int r)
 
 	ray_size = sqrtf((rays[0] - data->game.p_x) * (rays[0] - data->game.p_x)
 			+ (rays[1] - data->game.p_y) * (rays[1] - data->game.p_y));
-	corrected_size = ray_size * cos(ray_angle - data->game.dir);
+	corrected_size = ray_size * cosf(ray_angle - data->game.dir);
 	wall_height = (int)(HEIGHT / corrected_size);
 	size[0] = (HEIGHT / 2) - (wall_height / 2);
 	if (size[0] < 0)

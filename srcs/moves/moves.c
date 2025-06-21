@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:09:13 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/19 17:58:09 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/21 11:02:33 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	moves(int key, t_data *data)
 			data->game.p_x -= cos(data->game.dir) * t_step;
 			data->game.p_y -= sin(data->game.dir) * t_step;
 		}
-	 	if (key == LEFT && data->map.setup[(int)(data->game.p_y - (cos(data->game.dir + M_PI_2) * STEP))][(int)(data->game.p_x - (sin(data->game.dir + M_PI_2) * STEP))] != '1')
+	 	if (key == LEFT && data->map.setup[(int)((data->game.p_y - (cos(data->game.dir + M_PI_2) * t_step)) - 0.35)][(int)((data->game.p_x - (sin(data->game.dir + M_PI_2) * t_step)) - 0.35)] != '1')
 		{
 			data->game.p_x -= cos(data->game.dir + M_PI_2) * t_step;
 			data->game.p_y -= sin(data->game.dir + M_PI_2) * t_step;
 		}
-		if (key == RIGHT && data->map.setup[(int)(data->game.p_y + (cos(data->game.dir + M_PI_2) * STEP))][(int)(data->game.p_x + (sin(data->game.dir + M_PI_2) * STEP))] != '1')
+		if (key == RIGHT && data->map.setup[(int)((data->game.p_y + (cos(data->game.dir + M_PI_2) * t_step)) + 0.35)][(int)((data->game.p_x + (sin(data->game.dir + M_PI_2) * t_step)) + 0.35)] != '1')
 		{
 			data->game.p_x += cos(data->game.dir + M_PI_2) * t_step;
 			data->game.p_y += sin(data->game.dir + M_PI_2) * t_step;

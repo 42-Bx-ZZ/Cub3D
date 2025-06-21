@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/21 10:35:34 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/21 10:52:00 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define WIDTH 1280
 # define HEIGHT 720
 # define STEP 0.1
-# define FOV 90
+# define FOV 60
 # define VIEW 0.1
 # define RAYS WIDTH
 
