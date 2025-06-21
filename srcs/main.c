@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/05/31 23:55:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/21 10:20:18 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	clean_exit(t_data *data)
 {
-	// if (data && data->mlx && data->win && LINUX)
-	// 	mlx_destroy_display(data->mlx);
 	if (data && data->mlx && data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data && data->map.setup)

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/19 19:11:37 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/21 10:19:40 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	draw_wall(t_data *data, int r, int size[2], char w)
 	y = size[0];
 	while (y < size[1])
 	{
-		mlx_pixel_put(data->mlx, data->win, r, y, color);
+		put_pixel_img(&data->frame, r, y, color);
 		y++;
 	}
 }
@@ -68,7 +68,7 @@ void	draw_ceiling(t_data *data, int r, int size[2], int color)
 	y = 0;
 	while (y < size[0])
 	{
-		mlx_pixel_put(data->mlx, data->win, r, y, color);
+		put_pixel_img(&data->frame, r, y, color);
 		y++;
 	}
 }
@@ -80,7 +80,7 @@ void	draw_floor(t_data *data, int r, int size[2], int color)
 	y = size[1];
 	while (y < HEIGHT)
 	{
-		mlx_pixel_put(data->mlx, data->win, r, y, color);
+		put_pixel_img(&data->frame, r, y, color);
 		y++;
 	}
 }

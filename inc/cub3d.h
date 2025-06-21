@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/19 18:20:20 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/21 10:25:17 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@
 # endif
 
 # define CLOSEBTN 17
-# define WIDTH 848
-# define HEIGHT 480
-# define STEP 0.1
+# define WIDTH 1280
+# define HEIGHT 720
+# define STEP 0.2
 # define FOV 60
-# define VIEW 0.1
+# define VIEW 0.2
 # define RAYS WIDTH
 
 # include "../libft/inc/libft.h"
@@ -108,11 +108,13 @@ typedef struct s_data
     void    *mlx;
     void    *win;
 	t_map	map;
+	t_img	frame;
 	t_game	game;
 	t_keys	keys;
 	char	**cub_file;
 }	t_data;
 
+void	put_pixel_img(t_img *img, int x, int y, int color);
 int		update_move(t_data *data);
 int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);

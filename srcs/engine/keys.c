@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:43:16 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/17 20:49:23 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/21 10:15:31 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ int	key_release(int key, t_data *data)
 
 int	update_move(t_data *data)
 {
-	int moved;
-
-	moved = 0;
 	if (data->keys.up)
 		moves(UP, data);
 	if (data->keys.down)
@@ -65,10 +62,11 @@ int	update_move(t_data *data)
 		view(L_ARROW, data);
 	if (data->keys.r_arrow)
 		view(R_ARROW, data);
-	if (data->keys.up || data->keys.down || data->keys.left || data->keys.right
-		|| data->keys.l_arrow || data->keys.r_arrow)
-		moved = 1;
-	if (moved || data->keys.f)
-		draw_view(data, FOV, RAYS, data->map.setup);
+	data->frame.ptr = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->frame.data = (int *)mlx_get_data_addr(data->frame.ptr,
+			&data->frame.bpp, &data->frame.size_line, &data->frame.endian);
+	draw_view(data, FOV, RAYS, data->map.setup);
+	mlx_put_image_to_window(data->mlx, data->win, data->frame.ptr, 0, 0);
+	mlx_destroy_image(data->mlx, data->frame.ptr);
 	return (data->keys.f = 0, 0);
 }
