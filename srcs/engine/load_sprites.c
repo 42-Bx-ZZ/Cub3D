@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/21 10:15:44 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/22 22:34:14 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,5 @@ int	load_sprites(t_data *data)
 	if (load_xpm(&t->m_floor, "textures/floor.xpm", data))
 		return (1);
 	draw_map(data);
-	data->keys.f = 1;
 	return (0);
 }

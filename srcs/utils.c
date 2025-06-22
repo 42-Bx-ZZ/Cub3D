@@ -6,11 +6,32 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:41:36 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/21 10:20:25 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/22 23:09:55 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void	print_fps(t_data *data)
+{
+	ft_printf("FPS: %d\n", data->fps.fps * 2);
+	data->fps.last = data->fps.now;
+	data->fps.fps = 0;
+}
+
+double	elapsed_time()
+{
+	static struct timespec	last;
+	struct	timespec		now;
+	double					time;
+
+	last.tv_nsec = 0;
+	last.tv_sec = 0;
+	clock_gettime(CLOCK_MONOTONIC, &now);
+	time = (now.tv_sec - last.tv_sec) + (now.tv_nsec - last.tv_nsec) / 1e9;
+	last = now;
+	return (time);
+}
 
 void	free_all_data(t_data *data)
 {

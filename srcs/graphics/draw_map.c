@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/22 15:53:52 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/22 23:05:19 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,24 @@ void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map)
 
 void	put_pixel(t_data *data, char c, int i, int j)
 {
-	// if (c == '1')
-	// 	mlx_put_image_to_window(data->mlx, data->win,
-	// 		data->map.textures.m_wall.ptr,
-	// 		i * data->map.textures.m_wall.width,
-	// 		j * data->map.textures.m_wall.height);
-	// if (c == '0')
-	// 	mlx_put_image_to_window(data->mlx, data->win,
-	// 		data->map.textures.m_floor.ptr,
-	// 		i * data->map.textures.m_floor.width,
-	// 		j * data->map.textures.m_floor.height);
+	if (c == '1')
+		mlx_pixel_put(data->mlx, data->win,
+			i * 0,
+			j * 0, 0x000000);
+	if (c == '0')
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->map.textures.m_floor.ptr,
+			i * data->map.textures.m_floor.width,
+			j * data->map.textures.m_floor.height);
 	if (c == 'W' || c == 'N' || c == 'E' || c == 'S')
 	{
 		data->game.p_x = i + 0.5;
 		data->game.p_y = j + 0.5;
 		data->game.dir = get_dir(c);
-		// mlx_put_image_to_window(data->mlx, data->win,
-		// 	data->map.textures.m_floor.ptr,
-		// 	i * data->map.textures.m_floor.width,
-		// 	j * data->map.textures.m_floor.height);
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->map.textures.m_floor.ptr,
+			i * data->map.textures.m_floor.width,
+			j * data->map.textures.m_floor.height);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/22 16:10:22 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/22 23:08:07 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@
 # define FOV 60
 # define VIEW 0.1
 # define RAYS WIDTH
-# define HITBOX 0.10
+# define HITBOX 0.15
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <time.h>
 
 typedef struct s_img
 {
@@ -105,6 +106,13 @@ typedef struct s_map
 	t_textures	textures;
 }	t_map;
 
+typedef	struct	s_fps
+{
+	int		fps;
+	double	last;
+	double	now;
+}	t_fps;
+
 typedef struct s_data
 {
     void    *mlx;
@@ -114,8 +122,11 @@ typedef struct s_data
 	t_game	game;
 	t_keys	keys;
 	char	**cub_file;
+	t_fps	fps;
 }	t_data;
 
+void	print_fps(t_data *data);
+double	elapsed_time(void);
 int		get_frame(int y, int size[2], t_data *data, int r);
 t_img	*wall_side(t_data *data);
 void	put_pixel_img(t_img *img, int x, int y, int color);
