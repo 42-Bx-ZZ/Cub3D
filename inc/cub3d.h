@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/21 10:52:00 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/22 16:10:22 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define FOV 60
 # define VIEW 0.1
 # define RAYS WIDTH
+# define HITBOX 0.10
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
@@ -67,6 +68,7 @@ typedef struct s_game
 	float	dir;
 	double	dir_x;
 	double	dir_y;
+	float	rays[4];
 }   t_game;
 
 typedef struct s_keys
@@ -114,11 +116,13 @@ typedef struct s_data
 	char	**cub_file;
 }	t_data;
 
+int		get_frame(int y, int size[2], t_data *data, int r);
+t_img	*wall_side(t_data *data);
 void	put_pixel_img(t_img *img, int x, int y, int color);
 int		update_move(t_data *data);
 int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
-void	raycasting(t_data *data, float ray_angle, float rays[4], int r);
+void	raycasting(t_data *data, float ray_angle, int r);
 float	get_dir(char c);
 void	moves(int key, t_data *data);
 void	view(int key, t_data *data);

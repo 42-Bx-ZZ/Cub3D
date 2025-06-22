@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/21 10:41:26 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/22 15:53:52 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	put_pixel_img(t_img *img, int x, int y, int color)
 	img->data[y * (img->size_line / 4) + x] = color;
 }
 
-int	ray_size_check(float rays[2], char **map)
+int	ray_size_check(t_data *data, char **map)
 {
 	int	mx;
 	int	my;
 
-	mx = (int)rays[0];
-	my = (int)rays[1];
+	mx = (int)data->game.rays[0];
+	my = (int)data->game.rays[1];
 	if (mx < 0 || my < 0 || !map[my] || !map[my][mx] || map[my][mx] == '1')
 		return (1);
 	return (0);
@@ -36,7 +36,6 @@ void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map)
 	float	start_angle;
 	float	angle_step;
 	float	ray_angle;
-	float	rays[4];
 	int		r;
 
 	angle_step = ((fov_deg * M_PI / 180) / nb_rays);
@@ -45,16 +44,16 @@ void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map)
 	while (++r < nb_rays)
 	{
 		ray_angle = start_angle + r * angle_step;
-		rays[0] = data->game.p_x;
-		rays[1] = data->game.p_y;
-		while (!ray_size_check(rays, map))
+		data->game.rays[0] = data->game.p_x;
+		data->game.rays[1] = data->game.p_y;
+		while (!ray_size_check(data, map))
 		{
-			rays[2] = rays[0];
-			rays[3] = rays[1];
-			rays[0] += 0.01 * cosf(ray_angle);
-			rays[1] += 0.01 * sinf(ray_angle);
+			data->game.rays[2] = data->game.rays[0];
+			data->game.rays[3] = data->game.rays[1];
+			data->game.rays[0] += 0.01 * cosf(ray_angle);
+			data->game.rays[1] += 0.01 * sinf(ray_angle);
 		}
-		raycasting(data, ray_angle, rays, r);
+		raycasting(data, ray_angle, r);
 	}
 }
 

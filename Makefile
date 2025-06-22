@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/06/17 19:43:51 by lowatell         ###   ########.fr        #
+#    Updated: 2025/06/22 15:55:56 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS =	main.c\
 		graphics/draw_map.c\
 		graphics/view.c\
 		graphics/raycasting.c\
+		graphics/raycasting_utils.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
