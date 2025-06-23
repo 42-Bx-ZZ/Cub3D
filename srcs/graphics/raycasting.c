@@ -6,19 +6,19 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/23 08:31:00 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 09:38:44 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	draw_wall(t_data *data, int r, int size[2])
+void	draw_wall(t_data *data, size_t r, int size[2])
 {
 	get_frame(size[0], size, data, r);
 
 }
 
-void	draw_ceiling(t_data *data, int r, int size[2], int color)
+void	draw_ceiling(t_data *data, size_t r, int size[2], int color)
 {
 	int	y;
 
@@ -30,7 +30,7 @@ void	draw_ceiling(t_data *data, int r, int size[2], int color)
 	}
 }
 
-void	draw_floor(t_data *data, int r, int size[2], int color)
+void	draw_floor(t_data *data, size_t r, int size[2], int color)
 {
 	int	y;
 
@@ -42,7 +42,7 @@ void	draw_floor(t_data *data, int r, int size[2], int color)
 	}
 }
 
-void	raycasting(t_data *data, float ray_angle, int r)
+void	raycasting(t_data *data, float ray_angle, size_t r)
 {
 	float	ray_size;
 	float	corrected_size;

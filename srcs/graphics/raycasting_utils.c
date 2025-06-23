@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 15:46:33 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/23 08:45:01 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 09:41:07 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int	get_frame(int y, int size[2], t_data *data, int r)
 		color = img->data[tex_y * (img->size_line / 4) + tex_x];
 		put_pixel_img(&data->frame, r, y, color);
 		y++;
-		if (y < -2000)
-			exit(2);
 	}
 	return (0);
 }

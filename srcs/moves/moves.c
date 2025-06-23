@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:09:13 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/23 08:34:15 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:02:54 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ static void	move_up(t_data *data, float t_step)
 	float	new_x;
 	float	new_y;
 
+	if (data->keys.shift)
+		t_step *= 2;
 	new_x = data->game.p_x + cosf(data->game.dir) * t_step;
 	new_y = data->game.p_y + sinf(data->game.dir) * t_step;
 	if (is_blocked(data, new_x, new_y))
@@ -96,7 +98,10 @@ void	moves(int key, t_data *data)
 	if ((data->keys.up && (data->keys.right || data->keys.left))
 		|| (data->keys.down && (data->keys.right || data->keys.left)))
 			t_step = STEP * 0.5;
-	if (data->game.p_x > 0 && data->game.p_y > 0 && data->map.setup[(int)data->game.p_y][(int)data->game.p_x])
+	else if (data->keys.l_arrow || data->keys.r_arrow)
+		t_step = STEP * 0.5;
+	if (data->game.p_x > 0 && data->game.p_y > 0 
+		&& data->map.setup[(int)data->game.p_y][(int)data->game.p_x])
 	{
 		if (key == UP)
 			move_up(data, t_step);

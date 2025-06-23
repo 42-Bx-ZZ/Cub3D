@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:43:16 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/22 23:08:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 09:49:09 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	key_press(int key, t_data *data)
 		data->keys.l_arrow = 1;
 	if (key == R_ARROW)
 		data->keys.r_arrow = 1;
+	if (key == SHIFT)
+		data->keys.shift = 1;
 	if (key == ESC)
 		clean_exit(data);
 	return (0);
@@ -45,6 +47,8 @@ int	key_release(int key, t_data *data)
 		data->keys.l_arrow = 0;
 	if (key == R_ARROW)
 		data->keys.r_arrow = 0;
+	if (key == SHIFT)
+		data->keys.shift = 0;
 	return (0);
 }
 
