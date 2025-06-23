@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/23 11:50:41 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:52:10 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	draw_map(t_data *data)
 	{
 		j = -1;
 		while (map[i][++j])
-		{
 			check_pos(data, map[i][j], j, i);
-		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 12:08:31 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:56:23 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #  define ESC 65307
 #  define L_ARROW 65361
 #  define R_ARROW 65363
+#  define UPGRADE 65453
+#  define DOWNGRADE 65451
 #  define P 112
 #  define SHIFT 65505
 #  define LINUX 1
@@ -84,6 +86,8 @@ typedef struct s_keys
 	int		l_arrow;
 	int		r_arrow;
 	int		shift;
+	int		upgrade;
+	int		downgrade;
 }	t_keys;
 
 typedef struct s_textures
@@ -96,9 +100,6 @@ typedef struct s_textures
 	t_img	south;
 	t_img	west;
 	t_img	east;
-	t_img	m_wall;
-	t_img	m_player;
-	t_img	m_floor;
 	int		floor_color[3];
 	int		ceiling_color[3];
 }	t_textures;
@@ -128,7 +129,7 @@ typedef struct s_data
 	t_fps	fps;
 }	t_data;
 
-size_t	get_max_vue(t_data *data);
+size_t	get_quality(t_data *data);
 int		is_blocked(t_data *data, float x, float y);
 void	print_fps(t_data *data);
 double	elapsed_time(void);

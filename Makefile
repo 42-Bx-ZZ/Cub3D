@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/06/23 10:10:39 by lowatell         ###   ########.fr        #
+#    Updated: 2025/06/23 13:25:25 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,6 @@ SRCS =	main.c\
 		graphics/raycasting.c\
 		graphics/raycasting_utils.c\
 		moves/hitbox.c\
-		engine/quality_setup.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 

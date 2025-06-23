@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:41:36 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 12:07:38 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:46:46 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_fps(t_data *data)
 	fps = ft_itoa(data->fps.fps / (elapsed_time() - data->fps.start));
 	if (!fps)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, 20, 20, 0x000000, fps);
+	mlx_string_put(data->mlx, data->win, WIDTH - 30, 30, 0x000000, fps);
 	free(fps);
 }
 
