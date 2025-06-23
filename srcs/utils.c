@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:41:36 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 07:52:42 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:07:38 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 void	print_fps(t_data *data)
 {
-	ft_printf("FPS: %d\n", data->fps.fps * 2);
-	data->fps.last = data->fps.now;
-	data->fps.fps = 0;
+	char	*fps;
+
+	fps = ft_itoa(data->fps.fps / (elapsed_time() - data->fps.start));
+	if (!fps)
+		clean_exit(data);
+	mlx_string_put(data->mlx, data->win, 20, 20, 0x000000, fps);
+	free(fps);
 }
 
 double	elapsed_time()

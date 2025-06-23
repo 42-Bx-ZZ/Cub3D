@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:43:16 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/23 09:49:09 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:06:38 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ int	update_move(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->frame.ptr, 0, 0);
 	mlx_destroy_image(data->mlx, data->frame.ptr);
 	data->fps.fps++;
-	data->fps.now = elapsed_time();
-	if (data->fps.now - data->fps.last >= 0.5)
-		print_fps(data);
+	print_fps(data);
 	return (0);
 }

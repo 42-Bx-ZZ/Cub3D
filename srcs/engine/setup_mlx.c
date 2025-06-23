@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/22 23:03:12 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:08:49 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	setup_mlx(t_data *data)
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3D");
 	if (!data->win || load_sprites(data))
 		return (1);
-	data->fps.last = elapsed_time();
+	data->fps.start = elapsed_time();
 	mlx_hook(data->win, 2, 1L << 0, &key_press, data);
 	mlx_hook(data->win, 3, 1L << 1, &key_release, data);
 	mlx_loop_hook(data->mlx, update_move, data);

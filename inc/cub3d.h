@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 09:57:23 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:08:31 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,7 @@ typedef struct s_map
 typedef	struct	s_fps
 {
 	int		fps;
-	double	last;
-	double	now;
+	double	start;
 }	t_fps;
 
 typedef struct s_data
@@ -129,6 +128,7 @@ typedef struct s_data
 	t_fps	fps;
 }	t_data;
 
+size_t	get_max_vue(t_data *data);
 int		is_blocked(t_data *data, float x, float y);
 void	print_fps(t_data *data);
 double	elapsed_time(void);
