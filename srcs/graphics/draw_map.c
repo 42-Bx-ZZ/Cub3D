@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/22 23:05:19 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 07:37:47 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	put_pixel(t_data *data, char c, int i, int j)
 	{
 		data->game.p_x = i + 0.5;
 		data->game.p_y = j + 0.5;
+		data->map.setup[i][j] = 0;
 		data->game.dir = get_dir(c);
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->map.textures.m_floor.ptr,

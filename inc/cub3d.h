@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/22 23:08:07 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/23 08:08:55 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ typedef struct s_data
 	t_fps	fps;
 }	t_data;
 
+int		is_blocked(t_data *data, float x, float y);
 void	print_fps(t_data *data);
 double	elapsed_time(void);
 int		get_frame(int y, int size[2], t_data *data, int r);
