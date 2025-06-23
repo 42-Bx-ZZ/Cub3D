@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/20 14:48:27 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:35:12 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_data
 {
 	t_map	map;
 	char	**cub_file;
+	int		cub_len;
 }	t_data;
 
 void	check_args(int ac, char **av);
@@ -74,6 +75,6 @@ void	check_and_parse_wall_path(t_data *data, char *line, char *type);
 void	check_and_parse_fc_colors(t_data *data, char *line, char type);
 void	check_and_parse_map(t_data *data, int *i);
 int		count_map_lenght(t_data *data, int i);
-void	map_placement_checking(t_data *data);
+void	check_if_all_cub_data(t_data *data);
 
 #endif
