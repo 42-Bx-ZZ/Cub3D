@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 16:10:41 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/24 19:43:28 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # endif
 
 # define CLOSEBTN 17
-# define VALID_CHARS "0 1NSEW"
+# define VALID_CHARS "0 1NSEWD"
 # define PLAYER_CHARS "NSEW"
 
 # include "../libft/inc/libft.h"
@@ -46,6 +46,7 @@ typedef struct s_textures
 	char	*south_path;
 	char	*west_path;
 	char	*east_path;
+	char	*door_path;
 	int		floor_color[3];
 	int		ceiling_color[3];
 	int		c_flag;

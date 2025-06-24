@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/18 01:50:50 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/24 19:45:09 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ static void	parse_wall_path(t_data *data, char *path, char *type)
 		if (data->map.textures.east_path)
 			free_all_and_print_exit(data, "Error\nToo much wall path\n");
 		data->map.textures.east_path = path;
+	}
+	else if (ft_strncmp(type, "DO", 2) == 0)
+	{
+		if (data->map.textures.door_path)
+			free_all_and_print_exit(data, "Error\nToo much door path\n");
+		data->map.textures.door_path = path;
 	}
 }
 
