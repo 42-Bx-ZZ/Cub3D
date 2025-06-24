@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 12:35:12 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/24 16:10:41 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ void	check_and_parse_fc_colors(t_data *data, char *line, char type);
 void	check_and_parse_map(t_data *data, int *i);
 int		count_map_lenght(t_data *data, int i);
 void	check_if_all_cub_data(t_data *data);
+char	*check_chars_in_string(char *chars, char *line);
+
 
 #endif

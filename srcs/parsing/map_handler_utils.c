@@ -6,11 +6,30 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 03:41:56 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 13:28:48 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/24 17:22:00 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+static void	check_empty_line_case(t_data *data, int i, int j)
+{
+	j = i;
+	while (j < data->cub_len)
+	{
+		if (data->cub_file[j][0] != 0)
+		{
+			if (check_chars_in_string(VALID_CHARS, data->cub_file[j]))
+			{
+				free_all_and_print_exit(data,
+					"Error\nThe map need to be in one part\n");
+			}
+			free_all_and_print_exit(data,
+				"Error\nThe map aren't last in cub_file\n");
+		}
+		j++;
+	}
+}
 
 static int	count_and_check(t_data *data, int i, int j, int len)
 {
@@ -22,20 +41,7 @@ static int	count_and_check(t_data *data, int i, int j, int len)
 			len++;
 		}
 		else if (data->cub_file[i][0] == 0)
-		{
-			j = i;
-			while (j < data->cub_len)
-			{
-				if (data->cub_file[j][0] != 0)
-				{
-					free_all_and_print_exit(data,
-						"Error\nMap aren't in last position in cub_file\n");
-				}
-				j++;
-			}
-			free_all_and_print_exit(data,
-				"Error\n'\\n' in the map section\n");
-		}
+			check_empty_line_case(data, i, j);
 	}
 	return (len);
 }

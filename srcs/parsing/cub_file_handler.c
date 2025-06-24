@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 12:34:59 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/24 17:29:35 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,24 @@ static int	count_file_lines(char *file)
 	return (i);
 }
 
+static void	check_map_ending(t_data *data)
+{
+	if (data->cub_file[data->cub_len - 1]
+		[ft_strlen(data->cub_file[data->cub_len - 1]) - 1] == '\n')
+		free_all_and_print_exit(data,
+			"Error\nThe map aren't last in cub_file\n");
+}
+
+static void	replace_line_breaks(t_data *data, int i)
+{
+	while (data->cub_file[i])
+	{
+		if (data->cub_file[i][ft_strlen(data->cub_file[i]) - 1] == '\n')
+			data->cub_file[i][ft_strlen(data->cub_file[i]) - 1] = '\0';
+		i++;
+	}
+}
+
 void	extract_all_cub_data(t_data *data, char *file)
 {
 	int		fd;
@@ -50,12 +68,13 @@ void	extract_all_cub_data(t_data *data, char *file)
 	data->cub_file[i] = get_next_line(fd);
 	while (data->cub_file[i])
 	{
-		if (data->cub_file[i][ft_strlen(data->cub_file[i]) - 1] == '\n')
-			data->cub_file[i][ft_strlen(data->cub_file[i]) - 1] = '\0';
 		i++;
 		data->cub_file[i] = get_next_line(fd);
 	}
 	data->cub_file[i] = NULL;
+	i = 0;
+	check_map_ending(data);
+	replace_line_breaks(data, i);
 	close(fd);
 }
 
