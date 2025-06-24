@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 14:07:32 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 09:01:21 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	main(int ac, char **av)
 	if (ac != 2 || !av[1][0])
 		return (0);
 	ft_memset(&data, 0, sizeof(data));
-	data.quality = 0.015;
 	data.map.setup = get_map(av[1]);
 	if (!data.map.setup)
 		clean_exit(&data);

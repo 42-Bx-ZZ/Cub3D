@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/23 13:52:10 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:04:50 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ray_size_check(t_data *data, char **map)
 	return (0);
 }
 
-void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map)
+void	ray_size(t_data *data, float fov_deg, int nb_rays, char **map)
 {
 	float	start_angle;
 	float	angle_step;
@@ -44,16 +44,8 @@ void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map)
 	while (r < (size_t)nb_rays)
 	{
 		ray_angle = start_angle + r * angle_step;
-		data->game.rays[0] = data->game.p_x;
-		data->game.rays[1] = data->game.p_y;
-		while (!ray_size_check(data, map))
-		{
-			data->game.rays[2] = data->game.rays[0];
-			data->game.rays[3] = data->game.rays[1];
-			data->game.rays[0] += data->quality * cosf(ray_angle);
-			data->game.rays[1] += data->quality * sinf(ray_angle);
-		}
-		raycasting(data, ray_angle, r);
+		dda(data, ray_angle, map);
+		raycasting(data, r);
 		r++;
 	}
 }

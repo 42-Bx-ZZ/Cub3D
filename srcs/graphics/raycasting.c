@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/23 09:38:44 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:56:04 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,18 @@ void	draw_floor(t_data *data, size_t r, int size[2], int color)
 	}
 }
 
-void	raycasting(t_data *data, float ray_angle, size_t r)
+void	raycasting(t_data *data, size_t r)
 {
-	float	ray_size;
-	float	corrected_size;
+	float	wall_dist;
 	int		wall_height;
 	int		size[2];
 	float	*rays;
 
 	rays = data->game.rays;
-	ray_size = sqrtf((rays[0] - data->game.p_x) * (rays[0] - data->game.p_x)
-			+ (rays[1] - data->game.p_y) * (rays[1] - data->game.p_y));
-	corrected_size = ray_size * cosf(ray_angle - data->game.dir);
-	if (corrected_size < 0.01)
-		corrected_size = 0.01;
-	wall_height = (int)(HEIGHT / corrected_size);
+	wall_dist = rays[4];
+	if (wall_dist < 0.001)
+		wall_dist = 0.001;
+	wall_height = (int)(HEIGHT / wall_dist);
 	size[0] = (HEIGHT / 2) - (wall_height / 2);
 	size[1] = (HEIGHT / 2) + (wall_height / 2);
 	draw_ceiling(data, r, size, 0xFFFFF);

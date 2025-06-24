@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 15:46:33 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/23 10:40:49 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:15:42 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,18 @@
 
 t_img	*wall_side(t_data *data)
 {
-	int	x;
-	int	y;
-	int	prev_x;
-	int	prev_y;
-
-	x = (int)data->game.rays[0];
-	y = (int)data->game.rays[1];
-	prev_x = (int)data->game.rays[2];
-	prev_y = (int)data->game.rays[3];
-	if (x != prev_x)
+	if (data->game.dda.side == 0)
 	{
-		if (x > prev_x)
+		if (data->game.dda.ray_dir_x > 0)
 			return (&data->map.textures.west);
-		else 
-			return (&data->map.textures.east);
+		return (&data->map.textures.east);
 	}
 	else
 	{
-		if (y > prev_y)
+		if (data->game.dda.ray_dir_y > 0)
 			return (&data->map.textures.north);
-		else
-			return (&data->map.textures.south);
+		return (&data->map.textures.south);
 	}
-	return (&data->map.textures.north);
 }
 
 int	get_frame(int y, int size[2], t_data *data, int r)
@@ -49,10 +37,10 @@ int	get_frame(int y, int size[2], t_data *data, int r)
 	int		color;
 
 	img = wall_side(data);
-	if (img == &data->map.textures.east || img == &data->map.textures.west)
-		wall_hit = data->game.rays[1] - floorf(data->game.rays[1]);
+	if (data->game.dda.side == 0)
+		wall_hit = data->game.rays[6] - floorf(data->game.rays[6]);
 	else
-		wall_hit = data->game.rays[0] - floorf(data->game.rays[0]);
+		wall_hit = data->game.rays[5] - floorf(data->game.rays[5]);
 	tex_x = (int)(wall_hit * img->width);
 	y = size[0];
 	while (y < size[1] && y < HEIGHT)

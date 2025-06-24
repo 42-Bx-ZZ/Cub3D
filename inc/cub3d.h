@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 13:56:23 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:14:56 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,21 @@
 # include <math.h>
 # include <time.h>
 
+typedef struct s_dda
+{
+	int		x;
+	int		y;
+	float	ray_dir_x;
+	float	ray_dir_y;
+	float	delta_dist_x;
+	float	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	float	side_dist_x;
+	float	side_dist_y;
+	int		side;	
+}	t_dda;
+
 typedef struct s_img
 {
 	int		*ptr;
@@ -73,7 +88,8 @@ typedef struct s_game
 	float	dir;
 	double	dir_x;
 	double	dir_y;
-	float	rays[4];
+	t_dda	dda;
+	float	rays[7];
 }   t_game;
 
 typedef struct s_keys
@@ -86,8 +102,6 @@ typedef struct s_keys
 	int		l_arrow;
 	int		r_arrow;
 	int		shift;
-	int		upgrade;
-	int		downgrade;
 }	t_keys;
 
 typedef struct s_textures
@@ -120,7 +134,6 @@ typedef struct s_data
 {
     void    *mlx;
     void    *win;
-	float	quality;
 	t_map	map;
 	t_img	frame;
 	t_game	game;
@@ -129,7 +142,8 @@ typedef struct s_data
 	t_fps	fps;
 }	t_data;
 
-size_t	get_quality(t_data *data);
+void	dda(t_data *data, float ray_angle, char **map);
+int		get_dda_step(float dir);
 int		is_blocked(t_data *data, float x, float y);
 void	print_fps(t_data *data);
 double	elapsed_time(void);
@@ -139,11 +153,11 @@ void	put_pixel_img(t_img *img, int x, int y, int color);
 int		update_move(t_data *data);
 int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
-void	raycasting(t_data *data, float ray_angle, size_t r);
+void	raycasting(t_data *data, size_t r);
 float	get_dir(char c);
 void	moves(int key, t_data *data);
 void	view(int key, t_data *data);
-void	draw_view(t_data *data, float fov_deg, int nb_rays, char **map);
+void	ray_size(t_data *data, float fov_deg, int nb_rays, char **map);
 void	draw_map(t_data *data);
 int		load_sprites(t_data *data);
 int	    clean_exit(t_data *data);
