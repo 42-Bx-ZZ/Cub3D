@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 15:46:33 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 16:15:42 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:31:47 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 t_img	*wall_side(t_data *data)
 {
+	if (data->map.setup[(int)data->game.dda.y][(int)data->game.dda.x] && 
+		data->map.setup[(int)data->game.dda.y][(int)data->game.dda.x] == 'D')
+		return (&data->map.textures.door);
 	if (data->game.dda.side == 0)
 	{
 		if (data->game.dda.ray_dir_x > 0)
@@ -38,9 +41,9 @@ int	get_frame(int y, int size[2], t_data *data, int r)
 
 	img = wall_side(data);
 	if (data->game.dda.side == 0)
-		wall_hit = data->game.rays[6] - floorf(data->game.rays[6]);
+		wall_hit = data->game.rays[1] - floorf(data->game.rays[1]);
 	else
-		wall_hit = data->game.rays[5] - floorf(data->game.rays[5]);
+		wall_hit = data->game.rays[0] - floorf(data->game.rays[0]);
 	tex_x = (int)(wall_hit * img->width);
 	y = size[0];
 	while (y < size[1] && y < HEIGHT)

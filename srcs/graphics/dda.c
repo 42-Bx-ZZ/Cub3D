@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 14:26:21 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 16:14:46 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:24:04 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	dda_step(t_dda *dda)
 
 int	hit_wall(char **map, t_dda *dda)
 {
-	return (map[dda->y] && map[dda->y][dda->x] && map[dda->y][dda->x] == '1');
+	return (map[dda->y] && map[dda->y][dda->x] && (map[dda->y][dda->x] == '1'
+		|| map[dda->y][dda->x] == 'D'));
 }
 
 void	set_hit(t_data *data, t_dda *dda, float ray_angle)
@@ -62,15 +63,13 @@ void	set_hit(t_data *data, t_dda *dda, float ray_angle)
 		perp_wall = (dda->x - data->game.p_x + (1 - dda->step_x) / 2) / dda->ray_dir_x;
 	else
 		perp_wall = (dda->y - data->game.p_y + (1 - dda->step_y) / 2) / dda->ray_dir_y;
-	data->game.rays[5] = data->game.p_x + perp_wall * dda->ray_dir_x;
-	data->game.rays[6] = data->game.p_y + perp_wall * dda->ray_dir_y;
-	angle = ray_angle - data->game.dir;
-	perp_wall = perp_wall * cosf(angle);
 	data->game.rays[0] = data->game.p_x + perp_wall * dda->ray_dir_x;
 	data->game.rays[1] = data->game.p_y + perp_wall * dda->ray_dir_y;
-	data->game.rays[2] = data->game.p_x;
-	data->game.rays[3] = data->game.p_y;
-	data->game.rays[4] = perp_wall;
+	angle = ray_angle - data->game.dir;
+	perp_wall = perp_wall * cosf(angle);
+	data->game.r_x_fy = data->game.p_x + perp_wall * dda->ray_dir_x;
+	data->game.r_y_fy = data->game.p_y + perp_wall * dda->ray_dir_y;
+	data->game.perp_wall = perp_wall;
 }
 
 void	dda(t_data *data, float ray_angle, char **map)

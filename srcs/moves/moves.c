@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:09:13 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/23 13:25:48 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:40:44 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ static void	move_left(t_data *data, float t_step)
 	if (is_blocked(data, new_x, new_y))
 		return ;
 	if (data->map.setup[(int)(data->game.p_y)]
-			[(int)(new_x - cosf(data->game.dir + M_PI_2) * HITBOX)] != '1')
+			[(int)(new_x - cosf(data->game.dir + M_PI_2) * HITBOX)] != '1'
+			&& data->map.setup[(int)(data->game.p_y)]
+			[(int)(new_x - cosf(data->game.dir + M_PI_2) * HITBOX)] != 'D')
 		if (data->map.setup[(int)(new_y - sinf(data->game.dir + M_PI_2) * HITBOX)]
-				[(int)(new_x)] != '1')
+				[(int)(new_x)] != '1' && data->map.setup[(int)(new_y - sinf(data->game.dir + M_PI_2) * HITBOX)]
+				[(int)(new_x)] != 'D')
 				{
 					data->game.p_x = new_x;
 					data->game.p_y = new_y;
@@ -41,9 +44,13 @@ static void	move_right(t_data *data, float t_step)
 	if (is_blocked(data, new_x, new_y))
 		return ;
 	if (data->map.setup[(int)(data->game.p_y)]
-			[(int)(new_x + cosf(data->game.dir + M_PI_2) * HITBOX)] != '1')
+			[(int)(new_x + cosf(data->game.dir + M_PI_2) * HITBOX)] != '1'
+			&& data->map.setup[(int)(data->game.p_y)]
+			[(int)(new_x + cosf(data->game.dir + M_PI_2) * HITBOX)] != 'D')
 		if (data->map.setup[(int)(new_y + sinf(data->game.dir + M_PI_2) * HITBOX)]
-				[(int)(new_x)] != '1')
+				[(int)(new_x)] != '1'
+				&& data->map.setup[(int)(new_y + sinf(data->game.dir + M_PI_2) * HITBOX)]
+				[(int)(new_x)] != 'D')
 			{
 				data->game.p_x = new_x;
 				data->game.p_y = new_y;
@@ -62,9 +69,13 @@ static void	move_up(t_data *data, float t_step)
 	if (is_blocked(data, new_x, new_y))
 		return ;
 	if (data->map.setup[(int)(data->game.p_y)]
-			[(int)(new_x + cosf(data->game.dir) * HITBOX)] != '1')
+			[(int)(new_x + cosf(data->game.dir) * HITBOX)] != '1'
+			&& data->map.setup[(int)(data->game.p_y)]
+			[(int)(new_x + cosf(data->game.dir) * HITBOX)] != 'D')
 		if (data->map.setup[(int)(new_y + sinf(data->game.dir) * HITBOX)]
-				[(int)(new_x)] != '1')
+				[(int)(new_x)] != '1'
+				&& data->map.setup[(int)(new_y + sinf(data->game.dir) * HITBOX)]
+				[(int)(new_x)] != 'D')
 				{
 					data->game.p_x = new_x;
 					data->game.p_y = new_y;
@@ -81,9 +92,13 @@ static void	move_down(t_data *data, float t_step)
 	if (is_blocked(data, new_x, new_y))
 		return ;
 	if (data->map.setup[(int)(data->game.p_y)]
-			[(int)(new_x - cosf(data->game.dir) * HITBOX)] != '1')
+			[(int)(new_x - cosf(data->game.dir) * HITBOX)] != '1'
+			&& data->map.setup[(int)(data->game.p_y)]
+			[(int)(new_x - cosf(data->game.dir) * HITBOX)] != 'D')
 		if (data->map.setup[(int)(new_y - sinf(data->game.dir) * HITBOX)]
-			[(int)(data->game.p_x)] != '1')
+			[(int)(data->game.p_x)] != '1'
+			&& data->map.setup[(int)(new_y - sinf(data->game.dir) * HITBOX)]
+			[(int)(data->game.p_x)] != 'D')
 			{
 				data->game.p_x = new_x;
 				data->game.p_y = new_y;

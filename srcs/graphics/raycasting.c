@@ -6,17 +6,11 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 15:56:04 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:20:21 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-void	draw_wall(t_data *data, size_t r, int size[2])
-{
-	get_frame(size[0], size, data, r);
-
-}
 
 void	draw_ceiling(t_data *data, size_t r, int size[2], int color)
 {
@@ -47,16 +41,14 @@ void	raycasting(t_data *data, size_t r)
 	float	wall_dist;
 	int		wall_height;
 	int		size[2];
-	float	*rays;
 
-	rays = data->game.rays;
-	wall_dist = rays[4];
+	wall_dist = data->game.perp_wall;
 	if (wall_dist < 0.001)
 		wall_dist = 0.001;
 	wall_height = (int)(HEIGHT / wall_dist);
 	size[0] = (HEIGHT / 2) - (wall_height / 2);
 	size[1] = (HEIGHT / 2) + (wall_height / 2);
 	draw_ceiling(data, r, size, 0xFFFFF);
-	draw_wall(data, r, size);
+	get_frame(size[0], size, data, r);
 	draw_floor(data, r, size, 0x00FF00);
 }

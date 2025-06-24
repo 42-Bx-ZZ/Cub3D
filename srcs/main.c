@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 09:01:21 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:41:19 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int	main(int ac, char **av)
 	data.map.setup = get_map(av[1]);
 	if (!data.map.setup)
 		clean_exit(&data);
+	data.player.money = 2000;
 	setup_mlx(&data);
 }

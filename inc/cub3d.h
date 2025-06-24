@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 16:14:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/24 19:24:34 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #  define DOWNGRADE 65451
 #  define P 112
 #  define SHIFT 65505
+#  define E 101
 #  define LINUX 1
 # else
 #  include "../minilibx_opengl_20191021/mlx.h"
@@ -81,6 +82,16 @@ typedef struct s_img
 	int		width;
 }	t_img;
 
+typedef	struct s_player
+{
+	int		hp;
+	int		money;
+	int		earn;
+	int		earn_frames;
+	int		hit;
+	t_img	gun;
+}	t_player;
+
 typedef struct s_game
 {
     float   p_x;
@@ -89,7 +100,10 @@ typedef struct s_game
 	double	dir_x;
 	double	dir_y;
 	t_dda	dda;
-	float	rays[7];
+	float	perp_wall;
+	float	r_x_fy;
+	float	r_y_fy;
+	float	rays[2];
 }   t_game;
 
 typedef struct s_keys
@@ -102,6 +116,7 @@ typedef struct s_keys
 	int		l_arrow;
 	int		r_arrow;
 	int		shift;
+	int		e;
 }	t_keys;
 
 typedef struct s_textures
@@ -114,6 +129,7 @@ typedef struct s_textures
 	t_img	south;
 	t_img	west;
 	t_img	east;
+	t_img	door;
 	int		floor_color[3];
 	int		ceiling_color[3];
 }	t_textures;
@@ -132,20 +148,23 @@ typedef	struct	s_fps
 
 typedef struct s_data
 {
-    void    *mlx;
-    void    *win;
-	t_map	map;
-	t_img	frame;
-	t_game	game;
-	t_keys	keys;
-	char	**cub_file;
-	t_fps	fps;
+    void    	*mlx;
+    void    	*win;
+	t_map		map;
+	t_img		frame;
+	t_game		game;
+	t_keys		keys;
+	char		**cub_file;
+	t_fps		fps;
+	t_player	player;
 }	t_data;
 
+int		hit_check(t_data *data);
+void	door_check(t_data *data);
 void	dda(t_data *data, float ray_angle, char **map);
 int		get_dda_step(float dir);
 int		is_blocked(t_data *data, float x, float y);
-void	print_fps(t_data *data);
+void	print_infos(t_data *data);
 double	elapsed_time(void);
 int		get_frame(int y, int size[2], t_data *data, int r);
 t_img	*wall_side(t_data *data);
