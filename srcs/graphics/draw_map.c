@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 12:54:58 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:14:17 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	update_frame(t_data *data, float fov_deg, int nb_rays, char **map)
 	while (++i < data->ennemies[0].number)
 		draw_enemy(data, i);
 	draw_crosshair(data);
-	print_infos(data);
 	ennemy_moves(data);
 }
 

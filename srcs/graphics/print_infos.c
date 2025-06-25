@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 09:34:41 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:11:58 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_fps(t_data *data)
 	free(fps);
 	if (!temp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, data->width - 40, 10, 0x000000, temp);
+	mlx_string_put(data->mlx, data->win, data->width - 40, 10, 0xFFFFFF, temp);
 	free(temp);
 }
 
@@ -62,7 +62,7 @@ void	print_money(t_data *data)
 	free(money);
 	if (!temp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, data->width - 40, 20, 0x000000, temp);
+	mlx_string_put(data->mlx, data->win, data->width - 40, 20, 0xFFFFFF, temp);
 	free(temp);
 }
 
