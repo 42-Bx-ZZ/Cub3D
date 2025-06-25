@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 19:43:28 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/24 20:31:15 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	check_and_parse_map(t_data *data, int *i);
 int		count_map_lenght(t_data *data, int i);
 void	check_if_all_cub_data(t_data *data);
 char	*check_chars_in_string(char *chars, char *line);
+int		count_file_lines(char *file);
 
 
 #endif

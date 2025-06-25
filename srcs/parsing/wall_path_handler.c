@@ -6,44 +6,31 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 19:45:09 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/24 20:26:14 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
+static void	parse_and_verif(t_data *data, char **path, char *new_path)
+{
+	if (*path)
+		free_all_and_print_exit(data, "Error\nToo much wall path\n");
+	*path = new_path;
+}
+
 static void	parse_wall_path(t_data *data, char *path, char *type)
 {
 	if (ft_strncmp(type, "NO", 2) == 0)
-	{
-		if (data->map.textures.north_path)
-			free_all_and_print_exit(data, "Error\nToo much wall path\n");
-		data->map.textures.north_path = path;
-	}
+		parse_and_verif(data, &data->map.textures.north_path, path);
 	else if (ft_strncmp(type, "SO", 2) == 0)
-	{
-		if (data->map.textures.south_path)
-			free_all_and_print_exit(data, "Error\nToo much wall path\n");
-		data->map.textures.south_path = path;
-	}
+		parse_and_verif(data, &data->map.textures.south_path, path);
 	else if (ft_strncmp(type, "WE", 2) == 0)
-	{
-		if (data->map.textures.west_path)
-			free_all_and_print_exit(data, "Error\nToo much wall path\n");
-		data->map.textures.west_path = path;
-	}
+		parse_and_verif(data, &data->map.textures.west_path, path);
 	else if (ft_strncmp(type, "EA", 2) == 0)
-	{
-		if (data->map.textures.east_path)
-			free_all_and_print_exit(data, "Error\nToo much wall path\n");
-		data->map.textures.east_path = path;
-	}
+		parse_and_verif(data, &data->map.textures.east_path, path);
 	else if (ft_strncmp(type, "DO", 2) == 0)
-	{
-		if (data->map.textures.door_path)
-			free_all_and_print_exit(data, "Error\nToo much door path\n");
-		data->map.textures.door_path = path;
-	}
+		parse_and_verif(data, &data->map.textures.door_path, path);
 }
 
 static char	*verif_and_extract(t_data *data, int i, char *line)

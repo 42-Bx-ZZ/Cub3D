@@ -6,32 +6,11 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 19:47:05 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/25 07:53:02 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-static int	count_file_lines(char *file)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	i = 0;
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		ft_print_exit("Error\nCan't open .cub file");
-	line = get_next_line(fd);
-	while (line)
-	{
-		i++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	return (i);
-}
 
 static void	check_map_ending(t_data *data)
 {
@@ -78,6 +57,28 @@ void	extract_all_cub_data(t_data *data, char *file)
 	close(fd);
 }
 
+static void	check_and_parse(t_data *data, int *i)
+{
+	if (ft_strncmp(data->cub_file[*i], "NO ", 3) == 0)
+		check_and_parse_wall_path(data, data->cub_file[*i], "NO");
+	else if (ft_strncmp(data->cub_file[*i], "SO ", 3) == 0)
+		check_and_parse_wall_path(data, data->cub_file[*i], "SO");
+	else if (ft_strncmp(data->cub_file[*i], "WE ", 3) == 0)
+		check_and_parse_wall_path(data, data->cub_file[*i], "WE");
+	else if (ft_strncmp(data->cub_file[*i], "EA ", 3) == 0)
+		check_and_parse_wall_path(data, data->cub_file[*i], "EA");
+	else if (ft_strncmp(data->cub_file[*i], "DO ", 3) == 0)
+		check_and_parse_wall_path(data, data->cub_file[*i], "DO");
+	else if (ft_strncmp(data->cub_file[*i], "F ", 2) == 0)
+		check_and_parse_fc_colors(data, data->cub_file[*i], 'F');
+	else if (ft_strncmp(data->cub_file[*i], "C ", 2) == 0)
+		check_and_parse_fc_colors(data, data->cub_file[*i], 'C');
+	else if (data->cub_file[*i][0] == ' ' || data->cub_file[*i][0] == '1')
+		check_and_parse_map(data, i);
+	else if (data->cub_file[*i][0] != '\0')
+		free_all_and_print_exit(data, "Error\nWrong data in cub file");
+}
+
 void	check_and_parse_cub_file(t_data *data)
 {
 	int	i;
@@ -85,24 +86,7 @@ void	check_and_parse_cub_file(t_data *data)
 	i = 0;
 	while (data->cub_file[i])
 	{
-		if (ft_strncmp(data->cub_file[i], "NO ", 3) == 0)
-			check_and_parse_wall_path(data, data->cub_file[i], "NO");
-		else if (ft_strncmp(data->cub_file[i], "SO ", 3) == 0)
-			check_and_parse_wall_path(data, data->cub_file[i], "SO");
-		else if (ft_strncmp(data->cub_file[i], "WE ", 3) == 0)
-			check_and_parse_wall_path(data, data->cub_file[i], "WE");
-		else if (ft_strncmp(data->cub_file[i], "EA ", 3) == 0)
-			check_and_parse_wall_path(data, data->cub_file[i], "EA");
-		else if (ft_strncmp(data->cub_file[i], "DO ", 3) == 0)
-			check_and_parse_wall_path(data, data->cub_file[i], "DO");
-		else if (ft_strncmp(data->cub_file[i], "F ", 2) == 0)
-			check_and_parse_fc_colors(data, data->cub_file[i], 'F');
-		else if (ft_strncmp(data->cub_file[i], "C ", 2) == 0)
-			check_and_parse_fc_colors(data, data->cub_file[i], 'C');
-		else if (data->cub_file[i][0] == ' ' || data->cub_file[i][0] == '1')
-			check_and_parse_map(data, &i);
-		else if (data->cub_file[i][0] != '\0')
-			free_all_and_print_exit(data, "Error\nWrong data in cub file");
+		check_and_parse(data, &i);
 		i++;
 	}
 	check_if_all_cub_data(data);
