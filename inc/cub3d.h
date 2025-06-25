@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 04:03:34 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 10:55:01 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 #  define LINUX 0
 # endif
 
-# define WIDTH 1200
+# define WIDTH 0
 # define HEIGHT 860
 # define CLOSEBTN 17
 # define STEP 0.1
@@ -49,7 +49,15 @@
 # define RAYS WIDTH
 # define HITBOX 0.15
 # define QUALITY 100
-# define ENNEMY_NBR 7
+# define ENNEMY_NBR 2
+
+# if ENNEMY_NBR >= 2147483647 || ENNEMY_NBR <= 0
+#  undef ENNEMY_NBR
+#  define ENNEMY_NBR 1
+#  define SPAWN 0
+# else
+#  define SPAWN 1
+# endif
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
@@ -66,6 +74,8 @@ typedef struct s_ennemy
 	float		y;
 	float		dir;
 	int			number;
+	float		dist;
+	int			order[ENNEMY_NBR];
 }	t_ennemy;
 
 typedef struct s_dda
@@ -82,7 +92,7 @@ typedef struct s_dda
 	float		side_dist_y;
 	int			side;
 	int			hit_ennemy;
-	float		zbuffer[WIDTH];
+	float		zbuffer[1920];
 }	t_dda;
 
 typedef struct s_img
@@ -179,10 +189,10 @@ typedef struct s_data
 	t_ennemy	ennemies[7];
 }	t_data;
 
-int				ft_tablen(char **map);
+void			draw_crosshair(t_data *data);
 void			ennemy_moves(t_data *data);
 void			draw_enemy(t_data *data, int i);
-int				hit_check(t_data *data);
+float			hit_check(t_data *data);
 void			door_check(t_data *data);
 void			dda(t_data *data, float ray_angle, char **map);
 int				get_dda_step(float dir);

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 03:28:17 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 09:31:22 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,4 @@ void	raycasting(t_data *data, size_t r)
 	draw_ceiling(data, r, size, 0xFFFFF);
 	get_frame(size[0], size, data, r);
 	draw_floor(data, r, size, 0x00FF00);
-	draw_crosshair(data);
 }

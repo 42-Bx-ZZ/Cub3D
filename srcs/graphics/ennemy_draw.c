@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 02:12:41 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 04:06:33 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 09:33:46 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,8 @@ void	draw_enemy(t_data *data, int i)
 	draw_enemy_sprite(data, x_y, size, sqrtf(d_x_y[0] * d_x_y[0]
 			+ d_x_y[1] * d_x_y[1]));
 	if (ennemy_on_center(data, x_y, size, i) && data->keys.e)
+	{
 		data->ennemies[i].alive = 0;
+		// EARN MONEY
+	}
 }

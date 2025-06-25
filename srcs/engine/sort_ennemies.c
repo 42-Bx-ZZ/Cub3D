@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_check.c                                        :+:      :+:    :+:   */
+/*   sort_ennemies.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 19:03:12 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 09:34:26 by lowatell         ###   ########.fr       */
+/*   Created: 2025/06/25 10:23:03 by lowatell          #+#    #+#             */
+/*   Updated: 2025/06/25 10:32:53 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-float	hit_check(t_data *data)
+void	sort_dist(t_data *data)
 {
-	if (data->keys.e && data->player.earn_frames == 0)
-	{
-		data->player.hit = 1;
-		return (data->player.earn_frames = 100, 1);
-	}
-	return (0);
+	
 }

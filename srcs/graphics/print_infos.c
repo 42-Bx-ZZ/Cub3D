@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 03:15:49 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 09:34:41 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ void	print_money(t_data *data)
 
 void	print_infos(t_data *data)
 {
-	if (hit_check(data))
-		print_earn(data);
 	print_money(data);
 	print_fps(data);
 }
