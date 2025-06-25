@@ -6,11 +6,31 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 00:53:42 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 03:28:17 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+void	draw_crosshair(t_data *data)
+{
+	int	x;
+	int	y;
+	int	i;
+
+	x = WIDTH / 2;
+	y = HEIGHT / 2;
+	i = -10;
+	while (i <= 10)
+	{
+		if (i != 0)
+		{
+			put_pixel_img(&data->frame, x + i, y, 0xFFFFFF);
+			put_pixel_img(&data->frame, x, y + i, 0xFFFFFF);
+		}
+		i++;
+	}
+}
 
 void	draw_ceiling(t_data *data, size_t r, int size[2], int color)
 {
@@ -51,4 +71,5 @@ void	raycasting(t_data *data, size_t r)
 	draw_ceiling(data, r, size, 0xFFFFF);
 	get_frame(size[0], size, data, r);
 	draw_floor(data, r, size, 0x00FF00);
+	draw_crosshair(data);
 }

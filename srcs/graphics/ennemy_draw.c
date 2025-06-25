@@ -6,11 +6,39 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 02:12:41 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 02:54:25 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 03:33:55 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+int	ennemy_on_center(t_data *data, int x_y[2], int size)
+{
+	int	center_x;
+	int	center_y;
+	int	tx;
+	int	ty;
+	int	color;
+
+	center_x = data->width / 2;
+	center_y = data->height / 2;
+	if (center_x >= x_y[0] && center_x < x_y[0] + size
+		&& center_y >= x_y[1] && center_y < x_y[1] + size)
+	{
+		tx = (center_x - x_y[0]) * data->map.textures.ennemy->width / size;
+		ty = (center_y - x_y[1]) * data->map.textures.ennemy->height / size;
+		color = data->map.textures.ennemy->data[ty
+			* (data->map.textures.ennemy->size_line / 4) + tx];
+		if ((color & 0x00FFFFFF) != 0 && sqrtf((data->ennemies[0].x + 0.5
+					- data->game.p_x)
+				* (data->ennemies[0].x + 0.5 - data->game.p_x)
+				+ (data->ennemies[0].y + 0.5 - data->game.p_y)
+				* (data->ennemies[0].y + 0.5 - data->game.p_y))
+			< data->game.dda.zbuffer[center_x])
+			return (1);
+	}
+	return (0);
+}
 
 static int	enemy_screen_x(t_data *data, float dx, float dy)
 {
@@ -87,4 +115,6 @@ void	draw_enemy(t_data *data, int i)
 	x_y[0] = screen_x - (size / 2);
 	draw_enemy_sprite(data, x_y, size, sqrtf(d_x_y[0] * d_x_y[0]
 			+ d_x_y[1] * d_x_y[1]));
+	if (ennemy_on_center(data, x_y, size) && data->keys.e)
+		data->ennemies[i].alive = 0;
 }

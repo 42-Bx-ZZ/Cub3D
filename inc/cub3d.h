@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 02:58:20 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 03:01:14 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 # define RAYS WIDTH
 # define HITBOX 0.15
 # define QUALITY 100
+# define ENNEMY_NBR 7
 
 # include "../libft/inc/libft.h"
 # include <stdlib.h>
@@ -63,6 +64,7 @@ typedef struct s_ennemy
 	int			alive;
 	float		x;
 	float		y;
+	float		dir;
 }	t_ennemy;
 
 typedef struct s_dda
@@ -143,7 +145,7 @@ typedef struct s_textures
 	t_img		west;
 	t_img		east;
 	t_img		door;
-	t_img		ennemy[2];
+	t_img		ennemy[ENNEMY_NBR];
 	int			floor_color[3];
 	int			ceiling_color[3];
 }	t_textures;
