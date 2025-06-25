@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 19:35:04 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 02:35:51 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_fps(t_data *data)
 	free(fps);
 	if (!temp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, WIDTH - 40, 10, 0x000000, temp);
+	mlx_string_put(data->mlx, data->win, data->width - 40, 10, 0x000000, temp);
 	free(temp);
 }
 
@@ -43,7 +43,9 @@ void	print_earn(t_data *data)
 	if (!temp)
 		clean_exit(data);
 	if (data->player.earn_frames-- >= 0)
-		mlx_string_put(data->mlx, data->win, (WIDTH / 2) + 40, (HEIGHT / 2) - data->player.earn_frames, 0xFFFF00, temp);
+		mlx_string_put(data->mlx, data->win, (data->width / 2)
+			+ 40, (data->height / 2)
+			- data->player.earn_frames, 0xFFFF00, temp);
 	free(temp);
 	data->player.money += base;
 }
@@ -60,7 +62,7 @@ void	print_money(t_data *data)
 	free(money);
 	if (!temp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, WIDTH - 40, 20, 0x000000, temp);
+	mlx_string_put(data->mlx, data->win, data->width - 40, 20, 0x000000, temp);
 	free(temp);
 }
 

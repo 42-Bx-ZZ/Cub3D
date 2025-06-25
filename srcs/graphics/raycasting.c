@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 18:20:21 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 00:53:42 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_floor(t_data *data, size_t r, int size[2], int color)
 	int	y;
 
 	y = size[1];
-	while (y < HEIGHT)
+	while (y < data->height)
 	{
 		put_pixel_img(&data->frame, r, y, color);
 		y++;
@@ -45,9 +45,9 @@ void	raycasting(t_data *data, size_t r)
 	wall_dist = data->game.perp_wall;
 	if (wall_dist < 0.001)
 		wall_dist = 0.001;
-	wall_height = (int)(HEIGHT / wall_dist);
-	size[0] = (HEIGHT / 2) - (wall_height / 2);
-	size[1] = (HEIGHT / 2) + (wall_height / 2);
+	wall_height = (int)(data->height / wall_dist);
+	size[0] = (data->height / 2) - (wall_height / 2);
+	size[1] = (data->height / 2) + (wall_height / 2);
 	draw_ceiling(data, r, size, 0xFFFFF);
 	get_frame(size[0], size, data, r);
 	draw_floor(data, r, size, 0x00FF00);

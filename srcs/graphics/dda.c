@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 14:26:21 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 18:24:04 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 02:35:34 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	dda_step(t_dda *dda)
 
 int	hit_wall(char **map, t_dda *dda)
 {
+	if (map[dda->y] && map[dda->y][dda->x] == 'E')
+		dda->hit_ennemy = 1;
 	return (map[dda->y] && map[dda->y][dda->x] && (map[dda->y][dda->x] == '1'
 		|| map[dda->y][dda->x] == 'D'));
 }
@@ -60,9 +62,11 @@ void	set_hit(t_data *data, t_dda *dda, float ray_angle)
 	float	angle;
 
 	if (dda->side == 0)
-		perp_wall = (dda->x - data->game.p_x + (1 - dda->step_x) / 2) / dda->ray_dir_x;
+		perp_wall = (dda->x - data->game.p_x
+				+ (1 - dda->step_x) / 2) / dda->ray_dir_x;
 	else
-		perp_wall = (dda->y - data->game.p_y + (1 - dda->step_y) / 2) / dda->ray_dir_y;
+		perp_wall = (dda->y - data->game.p_y
+				+ (1 - dda->step_y) / 2) / dda->ray_dir_y;
 	data->game.rays[0] = data->game.p_x + perp_wall * dda->ray_dir_x;
 	data->game.rays[1] = data->game.p_y + perp_wall * dda->ray_dir_y;
 	angle = ray_angle - data->game.dir;

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 18:05:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 02:10:51 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	load_xpm(t_img *img, char *file, t_data *data)
 			&img->size_line, &img->endian);
 	if (!img->data)
 		return (1);
+	img->w_width = data->width;
+	img->w_height = data->height;
 	return (0);
 }
 
@@ -56,6 +58,10 @@ int	load_sprites(t_data *data)
 	if (load_xpm(&t->west, "textures/wall_4.xpm", data))
 		return (1);
 	if (load_xpm(&t->door, "textures/door.xpm", data))
+		return (1);
+	if (load_xpm(&t->ennemy[0], "textures/goomba.xpm", data))
+		return (1);
+	if (load_xpm(&t->ennemy[1], "textures/goomba_2.xpm", data))
 		return (1);
 	draw_map(data);
 	return (0);

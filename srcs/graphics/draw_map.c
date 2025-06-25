@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 15:04:50 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 02:27:44 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_pixel_img(t_img *img, int x, int y, int color)
 {
-	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+	if (x < 0 || x >= img->w_width || y < 0 || y >= img->w_height)
 		return ;
 	img->data[y * (img->size_line / 4) + x] = color;
 }
@@ -31,23 +31,28 @@ int	ray_size_check(t_data *data, char **map)
 	return (0);
 }
 
-void	ray_size(t_data *data, float fov_deg, int nb_rays, char **map)
+void	update_frame(t_data *data, float fov_deg, int nb_rays, char **map)
 {
 	float	start_angle;
 	float	angle_step;
 	float	ray_angle;
 	size_t	r;
+	int		i;
 
 	angle_step = ((fov_deg * M_PI / 180) / nb_rays);
 	start_angle = data->game.dir - (fov_deg * M_PI / 180) / 2.0;
 	r = 0;
+	i = -1;
 	while (r < (size_t)nb_rays)
 	{
 		ray_angle = start_angle + r * angle_step;
 		dda(data, ray_angle, map);
+		data->game.dda.zbuffer[r] = data->game.perp_wall;
 		raycasting(data, r);
 		r++;
 	}
+	while (++i < 1)
+		draw_enemy(data, i);
 }
 
 void	check_pos(t_data *data, char c, int i, int j)
@@ -58,6 +63,12 @@ void	check_pos(t_data *data, char c, int i, int j)
 		data->game.p_x = i + 0.5;
 		data->game.p_y = j + 0.5;
 		data->game.dir = get_dir(c);
+	}
+	if (c == 'B')
+	{
+		data->ennemies[0].alive = 1;
+		data->ennemies[0].x = i;
+		data->ennemies[0].y = j;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 18:41:19 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 02:39:22 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	destroy_imgs(t_data *data)
 {
-    if (data->frame.ptr)
-        mlx_destroy_image(data->mlx, data->frame.ptr);
-    if (data->map.textures.south.ptr)
-        mlx_destroy_image(data->mlx, data->map.textures.south.ptr);
-    if (data->map.textures.east.ptr)
-        mlx_destroy_image(data->mlx, data->map.textures.east.ptr);
-    if (data->map.textures.west.ptr)
-        mlx_destroy_image(data->mlx, data->map.textures.west.ptr);
-    if (data->map.textures.north.ptr)
-        mlx_destroy_image(data->mlx, data->map.textures.north.ptr);
+	if (data->frame.ptr)
+		mlx_destroy_image(data->mlx, data->frame.ptr);
+	if (data->map.textures.south.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.south.ptr);
+	if (data->map.textures.east.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.east.ptr);
+	if (data->map.textures.west.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.west.ptr);
+	if (data->map.textures.north.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.north.ptr);
 }
 
 int	clean_exit(t_data *data)
 {
 	if (data && data->mlx && data->win)
-	mlx_destroy_window(data->mlx, data->win);
+		mlx_destroy_window(data->mlx, data->win);
 	destroy_imgs(data);
 	if (data && data->map.setup)
 		ft_free_tab(data->map.setup);

@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/06/24 19:05:47 by lowatell         ###   ########.fr        #
+#    Updated: 2025/06/25 02:21:09 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ SRCS =	main.c\
 		engine/door_check.c\
 		graphics/print_infos.c\
 		engine/hit_check.c\
+		graphics/ennemy_draw.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 

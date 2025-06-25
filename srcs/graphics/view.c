@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:23:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 18:47:36 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 01:20:46 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	update_move(t_data *data)
 		view(R_ARROW, data);
 	if (data->keys.e)
 		door_check(data);
-	data->frame.ptr = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->frame.ptr = mlx_new_image(data->mlx, data->width, data->height);
 	data->frame.data = (int *)mlx_get_data_addr(data->frame.ptr,
 			&data->frame.bpp, &data->frame.size_line, &data->frame.endian);
-	ray_size(data, FOV, RAYS, data->map.setup);
+	update_frame(data, FOV, data->width, data->map.setup);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame.ptr, 0, 0);
 	mlx_destroy_image(data->mlx, data->frame.ptr);
 	data->frame.ptr = NULL;

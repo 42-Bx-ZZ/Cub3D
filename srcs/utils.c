@@ -6,16 +6,16 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:41:36 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 18:47:50 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 02:39:56 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-double	elapsed_time()
+double	elapsed_time(void)
 {
 	static struct timespec	last;
-	struct	timespec		now;
+	struct timespec			now;
 	double					time;
 
 	last.tv_nsec = 0;

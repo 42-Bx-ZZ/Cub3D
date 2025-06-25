@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 15:46:33 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 18:31:47 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 02:38:46 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_img	*wall_side(t_data *data)
 {
-	if (data->map.setup[(int)data->game.dda.y][(int)data->game.dda.x] && 
+	if (data->map.setup[(int)data->game.dda.y][(int)data->game.dda.x] &&
 		data->map.setup[(int)data->game.dda.y][(int)data->game.dda.x] == 'D')
 		return (&data->map.textures.door);
 	if (data->game.dda.side == 0)
@@ -46,9 +46,10 @@ int	get_frame(int y, int size[2], t_data *data, int r)
 		wall_hit = data->game.rays[0] - floorf(data->game.rays[0]);
 	tex_x = (int)(wall_hit * img->width);
 	y = size[0];
-	while (y < size[1] && y < HEIGHT)
+	while (y < size[1] && y < data->height)
 	{
-		tex_y = (int)(((float)(y - size[0]) / (size[1] - size[0])) * img->height);
+		tex_y = (int)(((float)(y - size[0])
+					/ (size[1] - size[0])) * img->height);
 		color = img->data[tex_y * (img->size_line / 4) + tex_x];
 		put_pixel_img(&data->frame, r, y, color);
 		y++;

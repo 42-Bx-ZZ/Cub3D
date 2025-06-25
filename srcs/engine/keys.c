@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:43:16 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/24 19:06:13 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 02:34:50 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,3 @@ int	key_release(int key, t_data *data)
 		data->keys.e = 0;
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 19:24:34 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 02:58:20 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@
 #  define LINUX 0
 # endif
 
+# define WIDTH 1200
+# define HEIGHT 860
 # define CLOSEBTN 17
-# define WIDTH 1280
-# define HEIGHT 720
 # define STEP 0.1
 # define FOV 60
 # define VIEW 0.1
@@ -56,82 +56,96 @@
 # include <math.h>
 # include <time.h>
 
+struct			s_data;
+
+typedef struct s_ennemy
+{
+	int			alive;
+	float		x;
+	float		y;
+}	t_ennemy;
+
 typedef struct s_dda
 {
-	int		x;
-	int		y;
-	float	ray_dir_x;
-	float	ray_dir_y;
-	float	delta_dist_x;
-	float	delta_dist_y;
-	int		step_x;
-	int		step_y;
-	float	side_dist_x;
-	float	side_dist_y;
-	int		side;	
+	int			x;
+	int			y;
+	float		ray_dir_x;
+	float		ray_dir_y;
+	float		delta_dist_x;
+	float		delta_dist_y;
+	int			step_x;
+	int			step_y;
+	float		side_dist_x;
+	float		side_dist_y;
+	int			side;
+	int			hit_ennemy;
+	float		zbuffer[WIDTH];
 }	t_dda;
 
 typedef struct s_img
 {
-	int		*ptr;
-	int		*data;
-	int		bpp;
-	int		size_line;
-	int		endian;
-	int		height;
-	int		width;
+	int			*ptr;
+	int			*data;
+	int			bpp;
+	int			size_line;
+	int			endian;
+	int			height;
+	int			width;
+	int			w_width;
+	int			w_height;
 }	t_img;
 
-typedef	struct s_player
+typedef struct s_player
 {
-	int		hp;
-	int		money;
-	int		earn;
-	int		earn_frames;
-	int		hit;
-	t_img	gun;
+	int			hp;
+	int			money;
+	int			earn;
+	int			earn_frames;
+	int			hit;
+	t_img		gun;
 }	t_player;
 
 typedef struct s_game
 {
-    float   p_x;
-    float   p_y;
-	float	dir;
-	double	dir_x;
-	double	dir_y;
-	t_dda	dda;
-	float	perp_wall;
-	float	r_x_fy;
-	float	r_y_fy;
-	float	rays[2];
+	float		p_x;
+	float   	p_y;
+	float		dir;
+	double		dir_x;
+	double		dir_y;
+	t_dda		dda;
+	float		perp_wall;
+	float		r_x_fy;
+	float		r_y_fy;
+	float		rays[2];
 }   t_game;
 
 typedef struct s_keys
 {
-	int		up;
-	int		down;
-	int		left;
-	int		right;
-	int		f;
-	int		l_arrow;
-	int		r_arrow;
-	int		shift;
-	int		e;
+	int			up;
+	int			down;
+	int			left;
+	int			right;
+	int			f;
+	int			l_arrow;
+	int			r_arrow;
+	int			shift;
+	int			e;
 }	t_keys;
 
 typedef struct s_textures
 {
-	char	*north_path;
-	char	*south_path;
-	char	*west_path;
-	char	*east_path;
-	t_img	north;
-	t_img	south;
-	t_img	west;
-	t_img	east;
-	t_img	door;
-	int		floor_color[3];
-	int		ceiling_color[3];
+	char		*north_path;
+	char		*south_path;
+	char		*west_path;
+	char		*east_path;
+	t_img		north;
+	t_img		south;
+	t_img		west;
+	t_img		east;
+	t_img		door;
+	t_img		ennemy[2];
+	int			floor_color[3];
+	int			ceiling_color[3];
 }	t_textures;
 
 typedef struct s_map
@@ -142,14 +156,16 @@ typedef struct s_map
 
 typedef	struct	s_fps
 {
-	int		fps;
-	double	start;
+	int			fps;
+	double		start;
 }	t_fps;
 
 typedef struct s_data
 {
     void    	*mlx;
     void    	*win;
+	int			width;
+	int			height;
 	t_map		map;
 	t_img		frame;
 	t_game		game;
@@ -157,38 +173,40 @@ typedef struct s_data
 	char		**cub_file;
 	t_fps		fps;
 	t_player	player;
+	t_ennemy	ennemies[7];
 }	t_data;
 
-int		hit_check(t_data *data);
-void	door_check(t_data *data);
-void	dda(t_data *data, float ray_angle, char **map);
-int		get_dda_step(float dir);
-int		is_blocked(t_data *data, float x, float y);
-void	print_infos(t_data *data);
-double	elapsed_time(void);
-int		get_frame(int y, int size[2], t_data *data, int r);
-t_img	*wall_side(t_data *data);
-void	put_pixel_img(t_img *img, int x, int y, int color);
-int		update_move(t_data *data);
-int		key_press(int key, t_data *data);
-int		key_release(int key, t_data *data);
-void	raycasting(t_data *data, size_t r);
-float	get_dir(char c);
-void	moves(int key, t_data *data);
-void	view(int key, t_data *data);
-void	ray_size(t_data *data, float fov_deg, int nb_rays, char **map);
-void	draw_map(t_data *data);
-int		load_sprites(t_data *data);
-int	    clean_exit(t_data *data);
-char    **get_map(char *file);
-int     setup_mlx(t_data *data);
-int     keys_hook(int key, t_data *data);
-void	check_args(int ac, char **av);
-void	extract_all_cub_data(t_data *data, char *file);
-void	free_all_data(t_data *data);
-void	free_all_and_print_exit(t_data *data, char *msg);
-void	check_and_parse_cub_file(t_data *data);
-void	check_and_parse_wall_path(t_data *data, char *line, char *type);
-void	check_and_parse_fc_colors(t_data *data, char *line, char type);
+void			draw_enemy(t_data *data, int i);
+int				hit_check(t_data *data);
+void			door_check(t_data *data);
+void			dda(t_data *data, float ray_angle, char **map);
+int				get_dda_step(float dir);
+int				is_blocked(t_data *data, float x, float y);
+void			print_infos(t_data *data);
+double			elapsed_time(void);
+int				get_frame(int y, int size[2], t_data *data, int r);
+t_img			*wall_side(t_data *data);
+void			put_pixel_img(t_img *img, int x, int y, int color);
+int				update_move(t_data *data);
+int				key_press(int key, t_data *data);
+int				key_release(int key, t_data *data);
+void			raycasting(t_data *data, size_t r);
+float			get_dir(char c);
+void			moves(int key, t_data *data);
+void			view(int key, t_data *data);
+void			update_frame(t_data *data, float fov_deg, int nb_rays, char **map);
+void			draw_map(t_data *data);
+int				load_sprites(t_data *data);
+int	    		clean_exit(t_data *data);
+char    		**get_map(char *file);
+int     		setup_mlx(t_data *data);
+int     		keys_hook(int key, t_data *data);
+void			check_args(int ac, char **av);
+void			extract_all_cub_data(t_data *data, char *file);
+void			free_all_data(t_data *data);
+void			free_all_and_print_exit(t_data *data, char *msg);
+void			check_and_parse_cub_file(t_data *data);
+void			check_and_parse_wall_path(t_data *data, char *line, char *type);
+void			check_and_parse_fc_colors(t_data *data, char *line, char type);
 
 #endif
