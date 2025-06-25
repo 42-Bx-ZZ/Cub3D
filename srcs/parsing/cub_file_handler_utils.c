@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 20:30:06 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 20:32:13 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:33:42 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,16 @@ int	count_file_lines(char *file)
 	}
 	close(fd);
 	return (i);
+}
+
+void	init_texture_id(char **id)
+{
+	id[0] = "NO ";
+	id[1] = "SO ";
+	id[2] = "WE ";
+	id[3] = "EA ";
+	id[4] = "DO ";
+	id[5] = "Zfront ";
+	id[6] = "Zback ";
+	id[7] = NULL;
 }

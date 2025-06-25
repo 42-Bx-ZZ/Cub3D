@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 13:24:51 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:34:24 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,30 +57,23 @@ void	extract_all_cub_data(t_data *data, char *file)
 	close(fd);
 }
 
-static void	check_and_parse(t_data *data, int *i)
+static int	check_texture(t_data *data, int *i)
 {
-	if (ft_strncmp(data->cub_file[*i], "NO ", 3) == 0)
-		check_and_parse_wall_path(data, data->cub_file[*i], "NO");
-	else if (ft_strncmp(data->cub_file[*i], "SO ", 3) == 0)
-		check_and_parse_wall_path(data, data->cub_file[*i], "SO");
-	else if (ft_strncmp(data->cub_file[*i], "WE ", 3) == 0)
-		check_and_parse_wall_path(data, data->cub_file[*i], "WE");
-	else if (ft_strncmp(data->cub_file[*i], "EA ", 3) == 0)
-		check_and_parse_wall_path(data, data->cub_file[*i], "EA");
-	else if (ft_strncmp(data->cub_file[*i], "DO ", 3) == 0)
-		check_and_parse_wall_path(data, data->cub_file[*i], "DO");
-	else if (ft_strncmp(data->cub_file[*i], "Zfront ", 7) == 0)
-		check_and_parse_wall_path(data, data->cub_file[*i], "Zfront");
-	else if (ft_strncmp(data->cub_file[*i], "Zback ", 6) == 0)
-		check_and_parse_wall_path(data, data->cub_file[*i], "Zback");
-	else if (ft_strncmp(data->cub_file[*i], "F ", 2) == 0)
-		check_and_parse_fc_colors(data, data->cub_file[*i], 'F');
-	else if (ft_strncmp(data->cub_file[*i], "C ", 2) == 0)
-		check_and_parse_fc_colors(data, data->cub_file[*i], 'C');
-	else if (data->cub_file[*i][0] == ' ' || data->cub_file[*i][0] == '1')
-		check_and_parse_map(data, i);
-	else if (data->cub_file[*i][0] != '\0')
-		free_all_and_print_exit(data, "Error\nWrong data in cub file");
+	char	*id[8];
+	int		j;
+
+	init_texture_id(id);
+	j = 0;
+	while (id[j])
+	{
+		if (ft_strncmp(data->cub_file[*i], id[j], ft_strlen(id[j])) == 0)
+		{
+			check_and_parse_wall_path(data, data->cub_file[*i], id[j]);
+			return (1);
+		}
+		j++;
+	}
+	return (0);
 }
 
 void	check_and_parse_cub_file(t_data *data)
@@ -90,7 +83,16 @@ void	check_and_parse_cub_file(t_data *data)
 	i = 0;
 	while (data->cub_file[i])
 	{
-		check_and_parse(data, &i);
+		if (check_texture(data, &i))
+			return ;
+		else if (ft_strncmp(data->cub_file[i], "F ", 2) == 0)
+			check_and_parse_fc_colors(data, data->cub_file[i], 'F');
+		else if (ft_strncmp(data->cub_file[i], "C ", 2) == 0)
+			check_and_parse_fc_colors(data, data->cub_file[i], 'C');
+		else if (data->cub_file[i][0] == ' ' || data->cub_file[i][0] == '1')
+			check_and_parse_map(data, &i);
+		else if (data->cub_file[i][0] != '\0')
+			free_all_and_print_exit(data, "Error\nWrong data in cub file");
 		i++;
 	}
 	check_if_all_cub_data(data);

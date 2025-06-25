@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 13:18:19 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:22:16 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	parse_wall_path(t_data *data, char *path, char *type)
 		parse_and_verif(data, &data->map.textures.door_path, path);
 	else if (ft_strncmp(type, "Zfront", 6) == 0)
 		parse_and_verif(data, &data->map.textures.zfront_path, path);
-	else if (ft_strncmp(type, "Zback", 6) == 0)
+	else if (ft_strncmp(type, "Zback", 5) == 0)
 		parse_and_verif(data, &data->map.textures.zback_path, path);
 }
 
@@ -66,7 +66,7 @@ void	check_and_parse_wall_path(t_data *data, char *line, char *type)
 	char	*wall_path;
 	int		i;
 
-	i = ft_strlen(type) + 1;
+	i = ft_strlen(type);
 	wall_path = verif_and_extract(data, i, line);
 	fd = open(wall_path, O_RDONLY);
 	if (fd < 0)
