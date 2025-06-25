@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:09:13 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 02:46:15 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:46:30 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	move_left(t_data *data, float t_step)
 	map = data->map.setup;
 	new_x = data->game.p_x - cosf(data->game.dir + M_PI_2) * t_step;
 	new_y = data->game.p_y - sinf(data->game.dir + M_PI_2) * t_step;
-	if (is_blocked(data, new_x, new_y))
+	if (is_blocked(data, new_x, new_y, HITBOX))
 		return ;
 	if (map[(int)(data->game.p_y)]
 			[(int)(new_x - cosf(data->game.dir + M_PI_2) * HITBOX)] != '1'
@@ -48,7 +48,7 @@ static void	move_right(t_data *data, float t_step)
 	map = data->map.setup;
 	new_x = data->game.p_x + cosf(data->game.dir + M_PI_2) * t_step;
 	new_y = data->game.p_y + sinf(data->game.dir + M_PI_2) * t_step;
-	if (is_blocked(data, new_x, new_y))
+	if (is_blocked(data, new_x, new_y, HITBOX))
 		return ;
 	if (map[(int)(data->game.p_y)]
 			[(int)(new_x + cosf(data->game.dir + M_PI_2) * HITBOX)] != '1'
@@ -77,7 +77,7 @@ static void	move_up(t_data *data, float t_step)
 		t_step *= 2;
 	new_x = data->game.p_x + cosf(data->game.dir) * t_step;
 	new_y = data->game.p_y + sinf(data->game.dir) * t_step;
-	if (is_blocked(data, new_x, new_y))
+	if (is_blocked(data, new_x, new_y, HITBOX))
 		return ;
 	if (map[(int)(data->game.p_y)]
 		[(int)(new_x + cosf(data->game.dir) * HITBOX)] != '1'
@@ -104,7 +104,7 @@ static void	move_down(t_data *data, float t_step)
 	map = data->map.setup;
 	new_x = data->game.p_x - cosf(data->game.dir) * t_step;
 	new_y = data->game.p_y - sinf(data->game.dir) * t_step;
-	if (is_blocked(data, new_x, new_y))
+	if (is_blocked(data, new_x, new_y, HITBOX))
 		return ;
 	if (map[(int)(data->game.p_y)]
 			[(int)(new_x - cosf(data->game.dir) * HITBOX)] != '1'

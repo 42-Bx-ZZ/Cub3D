@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 02:12:41 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 09:33:46 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:58:50 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ void	draw_enemy(t_data *data, int i)
 
 	if (!data->ennemies[i].alive)
 		return ;
-	d_x_y[0] = data->ennemies[i].x + 0.5 - data->game.p_x;
-	d_x_y[1] = data->ennemies[i].y + 0.5 - data->game.p_y;
+	d_x_y[0] = data->ennemies[i].x - data->game.p_x;
+	d_x_y[1] = data->ennemies[i].y - data->game.p_y;
 	screen_x = enemy_screen_x(data, d_x_y[0], d_x_y[1]);
 	if (screen_x < 0 || screen_x >= data->width)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 10:55:01 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:49:42 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 #  define LINUX 0
 # endif
 
-# define WIDTH 0
+# define WIDTH 1200
 # define HEIGHT 860
 # define CLOSEBTN 17
 # define STEP 0.1
@@ -189,6 +189,7 @@ typedef struct s_data
 	t_ennemy	ennemies[7];
 }	t_data;
 
+int				ft_tablen(char **map);
 void			draw_crosshair(t_data *data);
 void			ennemy_moves(t_data *data);
 void			draw_enemy(t_data *data, int i);
@@ -196,7 +197,7 @@ float			hit_check(t_data *data);
 void			door_check(t_data *data);
 void			dda(t_data *data, float ray_angle, char **map);
 int				get_dda_step(float dir);
-int				is_blocked(t_data *data, float x, float y);
+int				is_blocked(t_data *data, float x, float y, float hitbox);
 void			print_infos(t_data *data);
 double			elapsed_time(void);
 int				get_frame(int y, int size[2], t_data *data, int r);

@@ -6,11 +6,23 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:41:36 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 09:31:53 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:36:34 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+int	ft_tablen(char **map)
+{
+	int	i;
+
+	if (!map || !*map)
+		return (0);
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
 
 double	elapsed_time(void)
 {
