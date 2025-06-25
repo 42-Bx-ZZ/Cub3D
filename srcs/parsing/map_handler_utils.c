@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 03:41:56 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 19:46:21 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/25 09:34:07 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	check_if_all_cub_data(t_data *data)
 	if (!data->map.textures.east_path || !data->map.textures.west_path
 		|| !data->map.textures.south_path || !data->map.textures.north_path
 		|| data->map.textures.c_flag == 0 || data->map.textures.f_flag == 0
-		|| !data->map.setup || !data->map.textures.door_path)
+		|| !data->map.setup || !data->map.textures.door_path
+		|| !data->map.textures.zback_path || !data->map.textures.zfront_path)
 		free_all_and_print_exit(data,
 			"Error\nLack of data required in cub_file\n");
 }

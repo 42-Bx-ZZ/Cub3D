@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/24 20:31:15 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/25 09:29:53 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_textures
 	char	*west_path;
 	char	*east_path;
 	char	*door_path;
+	char	*zfront_path;
+	char	*zback_path;
 	int		floor_color[3];
 	int		ceiling_color[3];
 	int		c_flag;

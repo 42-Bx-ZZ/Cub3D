@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 07:53:02 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/25 13:24:51 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ static void	check_and_parse(t_data *data, int *i)
 		check_and_parse_wall_path(data, data->cub_file[*i], "EA");
 	else if (ft_strncmp(data->cub_file[*i], "DO ", 3) == 0)
 		check_and_parse_wall_path(data, data->cub_file[*i], "DO");
+	else if (ft_strncmp(data->cub_file[*i], "Zfront ", 7) == 0)
+		check_and_parse_wall_path(data, data->cub_file[*i], "Zfront");
+	else if (ft_strncmp(data->cub_file[*i], "Zback ", 6) == 0)
+		check_and_parse_wall_path(data, data->cub_file[*i], "Zback");
 	else if (ft_strncmp(data->cub_file[*i], "F ", 2) == 0)
 		check_and_parse_fc_colors(data, data->cub_file[*i], 'F');
 	else if (ft_strncmp(data->cub_file[*i], "C ", 2) == 0)
