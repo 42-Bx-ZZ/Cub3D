@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 14:34:24 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:48:18 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	check_and_parse_cub_file(t_data *data)
 	while (data->cub_file[i])
 	{
 		if (check_texture(data, &i))
-			return ;
+			;
 		else if (ft_strncmp(data->cub_file[i], "F ", 2) == 0)
 			check_and_parse_fc_colors(data, data->cub_file[i], 'F');
 		else if (ft_strncmp(data->cub_file[i], "C ", 2) == 0)
