@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:23:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 01:20:46 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 04:21:08 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	view(int key, t_data *data)
 		data->game.dir += VIEW;
 	if (key == L_ARROW)
 		data->game.dir -= VIEW;
+	if (data->game.dir < -M_PI)
+		data->game.dir += 2 * M_PI;
+	if (data->game.dir > M_PI)
+		data->game.dir -= 2 * M_PI;
 }
 
 int	update_move(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 03:04:20 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 04:18:54 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	update_frame(t_data *data, float fov_deg, int nb_rays, char **map)
 	}
 	while (++i < 1)
 		draw_enemy(data, i);
+	ennemy_moves(data);
+	printf("%f\n", data->game.dir);
 }
 
 void	check_pos(t_data *data, char c, int i, int j)
@@ -64,11 +66,12 @@ void	check_pos(t_data *data, char c, int i, int j)
 		data->game.p_y = j + 0.5;
 		data->game.dir = get_dir(c);
 	}
-	if (c == 'B')
+	if (c == 'B' && data->ennemies[0].number < ENNEMY_NBR)
 	{
-		data->ennemies[0].alive = 1;
-		data->ennemies[0].x = i;
-		data->ennemies[0].y = j;
+		data->ennemies[data->ennemies[0].number].alive = 1;
+		data->ennemies[data->ennemies[0].number].x = i;
+		data->ennemies[data->ennemies[0].number].y = j;
+		data->ennemies[0].number++;
 	}
 }
 

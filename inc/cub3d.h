@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 03:01:14 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/25 04:03:34 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_ennemy
 	float		x;
 	float		y;
 	float		dir;
+	int			number;
 }	t_ennemy;
 
 typedef struct s_dda
@@ -178,6 +179,8 @@ typedef struct s_data
 	t_ennemy	ennemies[7];
 }	t_data;
 
+int				ft_tablen(char **map);
+void			ennemy_moves(t_data *data);
 void			draw_enemy(t_data *data, int i);
 int				hit_check(t_data *data);
 void			door_check(t_data *data);
