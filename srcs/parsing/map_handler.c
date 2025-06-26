@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 01:23:10 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/26 19:24:11 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/26 19:36:24 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ static void	extract_map(t_data *data, int *i)
 		free_all_and_print_exit(data, "Error\nMalloc failed\n");
 	while (j < data->map.len)
 	{
-		data->map.setup[j] = data->cub_file[tmp];
+		data->map.setup[j] = ft_strdup(data->cub_file[tmp]);
+		if (!data->map.setup[j])
+			free_all_and_print_exit(data, "Error\nMalloc failed\n");
 		j++;
 		tmp++;
 	}
