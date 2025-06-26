@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 03:41:56 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 09:34:07 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/26 19:25:12 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,31 @@ void	check_if_all_cub_data(t_data *data)
 		|| !data->map.textures.zback_path || !data->map.textures.zfront_path)
 		free_all_and_print_exit(data,
 			"Error\nLack of data required in cub_file\n");
+}
+
+void	copy_without_space(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	data->map.setup_without_sp = (char **)malloc(sizeof(char *)
+			* (data->map.len + 1));
+	if (!data->map.setup_without_sp)
+		free_all_and_print_exit(data, "Error\nMalloc failed\n");
+	while (data->map.setup[i])
+	{
+		j = 0;
+		data->map.setup_without_sp[i] = ft_strdup(data->map.setup[i]);
+		if (!data->map.setup_without_sp[i])
+			free_all_and_print_exit(data, "Error\nMalloc failed\n");
+		while (data->map.setup_without_sp[i][j])
+		{
+			if (data->map.setup_without_sp[i][j] == ' ')
+				data->map.setup_without_sp[i][j] = '1';
+			j++;
+		}
+		i++;
+	}
+	data->map.setup_without_sp[i] = NULL;
 }

@@ -6,7 +6,7 @@
 #    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/06/24 20:31:42 by zaiicko          ###   ########.fr        #
+#    Updated: 2025/06/26 19:25:25 by zaiicko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS =	main.c\
 		parsing/map_handler.c\
 		parsing/map_handler_utils.c\
 		parsing/cub_file_handler_utils.c\
+		parsing/map_handler_utils2.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 

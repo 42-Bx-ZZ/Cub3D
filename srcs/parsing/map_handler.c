@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 01:23:10 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/23 12:39:45 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/26 19:24:11 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 static void	extract_map(t_data *data, int *i)
 {
-	int	map_len;
 	int	j;
 	int	tmp;
 
 	tmp = *i;
 	j = 0;
-	map_len = count_map_lenght(data, *i);
-	data->map.setup = (char **)malloc(sizeof(char *) * map_len + 1);
+	data->map.len = count_map_lenght(data, *i);
+	data->map.setup = (char **)malloc(sizeof(char *) * data->map.len + 1);
 	if (!data->map.setup)
 		free_all_and_print_exit(data, "Error\nMalloc failed\n");
-	while (j < map_len)
+	while (j < data->map.len)
 	{
 		data->map.setup[j] = data->cub_file[tmp];
 		j++;
@@ -100,4 +99,5 @@ void	check_and_parse_map(t_data *data, int *i)
 	extract_map(data, i);
 	verif_if_valid_char(data);
 	check_player(data);
+	copy_without_space(data);
 }
