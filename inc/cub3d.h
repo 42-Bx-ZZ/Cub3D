@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/26 19:24:56 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/27 22:52:17 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ typedef struct s_map
 	t_textures	textures;
 	int			len;
 	char		**setup_without_sp;
+	int			y_player;
+	int			x_player;
 }	t_map;
 
 typedef struct s_data
@@ -85,6 +87,6 @@ char	*check_chars_in_string(char *chars, char *line);
 int		count_file_lines(char *file);
 void	init_texture_id(char **id);
 void	copy_without_space(t_data *data);
-
+void	check_if_finishable(t_data *data);
 
 #endif

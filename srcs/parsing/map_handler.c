@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 01:23:10 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/26 19:36:24 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/27 22:24:12 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ static void	check_player(t_data *data)
 			if (tmp)
 				free_all_and_print_exit(data, "Error\nToo much players\n");
 			data->map.player = *player;
+			data->map.y_player = i;
+			data->map.x_player = player - data->map.setup[i];
 		}
 		i++;
 	}
@@ -102,4 +104,5 @@ void	check_and_parse_map(t_data *data, int *i)
 	verif_if_valid_char(data);
 	check_player(data);
 	copy_without_space(data);
+	check_if_finishable(data);
 }
