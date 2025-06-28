@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 14:48:18 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/28 13:30:21 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	check_texture(t_data *data, int *i)
 	{
 		if (ft_strncmp(data->cub_file[*i], id[j], ft_strlen(id[j])) == 0)
 		{
-			check_and_parse_wall_path(data, data->cub_file[*i], id[j]);
+			check_and_parse_path(data, data->cub_file[*i], id[j]);
 			return (1);
 		}
 		j++;

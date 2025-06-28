@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_path_handler.c                                :+:      :+:    :+:   */
+/*   path_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 14:22:16 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/28 13:30:17 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	parse_and_verif(t_data *data, char **path, char *new_path)
 	*path = new_path;
 }
 
-static void	parse_wall_path(t_data *data, char *path, char *type)
+static void	parse_path(t_data *data, char *path, char *type)
 {
 	if (ft_strncmp(type, "NO", 2) == 0)
 		parse_and_verif(data, &data->map.textures.north_path, path);
@@ -39,7 +39,7 @@ static void	parse_wall_path(t_data *data, char *path, char *type)
 
 static char	*verif_and_extract(t_data *data, int i, char *line)
 {
-	char	*wall_path;
+	char	*path;
 	int		j;
 
 	j = 0;
@@ -54,23 +54,23 @@ static char	*verif_and_extract(t_data *data, int i, char *line)
 	j = i;
 	while (line[j])
 		j++;
-	wall_path = ft_substr(line, i, j - i);
-	if (!wall_path)
+	path = ft_substr(line, i, j - i);
+	if (!path)
 		free_all_and_print_exit(data, "Error\nMalloc failed");
-	return (wall_path);
+	return (path);
 }
 
-void	check_and_parse_wall_path(t_data *data, char *line, char *type)
+void	check_and_parse_path(t_data *data, char *line, char *type)
 {
 	int		fd;
-	char	*wall_path;
+	char	*path;
 	int		i;
 
 	i = ft_strlen(type);
-	wall_path = verif_and_extract(data, i, line);
-	fd = open(wall_path, O_RDONLY);
+	path = verif_and_extract(data, i, line);
+	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		free_all_and_print_exit(data, "Error\nCan't open wall file");
-	parse_wall_path(data, wall_path, type);
+	parse_path(data, path, type);
 	close(fd);
 }
