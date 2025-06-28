@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:05:51 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/18 03:30:12 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/28 13:53:56 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,27 @@ static void	verif_color_flag(t_data *data, char type)
 	}
 }
 
+static void	safe_value_assign(t_data *data, char *value, char type, int *j)
+{
+	if (type == 'C')
+	{
+		data->map.textures.ceiling_color[*j] = ft_atoi(value);
+		if (data->map.textures.ceiling_color[*j] < 0
+			|| data->map.textures.ceiling_color[*j] > 255)
+			free_all_and_print_exit(data,
+				"Error\nR,G,B colors need be in range [0,255]\n");
+	}
+	else
+	{
+		data->map.textures.floor_color[*j] = ft_atoi(value);
+		if (data->map.textures.floor_color[*j] < 0
+			|| data->map.textures.floor_color[*j] > 255)
+			free_all_and_print_exit(data,
+				"Error\nR,G,B colors need be in range [0,255]\n");
+	}
+	(*j)++;
+}
+
 void	check_and_parse_fc_colors(t_data *data, char *line, char type)
 {
 	int		i;
@@ -85,16 +106,7 @@ void	check_and_parse_fc_colors(t_data *data, char *line, char type)
 		value = verif_and_extract(data, &i, line, j);
 		if (value)
 		{
-			if (type == 'C')
-			{
-				data->map.textures.ceiling_color[j] = ft_atoi(value);
-				j++;
-			}
-			else
-			{
-				data->map.textures.floor_color[j] = ft_atoi(value);
-				j++;
-			}
+			safe_value_assign(data, value, type, &j);
 			free(value);
 		}
 	}
