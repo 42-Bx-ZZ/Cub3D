@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:12:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/27 22:44:46 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/28 08:57:43 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,5 @@ void	check_if_finishable(t_data *data)
 	map[i] = NULL;
 	back_tracking(data, map, data->map.y_player, data->map.x_player);
 	check_after_back(data, map);
-	i = 0;
-	while (map[i])
-	{
-		printf("\n%s", map[i]);
-		i++;
-	}
 	ft_free_tab(map);
 }
