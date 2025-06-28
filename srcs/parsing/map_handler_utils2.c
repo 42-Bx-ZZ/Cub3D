@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:12:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/28 08:57:43 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/28 08:58:49 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ void	check_if_finishable(t_data *data)
 	while (data->map.setup[i])
 	{
 		map[i] = ft_strdup(data->map.setup[i]);
+		if (!map[i])
+		{
+			ft_free_tab(map);
+			free_all_and_print_exit(data, "Error\nMalloc failed\n");
+		}
 		i++;
 	}
 	map[i] = NULL;
