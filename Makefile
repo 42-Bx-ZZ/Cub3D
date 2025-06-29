@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/06/25 03:41:26 by lowatell         ###   ########.fr        #
+#    Updated: 2025/06/29 08:45:54 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRCS =	main.c\
 		engine/hit_check.c\
 		graphics/ennemy_draw.c\
 		engine/ennemy_moves.c\
+		graphics/colors.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 

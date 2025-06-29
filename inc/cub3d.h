@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/29 08:27:50 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/29 08:46:21 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,8 @@ typedef struct s_data
 	t_ennemy	ennemies[7];
 }	t_data;
 
+int				argb_colors(int a, int rgb[3]);
+int				red_filter(int color, t_data *data);
 int				ft_tablen(char **map);
 void			draw_crosshair(t_data *data);
 void			ennemy_moves(t_data *data);
