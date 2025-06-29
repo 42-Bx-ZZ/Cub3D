@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 12:49:42 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/29 08:27:50 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
-# include <time.h>
+# include <sys/time.h>
 
 struct			s_data;
 

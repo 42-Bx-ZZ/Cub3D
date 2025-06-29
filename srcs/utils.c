@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:41:36 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 12:36:34 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/06/29 08:28:29 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	ft_tablen(char **map)
 
 double	elapsed_time(void)
 {
-	static struct timespec	last;
-	struct timespec			now;
+	static struct timeval	last;
+	struct timeval			now;
 	double					time;
 
-	last.tv_nsec = 0;
+	last.tv_usec = 0;
 	last.tv_sec = 0;
-	clock_gettime(CLOCK_MONOTONIC, &now);
-	time = (now.tv_sec - last.tv_sec) + (now.tv_nsec - last.tv_nsec) / 1e9;
+	gettimeofday(&now, NULL);
+	time = (now.tv_sec - last.tv_sec) + (now.tv_usec - last.tv_usec) / 1e9;
 	last = now;
 	return (time);
 }
