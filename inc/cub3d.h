@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/29 09:56:16 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/29 10:26:08 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int		count_file_lines(char *file);
 void	init_texture_id(char **id);
 void	copy_without_space(t_data *data);
 void	check_if_finishable(t_data *data);
-void	check_if_cub(t_data *data, char *file);
 void	check_if_directory(t_data *data, char *file);
 void	check_if_empty(t_data *data, int i);
 

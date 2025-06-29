@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/29 09:55:55 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/29 10:26:26 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	extract_all_cub_data(t_data *data, char *file)
 	int		i;
 
 	check_if_directory(data, file);
-	check_if_cub(data, file);
 	data->cub_len = count_file_lines(file);
 	data->cub_file = (char **)malloc(sizeof(char *)
 			* (data->cub_len + 1));
