@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 20:30:06 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/29 10:24:43 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/29 14:40:42 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	init_texture_id(char **id)
 	id[2] = "WE ";
 	id[3] = "EA ";
 	id[4] = "DO ";
-	id[5] = "Zfront ";
-	id[6] = "Zback ";
+	id[5] = "ZF ";
+	id[6] = "ZB ";
 	id[7] = NULL;
 }
 

@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/28 13:30:17 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/29 14:41:16 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	parse_path(t_data *data, char *path, char *type)
 		parse_and_verif(data, &data->map.textures.east_path, path);
 	else if (ft_strncmp(type, "DO", 2) == 0)
 		parse_and_verif(data, &data->map.textures.door_path, path);
-	else if (ft_strncmp(type, "Zfront", 6) == 0)
+	else if (ft_strncmp(type, "ZF", 2) == 0)
 		parse_and_verif(data, &data->map.textures.zfront_path, path);
-	else if (ft_strncmp(type, "Zback", 5) == 0)
+	else if (ft_strncmp(type, "ZB", 2) == 0)
 		parse_and_verif(data, &data->map.textures.zback_path, path);
 }
 
