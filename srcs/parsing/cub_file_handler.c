@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/28 13:30:21 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/29 09:55:55 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ static void	check_map_ending(t_data *data)
 			"Error\nThe map aren't last in cub_file\n");
 }
 
-static void	replace_line_breaks(t_data *data, int i)
+static void	replace_line_breaks(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	while (data->cub_file[i])
 	{
 		if (data->cub_file[i][ft_strlen(data->cub_file[i]) - 1] == '\n')
@@ -35,6 +38,8 @@ void	extract_all_cub_data(t_data *data, char *file)
 	int		fd;
 	int		i;
 
+	check_if_directory(data, file);
+	check_if_cub(data, file);
 	data->cub_len = count_file_lines(file);
 	data->cub_file = (char **)malloc(sizeof(char *)
 			* (data->cub_len + 1));
@@ -42,7 +47,7 @@ void	extract_all_cub_data(t_data *data, char *file)
 		ft_print_exit("Error\nMalloc failed\n");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		free_all_and_print_exit(data, "Error\nCan't open .cub file");
+		free_all_and_print_exit(data, "Error\nCan't open .cub file\n");
 	i = 0;
 	data->cub_file[i] = get_next_line(fd);
 	while (data->cub_file[i])
@@ -51,9 +56,9 @@ void	extract_all_cub_data(t_data *data, char *file)
 		data->cub_file[i] = get_next_line(fd);
 	}
 	data->cub_file[i] = NULL;
-	i = 0;
+	check_if_empty(data, i);
 	check_map_ending(data);
-	replace_line_breaks(data, i);
+	replace_line_breaks(data);
 	close(fd);
 }
 

@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 20:30:06 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/25 14:33:42 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/06/29 09:56:26 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,29 @@ void	init_texture_id(char **id)
 	id[5] = "Zfront ";
 	id[6] = "Zback ";
 	id[7] = NULL;
+}
+
+void	check_if_cub(t_data *data, char *file)
+{
+	if (ft_strncmp(&file[ft_strlen(file) - 4], ".cub", 4) != 0)
+		free_all_and_print_exit(data, "Error\nNeed a cub file\n");
+}
+
+void	check_if_directory(t_data *data, char *file)
+{
+	int	fd;
+
+	fd = open(file, O_DIRECTORY);
+	if (fd >= 0)
+	{
+		close(fd);
+		free_all_and_print_exit(data,
+			"Error\n.Cub need to be file not directory\n");
+	}
+}
+
+void	check_if_empty(t_data *data, int i)
+{
+	if (i == 0)
+		free_all_and_print_exit(data, "Error\nFile is empty\n");
 }
