@@ -6,11 +6,29 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:41:36 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/26 19:37:04 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/01 10:55:08 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+static void	free_all_txt_struct(t_data *data)
+{
+	if (data->map.textures.door_path)
+		free(data->map.textures.door_path);
+	if (data->map.textures.zback_path)
+		free(data->map.textures.zback_path);
+	if (data->map.textures.zfront_path)
+		free(data->map.textures.zfront_path);
+	if (data->map.textures.north_path)
+		free(data->map.textures.north_path);
+	if (data->map.textures.south_path)
+		free(data->map.textures.south_path);
+	if (data->map.textures.east_path)
+		free(data->map.textures.east_path);
+	if (data->map.textures.west_path)
+		free(data->map.textures.west_path);
+}
 
 void	free_all_data(t_data *data)
 {
@@ -20,6 +38,7 @@ void	free_all_data(t_data *data)
 		ft_free_tab(data->map.setup_without_sp);
 	if (data->map.setup)
 		ft_free_tab(data->map.setup);
+	free_all_txt_struct(data);
 }
 
 void	free_all_and_print_exit(t_data *data, char *msg)
