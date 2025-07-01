@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 10:21:14 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:34:31 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,5 @@ void	raycasting(t_data *data, size_t r)
 	size[1] = (data->height / 2) + (wall_height / 2);
 	draw_ceiling(data, r, size, 0x000000);
 	get_frame(size[0], size, data, r);
-	draw_floor(data, r, size, 0xB8860B);
+	draw_floor(data, r, size, 0xB88600);
 }

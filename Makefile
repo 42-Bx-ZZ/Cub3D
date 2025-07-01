@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/01 12:49:16 by lowatell         ###   ########.fr        #
+#    Updated: 2025/07/01 14:57:55 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SRCS =	main.c\
 		graphics/colors.c\
 		engine/hp_manager.c\
 		graphics/draw_map.c\
+		graphics/draw_items.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 

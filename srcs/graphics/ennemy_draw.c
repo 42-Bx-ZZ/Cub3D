@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 02:12:41 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 10:30:41 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:00:31 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ void	draw_enemy_sprite(t_data *data, int x_y[2], int size, float enemy_dist)
 			if (screen_x >= 0 && screen_x < data->width
 				&& enemy_dist < data->game.dda.zbuffer[screen_x])
 			{
-				t_x_y[0] = s_x_y[0] * data->map.textures.ennemy->width / size;
-				t_x_y[1] = s_x_y[1] * data->map.textures.ennemy->height / size;
+				t_x_y[0] = s_x_y[0] * data->map.textures.ennemy[0].width / size;
+				t_x_y[1] = s_x_y[1] * data->map.textures.ennemy[0].height / size;
 				color = data->map.textures.ennemy[0].data[t_x_y[1]
 					* (data->map.textures.ennemy[0].size_line / 4) + t_x_y[0]];
 				if ((color & 0x00FFFFFF) != 0)

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 14:01:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:13:56 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	check_dist(t_data *data, int i)
 		if (data->ennemies[i].alive)
 		{
 			data->ennemies[i].dist = sqrtf(powf(data->ennemies[i].x
-				- data->game.p_x, 2) + powf(data->ennemies[i].y - data->game.p_y, 2));
+						- data->game.p_x, 2)
+					+ powf(data->ennemies[i].y - data->game.p_y, 2));
 		}
 		else
 			data->ennemies[i].dist = 999999.0f;
@@ -101,6 +102,8 @@ int	load_sprites(t_data *data)
 	if (load_xpm(&t->ennemy[1], "textures/goomba_2.xpm", data))
 		return (1);
 	data->map.textures.frame = 0;
+	data->frame.w_height = data->height;
+	data->frame.w_width = data->width;
 	draw_map(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:43:31 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 13:43:59 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:39:44 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	put_pixel_map(t_img *img, float y, float x, int color)
 	int	i;
 	int	scale;
 
-	
 	scale = 5;
 	i = 0;
 	while (i < scale)

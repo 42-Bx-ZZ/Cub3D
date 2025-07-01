@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 14:05:28 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:58:37 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,10 @@ void	update_frame(t_data *data, float fov_deg, int nb_rays, char **map)
 	float	angle_step;
 	float	ray_angle;
 	size_t	r;
-	int		i;
 
 	angle_step = ((fov_deg * M_PI / 180) / nb_rays);
 	start_angle = data->game.dir - (fov_deg * M_PI / 180) / 2.0;
 	r = 0;
-	i = -1;
 	while (r < (size_t)nb_rays)
 	{
 		ray_angle = start_angle + r * angle_step;
@@ -51,12 +49,8 @@ void	update_frame(t_data *data, float fov_deg, int nb_rays, char **map)
 		raycasting(data, r);
 		r++;
 	}
-	sort_ennemies(data);
-	while (++i < data->ennemies_number)
-		draw_enemy(data, i);
-	draw_crosshair(data);
+	draw_items(data);
 	ennemy_moves(data);
-	map_on_frame(data);
 }
 
 void	check_pos(t_data *data, char c, int i, int j)
@@ -69,14 +63,12 @@ void	check_pos(t_data *data, char c, int i, int j)
 		data->game.dir = get_dir(c);
 	}
 	if (c == 'Z' && data->ennemies_number < ENNEMY_NBR
-		&& SPAWN == 1 && data->game.p_x >= 0.5 && data->game.p_y >= 0.5)
+		&& SPAWN == 1)
 	{
 		data->ennemies[data->ennemies_number].alive = 1;
 		data->ennemies[data->ennemies_number].x = i + 0.5;
 		data->ennemies[data->ennemies_number].y = j + 0.5;
 		data->ennemies_number++;
-		data->ennemies[0].dist = sqrtf(powf(i - data->game.p_x, 2)
-				+ powf(j - data->game.p_y, 2));
 	}
 }
 
