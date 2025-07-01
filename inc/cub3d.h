@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/01 17:07:24 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 22:06:56 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 #  define LINUX 0
 # endif
 
-# define WIDTH 1200
-# define HEIGHT 860
+# define WIDTH 0
+# define HEIGHT 0
 # define CLOSEBTN 17
 # define STEP 0.1
 # define FOV 60
@@ -149,6 +149,7 @@ typedef struct s_keys
 	int			shift;
 	int			e;
 	int			l_click;
+	int			replace_cursor;
 }	t_keys;
 
 typedef struct s_textures
@@ -199,7 +200,7 @@ typedef struct s_data
 	t_ennemy	ennemies[7];
 }	t_data;
 
-int				color_shaders(int color, t_data *data);
+int				color_shaders(int color, t_data *data, float i);
 void			draw_items(t_data *data);
 void			sort_ennemies(t_data *data);
 void			map_on_frame(t_data *data);

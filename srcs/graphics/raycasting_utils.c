@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 15:46:33 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 17:20:33 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:43:41 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	get_frame(int y, int size[2], t_data *data, int r)
 		tex_y = (int)(((float)(y - size[0])
 					/ (size[1] - size[0])) * img->height);
 		color = img->data[tex_y * (img->size_line / 4) + tex_x];
-		color = color_shaders(color, data);
+		color = color_shaders(color, data, 0);
 		put_pixel_img(&data->frame, r, y, color);
 		y++;
 	}

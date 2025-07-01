@@ -6,29 +6,45 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 17:26:46 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 22:11:30 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int	mouse_move(int x, int y, t_data *data)
+void	move_view(t_data *data, int delta)
+{
+	data->game.dir += delta * MOUSE_SENSI;
+	while (data->game.dir >= 2 * M_PI)
+		data->game.dir -= 2 * M_PI;
+	while (data->game.dir < 0)
+		data->game.dir += 2 * M_PI;
+}
+
+int	move_mouse(int x, int y, t_data *data)
 {
 	static int	last_x = -1;
-	int			delta_x;
+	int			delta;
 
 	(void)y;
 	if (last_x == -1)
 		return (last_x = x, 0);
-	delta_x = x - last_x;
-	if (abs(delta_x) > 1)
+	if (data->keys.replace_cursor == 1)
 	{
-		data->game.dir += delta_x * MOUSE_SENSI;
-		while (data->game.dir >= 2 * M_PI)
-			data->game.dir -= 2 * M_PI;
-		while (data->game.dir < 0)
-			data->game.dir += 2 * M_PI;
+		data->keys.replace_cursor = 0;
+		last_x = data->width / 2;
+		return (0);
 	}
+	if (x <= 0 || x > data->width - 50)
+	{
+		mlx_mouse_move(data->mlx, data->win, data->width / 2, data->height / 2);
+		data->keys.replace_cursor = 1;
+		last_x = data->width / 2;
+		return (0);
+	}
+	delta = x - last_x;
+	if (abs(delta) < data->width / 4)
+		move_view(data, delta);
 	last_x = x;
 	return (0);
 }
@@ -55,7 +71,7 @@ int	setup_mlx(t_data *data)
 		return (1);
 	data->fps.start = elapsed_time();
 	mlx_mouse_hide(data->mlx, data->win);
-	mlx_hook(data->win, 9, 1L << 6, &mouse_move, data);
+	mlx_hook(data->win, 6, 1L << 6, &move_mouse, data);
 	mlx_hook(data->win, 2, 1L << 0, &key_press, data);
 	mlx_hook(data->win, 3, 1L << 1, &key_release, data);
 	mlx_loop_hook(data->mlx, update_move, data);
