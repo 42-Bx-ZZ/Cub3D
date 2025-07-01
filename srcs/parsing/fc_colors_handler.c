@@ -78,16 +78,22 @@ static void	safe_value_assign(t_data *data, char *value, char type, int *j)
 		data->map.textures.ceiling_color[*j] = ft_atoi(value);
 		if (data->map.textures.ceiling_color[*j] < 0
 			|| data->map.textures.ceiling_color[*j] > 255)
+		{
+			free(value);
 			free_all_and_print_exit(data,
 				"Error\nR,G,B colors need be in range [0,255]\n");
+		}
 	}
 	else
 	{
 		data->map.textures.floor_color[*j] = ft_atoi(value);
 		if (data->map.textures.floor_color[*j] < 0
 			|| data->map.textures.floor_color[*j] > 255)
+		{
+			free(value);
 			free_all_and_print_exit(data,
 				"Error\nR,G,B colors need be in range [0,255]\n");
+		}
 	}
 	(*j)++;
 }
