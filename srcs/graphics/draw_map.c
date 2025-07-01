@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:43:31 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 13:24:36 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 13:43:59 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	map_on_frame(t_data *data)
 
 	i = 0;
 	map = data->map.setup;
-	while (map[i] && (20 + i * 5 + 5) < data->height / 2)
+	while (map[i] && (20 + i * 5 + 5) < data->height / 4)
 	{
 		j = 0;
-		while (map[i][j] && (20 + j * 5 + 5) < data->width / 2)
+		while (map[i][j] && (20 + j * 5 + 5) < data->width / 4)
 		{
 			if (map[i][j] == '1')
 				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0x000000);

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 08:03:35 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 11:50:50 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 13:43:11 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	is_player(t_data *data, float x, float y, float hitbox)
 		if (check_last_hit(data))
 			return (1);
 		data->player.hp -= 25;
-		printf("LOSE HP!! Hp = %d\n", data->player.hp);
 		if (data->player.hp <= 0)
 			clean_exit(data);
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 03:34:40 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 13:36:33 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 13:53:45 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	move_ennemy(t_data *data, int i)
 		if (!is_blocked(data, data->ennemies[i].x, dy, HITBOX))
 			data->ennemies[i].y = dy;
 	}
-	}
+}
 
 void	ennemy_moves(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 12:48:51 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:05:28 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	update_frame(t_data *data, float fov_deg, int nb_rays, char **map)
 		raycasting(data, r);
 		r++;
 	}
-	while (++i < data->ennemies[0].number)
+	sort_ennemies(data);
+	while (++i < data->ennemies_number)
 		draw_enemy(data, i);
 	draw_crosshair(data);
 	ennemy_moves(data);
@@ -67,13 +68,13 @@ void	check_pos(t_data *data, char c, int i, int j)
 		data->game.p_y = j + 0.5;
 		data->game.dir = get_dir(c);
 	}
-	if (c == 'Z' && data->ennemies[0].number < ENNEMY_NBR
-		&& SPAWN == 1)
+	if (c == 'Z' && data->ennemies_number < ENNEMY_NBR
+		&& SPAWN == 1 && data->game.p_x >= 0.5 && data->game.p_y >= 0.5)
 	{
-		data->ennemies[data->ennemies[0].number].alive = 1;
-		data->ennemies[data->ennemies[0].number].x = i + 0.5;
-		data->ennemies[data->ennemies[0].number].y = j + 0.5;
-		data->ennemies[0].number++;
+		data->ennemies[data->ennemies_number].alive = 1;
+		data->ennemies[data->ennemies_number].x = i + 0.5;
+		data->ennemies[data->ennemies_number].y = j + 0.5;
+		data->ennemies_number++;
 		data->ennemies[0].dist = sqrtf(powf(i - data->game.p_x, 2)
 				+ powf(j - data->game.p_y, 2));
 	}

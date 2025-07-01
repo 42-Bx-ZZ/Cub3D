@@ -6,11 +6,48 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 10:27:19 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:01:56 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+void	check_dist(t_data *data, int i)
+{
+	while (i < ENNEMY_NBR)
+	{
+		if (data->ennemies[i].alive)
+		{
+			data->ennemies[i].dist = sqrtf(powf(data->ennemies[i].x
+				- data->game.p_x, 2) + powf(data->ennemies[i].y - data->game.p_y, 2));
+		}
+		else
+			data->ennemies[i].dist = 999999.0f;
+		i++;
+	}
+}
+
+void	sort_ennemies(t_data *data)
+{
+	int			i;
+	t_ennemy	tmp;
+	t_ennemy	tmp_t;
+
+	i = 0;
+	check_dist(data, i);
+	while (i < ENNEMY_NBR - 1)
+	{
+		if (data->ennemies[i].dist < data->ennemies[i + 1].dist)
+		{
+			tmp = data->ennemies[i];
+			tmp_t = data->ennemies[i + 1];
+			data->ennemies[i] = tmp_t;
+			data->ennemies[i + 1] = tmp;
+			i = 0;
+		}
+		i++;
+	}
+}
 
 int	load_xpm(t_img *img, char *file, t_data *data)
 {
@@ -65,6 +102,5 @@ int	load_sprites(t_data *data)
 		return (1);
 	data->map.textures.frame = 0;
 	draw_map(data);
-	//sort_ennemies(data);
 	return (0);
 }

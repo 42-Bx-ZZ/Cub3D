@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/01 13:35:39 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:04:47 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ typedef struct s_ennemy
 	float		x;
 	float		y;
 	float		dir;
-	int			number;
 	float		dist;
-	int			order[ENNEMY_NBR];
 	int			frame;
 }	t_ennemy;
 
@@ -120,6 +118,7 @@ typedef struct s_player
 	int			earn;
 	int			earn_frames;
 	double		last_hit;
+	double		last_regen;
 	t_img		gun;
 }	t_player;
 
@@ -190,13 +189,14 @@ typedef struct s_data
 	t_img		frame;
 	t_game		game;
 	t_keys		keys;
+	int			ennemies_number;
 	char		**cub_file;
 	t_fps		fps;
 	t_player	player;
 	t_ennemy	ennemies[7];
-	float		rand;
 }	t_data;
 
+void			sort_ennemies(t_data *data);
 void			map_on_frame(t_data *data);
 void			update_hp(t_data *data);
 int				argb_colors(int a, int rgb[3]);

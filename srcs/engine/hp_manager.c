@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 10:23:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 12:41:54 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 13:42:03 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	update_hp(t_data *data)
 	if (data->player.hp >= 100)
 		return ;
 	tmp = elapsed_time();
-	if (tmp - data->player.last_hit >= 2.5)
+	if (tmp - data->player.last_regen >= 2.5)
 	{
 		if (data->player.hp <= 97)
 			data->player.hp += 3;
@@ -27,6 +27,7 @@ void	update_hp(t_data *data)
 			data->player.hp += 2;
 		else
 			data->player.hp++;
-		data->player.last_hit += 5;
+		data->player.last_regen = tmp;
+		printf("HP:%d\n", data->player.hp);
 	}
 }
