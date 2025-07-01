@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 15:47:22 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:26:46 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int	setup_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
-	return (1);
+		return (1);
 	if ((!HEIGHT || !WIDTH)
-	&& mlx_get_screen_size(data->mlx, &data->width, &data->height))
-	return (1);
+		&& mlx_get_screen_size(data->mlx, &data->width, &data->height))
+		return (1);
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "cub3D");
 	if (!data->win || load_sprites(data))
-	return (1);
+		return (1);
 	data->fps.start = elapsed_time();
 	mlx_mouse_hide(data->mlx, data->win);
 	mlx_hook(data->win, 9, 1L << 6, &mouse_move, data);
