@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/29 08:46:21 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:26:18 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@
 #  define ESC 65307
 #  define L_ARROW 65361
 #  define R_ARROW 65363
-#  define UPGRADE 65453
-#  define DOWNGRADE 65451
 #  define P 112
 #  define SHIFT 65505
 #  define E 101
+#  define L_CLICK 1
 #  define LINUX 1
 # else
 #  include "../minilibx_opengl_20191021/mlx.h"
@@ -37,6 +36,10 @@
 #  define ESC 53
 #  define L_ARROW 123
 #  define R_ARROW 124
+#  define P 112
+#  define SHIFT 65505
+#  define E 101
+#  define L_CLICK 1
 #  define LINUX 0
 # endif
 
@@ -45,7 +48,7 @@
 # define CLOSEBTN 17
 # define STEP 0.1
 # define FOV 60
-# define VIEW 0.1
+# define VIEW 0.05
 # define RAYS WIDTH
 # define HITBOX 0.15
 # define QUALITY 100
@@ -143,6 +146,7 @@ typedef struct s_keys
 	int			r_arrow;
 	int			shift;
 	int			e;
+	int			l_click;
 }	t_keys;
 
 typedef struct s_textures
@@ -156,9 +160,10 @@ typedef struct s_textures
 	t_img		west;
 	t_img		east;
 	t_img		door;
-	t_img		ennemy[ENNEMY_NBR];
+	t_img		ennemy[2];
 	int			floor_color[3];
 	int			ceiling_color[3];
+	int			frame;
 }	t_textures;
 
 typedef struct s_map
@@ -187,8 +192,10 @@ typedef struct s_data
 	t_fps		fps;
 	t_player	player;
 	t_ennemy	ennemies[7];
+	float		rand;
 }	t_data;
 
+void			get_rand(t_data *data);
 int				argb_colors(int a, int rgb[3]);
 int				red_filter(int color, t_data *data);
 int				ft_tablen(char **map);

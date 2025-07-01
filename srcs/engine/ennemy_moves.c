@@ -6,11 +6,27 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 03:34:40 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 12:56:19 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:37:43 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+void	swap_frame(t_data *data)
+{
+	t_img	f;
+	t_img	f_f;
+
+	data->map.textures.frame++;
+	if (data->map.textures.frame >= 15)
+	{
+		f = data->map.textures.ennemy[0];
+		f_f = data->map.textures.ennemy[1];
+		data->map.textures.ennemy[1] = f;
+		data->map.textures.ennemy[0] = f_f;
+		data->map.textures.frame = 0;
+	}
+}
 
 void	move_ennemy(t_data *data, int i)
 {
@@ -26,6 +42,7 @@ void	move_ennemy(t_data *data, int i)
 	{
 		data->ennemies[i].x = dx;
 		data->ennemies[i].y = dy;
+		swap_frame(data);
 	}
 	else
 	{

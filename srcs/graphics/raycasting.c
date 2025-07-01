@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/29 08:49:38 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:21:14 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	draw_ceiling(t_data *data, size_t r, int size[2], int color)
 	y = 0;
 	while (y < size[0])
 	{
-		color = red_filter(color, data);
 		put_pixel_img(&data->frame, r, y, color);
 		y++;
 	}
@@ -52,7 +51,6 @@ void	draw_floor(t_data *data, size_t r, int size[2], int color)
 	y = size[1];
 	while (y < data->height)
 	{
-		color = red_filter(color, data);
 		put_pixel_img(&data->frame, r, y, color);
 		y++;
 	}

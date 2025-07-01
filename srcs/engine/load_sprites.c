@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 10:36:10 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:27:19 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	load_sprites(t_data *data)
 		return (1);
 	if (load_xpm(&t->ennemy[1], "textures/goomba_2.xpm", data))
 		return (1);
+	data->map.textures.frame = 0;
 	draw_map(data);
 	//sort_ennemies(data);
 	return (0);
