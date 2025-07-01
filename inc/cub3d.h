@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/01 11:56:51 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 13:35:39 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 # define RAYS WIDTH
 # define HITBOX 0.15
 # define QUALITY 100
-# define ENNEMY_NBR 2
+# define ENNEMY_NBR 3
 # define INVU_TIME 5
 
 # if ENNEMY_NBR >= 2147483647 || ENNEMY_NBR <= 0
@@ -80,6 +80,7 @@ typedef struct s_ennemy
 	int			number;
 	float		dist;
 	int			order[ENNEMY_NBR];
+	int			frame;
 }	t_ennemy;
 
 typedef struct s_dda
@@ -196,13 +197,13 @@ typedef struct s_data
 	float		rand;
 }	t_data;
 
+void			map_on_frame(t_data *data);
 void			update_hp(t_data *data);
 int				argb_colors(int a, int rgb[3]);
 int				ft_tablen(char **map);
 void			draw_crosshair(t_data *data);
 void			ennemy_moves(t_data *data);
 void			draw_enemy(t_data *data, int i);
-float			hit_check(t_data *data);
 void			door_check(t_data *data);
 void			dda(t_data *data, float ray_angle, char **map);
 int				get_dda_step(float dir);

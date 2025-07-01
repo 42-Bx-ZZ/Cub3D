@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 10:23:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 12:01:27 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 12:41:54 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ void	update_hp(t_data *data)
 		else
 			data->player.hp++;
 		data->player.last_hit += 5;
-		printf("HP:%d\n", data->player.hp);
 	}
 }
