@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/29 14:41:16 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/01 10:43:04 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void	check_and_parse_path(t_data *data, char *line, char *type)
 	path = verif_and_extract(data, i, line);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
+	{
+		free(path);
 		free_all_and_print_exit(data, "Error\nCan't open wall file");
+	}
 	parse_path(data, path, type);
 	close(fd);
 }
