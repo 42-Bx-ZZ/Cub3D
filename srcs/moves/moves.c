@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:09:13 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 12:46:30 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:59:04 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void	moves(int key, t_data *data)
 	float	t_step;
 
 	t_step = STEP;
+	data->map.setup[(int)data->game.p_y][(int)data->game.p_x] = '0';
 	if ((data->keys.up && (data->keys.right || data->keys.left))
 		|| (data->keys.down && (data->keys.right || data->keys.left)))
 		t_step = STEP * 0.5;
@@ -144,4 +145,5 @@ void	moves(int key, t_data *data)
 		if (key == RIGHT)
 			move_right(data, t_step);
 	}
+	data->map.setup[(int)data->game.p_y][(int)data->game.p_x] = 'P';
 }

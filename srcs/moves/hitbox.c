@@ -6,11 +6,36 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 08:03:35 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 12:49:52 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:58:34 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+int	is_player(t_data *data, float x, float y, float hitbox)
+{
+	int	p_x;
+	int	m_x;
+	int	p_y;
+	int	m_y;
+
+	p_x = (int)(x + hitbox);
+	p_y = (int)(y + hitbox);
+	m_x = (int)(x - hitbox);
+	m_y = (int)(y - hitbox);
+	if (p_y < 0 || m_y < 0 || !data->map.setup[p_y] || !data->map.setup[m_y]
+		|| p_y < 0 || m_x < 0 || !data->map.setup[p_y] || !data->map.setup[p_y][p_x]
+		|| !data->map.setup[p_y][m_x] || !data->map.setup[m_y][p_x]
+		|| !data->map.setup[m_y][m_x])
+		return (1);
+	if (data->map.setup[p_y][p_x] == 'P' || data->map.setup[p_y][m_x] == 'P'
+		|| data->map.setup[m_y][p_x] == 'P' || data->map.setup[m_y][m_x] == 'P')
+	{
+		clean_exit(data);
+		return (1);
+	}
+	return (0);
+}
 
 int	move_overflow(t_data *data, float x, float y, float hitbox)
 {
@@ -57,6 +82,8 @@ int	is_blocked(t_data *data, float x, float y, float hitbox)
 		return (1);
 	if (data->map.setup[p_y][p_x] == 'D' || data->map.setup[p_y][m_x] == 'D'
 		|| data->map.setup[m_y][p_x] == 'D' || data->map.setup[m_y][m_x] == 'D')
+		return (1);
+	if (is_player(data, x, y, hitbox))
 		return (1);
 	return (0);
 }
