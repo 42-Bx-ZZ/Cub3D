@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/01 10:49:25 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:56:51 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # define HITBOX 0.15
 # define QUALITY 100
 # define ENNEMY_NBR 2
+# define INVU_TIME 5
 
 # if ENNEMY_NBR >= 2147483647 || ENNEMY_NBR <= 0
 #  undef ENNEMY_NBR
@@ -117,7 +118,7 @@ typedef struct s_player
 	int			money;
 	int			earn;
 	int			earn_frames;
-	int			hit;
+	double		last_hit;
 	t_img		gun;
 }	t_player;
 
@@ -195,6 +196,7 @@ typedef struct s_data
 	float		rand;
 }	t_data;
 
+void			update_hp(t_data *data);
 int				argb_colors(int a, int rgb[3]);
 int				ft_tablen(char **map);
 void			draw_crosshair(t_data *data);

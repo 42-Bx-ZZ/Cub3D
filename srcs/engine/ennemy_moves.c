@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 03:34:40 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 10:37:43 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:21:28 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	swap_frame(t_data *data)
 	t_img	f_f;
 
 	data->map.textures.frame++;
-	if (data->map.textures.frame >= 15)
+	if (data->map.textures.frame >= 1)
 	{
 		f = data->map.textures.ennemy[0];
 		f_f = data->map.textures.ennemy[1];

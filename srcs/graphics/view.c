@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:23:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 13:15:07 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:56:59 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int	update_move(t_data *data)
 	print_infos(data);
 	data->frame.ptr = NULL;
 	data->fps.fps++;
+	update_hp(data);
 	return (0);
 }

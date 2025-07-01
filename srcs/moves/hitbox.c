@@ -6,11 +6,24 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 08:03:35 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 10:58:34 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:50:50 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+int	check_last_hit(t_data *data)
+{
+	double	tmp;
+
+	tmp = elapsed_time();
+	if (tmp - data->player.last_hit >= (INVU_TIME))
+	{
+		data->player.last_hit = tmp;
+		return (0);
+	}
+	return (1);
+}
 
 int	is_player(t_data *data, float x, float y, float hitbox)
 {
@@ -31,7 +44,12 @@ int	is_player(t_data *data, float x, float y, float hitbox)
 	if (data->map.setup[p_y][p_x] == 'P' || data->map.setup[p_y][m_x] == 'P'
 		|| data->map.setup[m_y][p_x] == 'P' || data->map.setup[m_y][m_x] == 'P')
 	{
-		clean_exit(data);
+		if (check_last_hit(data))
+			return (1);
+		data->player.hp -= 25;
+		printf("LOSE HP!! Hp = %d\n", data->player.hp);
+		if (data->player.hp <= 0)
+			clean_exit(data);
 		return (1);
 	}
 	return (0);

@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_check.c                                        :+:      :+:    :+:   */
+/*   hp_manager.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 19:03:12 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 09:34:26 by lowatell         ###   ########.fr       */
+/*   Created: 2025/06/25 10:23:03 by lowatell          #+#    #+#             */
+/*   Updated: 2025/07/01 12:01:27 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-float	hit_check(t_data *data)
+void	update_hp(t_data *data)
 {
-	if (data->keys.e && data->player.earn_frames == 0)
+	double	tmp;
+
+	if (data->player.hp >= 100)
+		return ;
+	tmp = elapsed_time();
+	if (tmp - data->player.last_hit >= 2.5)
 	{
-		data->player.hit = 1;
-		return (data->player.earn_frames = 100, 1);
+		if (data->player.hp <= 97)
+			data->player.hp += 3;
+		else if (data->player.hp <= 98)
+			data->player.hp += 2;
+		else
+			data->player.hp++;
+		data->player.last_hit += 5;
+		printf("HP:%d\n", data->player.hp);
 	}
-	return (0);
 }
