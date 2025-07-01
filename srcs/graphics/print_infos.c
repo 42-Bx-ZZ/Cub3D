@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 13:11:58 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:24:42 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	print_fps(t_data *data)
 	char	*fps;
 	char	*temp;
 
-	fps = ft_itoa(data->fps.fps / (elapsed_time() - data->fps.start));
+	if (elapsed_time() - data->fps.start < 1)
+		fps = ft_strdup("...");
+	else
+		fps = ft_itoa(data->fps.fps / (elapsed_time() - data->fps.start));
 	if (!fps)
 		clean_exit(data);
 	temp = ft_strjoin(fps, " FPS");

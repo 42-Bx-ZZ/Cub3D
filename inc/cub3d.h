@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/01 15:00:37 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:07:24 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define HITBOX 0.15
 # define QUALITY 100
 # define ENNEMY_NBR 4
-# define MOUSE_SENSI 0.003
+# define MOUSE_SENSI 0.002
 # define INVU_TIME 5
 
 # if ENNEMY_NBR >= 2147483647 || ENNEMY_NBR <= 0
@@ -199,6 +199,7 @@ typedef struct s_data
 	t_ennemy	ennemies[7];
 }	t_data;
 
+int				color_shaders(int color, t_data *data);
 void			draw_items(t_data *data);
 void			sort_ennemies(t_data *data);
 void			map_on_frame(t_data *data);

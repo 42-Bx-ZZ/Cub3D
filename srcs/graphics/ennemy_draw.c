@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 02:12:41 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 15:00:31 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:20:54 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	draw_enemy_sprite(t_data *data, int x_y[2], int size, float enemy_dist)
 					* (data->map.textures.ennemy[0].size_line / 4) + t_x_y[0]];
 				if ((color & 0x00FFFFFF) != 0)
 					put_pixel_img(&data->frame, screen_x, x_y[1]
-						+ s_x_y[1], color);
+						+ s_x_y[1], color_shaders(color, data));
 			}
 		}
 	}

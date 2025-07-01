@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 15:13:49 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:47:22 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	mouse_move(int x, int y, t_data *data)
 	if (last_x == -1)
 		return (last_x = x, 0);
 	delta_x = x - last_x;
-	printf("Mouse move: x=%d, y=%d, delta_x=%d\n", x, y, delta_x);
 	if (abs(delta_x) > 1)
 	{
 		data->game.dir += delta_x * MOUSE_SENSI;
@@ -47,19 +46,16 @@ int	setup_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		return (1);
+	return (1);
 	if ((!HEIGHT || !WIDTH)
-		&& mlx_get_screen_size(data->mlx, &data->width, &data->height))
-		return (1);
-	if (HEIGHT > 0 && WIDTH > 0)
-	{
-		data->width = WIDTH;
-		data->height = HEIGHT;
-	}
+	&& mlx_get_screen_size(data->mlx, &data->width, &data->height))
+	return (1);
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "cub3D");
 	if (!data->win || load_sprites(data))
-		return (1);
+	return (1);
 	data->fps.start = elapsed_time();
+	mlx_mouse_hide(data->mlx, data->win);
+	mlx_hook(data->win, 9, 1L << 6, &mouse_move, data);
 	mlx_hook(data->win, 2, 1L << 0, &key_press, data);
 	mlx_hook(data->win, 3, 1L << 1, &key_release, data);
 	mlx_loop_hook(data->mlx, update_move, data);
