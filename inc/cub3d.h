@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/02 09:25:30 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/02 10:17:49 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_dda
 	float		side_dist_y;
 	int			side;
 	int			hit_ennemy;
-	float		zbuffer[1920];
+	float		*zbuffer;
 }	t_dda;
 
 typedef struct s_img
@@ -143,7 +143,6 @@ typedef struct s_keys
 	int			down;
 	int			left;
 	int			right;
-	int			f;
 	int			l_arrow;
 	int			r_arrow;
 	int			shift;

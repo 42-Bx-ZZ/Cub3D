@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:43:31 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 20:33:08 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/02 10:56:33 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,55 @@ void	put_pixel_map(t_img *img, float y, float x, int color)
 		i++;
 	}
 }
+// void	draw_map_on_frame(t_data *data, int start, int end)
+// {
+// 	char	**map;
+// 	int		i;
+// 	int		j;
+
+// 	i = start;
+// 	map = data->map.setup;
+// 	while (map[i] && i < end)
+// 	{
+// 		j = start;
+// 		while (map[i][j] && j < 10)
+// 		{
+// 			if (map[i][j] == '1')
+// 				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0x000000);
+// 			else if (map[i][j] == '0' || map[i][j] == 'Z')
+// 				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0xFFFFFF);
+// 			else if (map[i][j] == 'P')
+// 				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0xFF0000);
+// 			else if (map[i][j] == 'D')
+// 				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0x0FF000);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// void	map_on_frame(t_data *data)
+// {
+// 	int	start;
+// 	int	i;
+
+// 	i = 0;
+// 	while (data->map.setup[i])
+// 	{
+// 		if (ft_strchr((const char *)data->map.setup[i], 'P'))
+// 		{
+// 			if (i >= 10)
+// 				start = i - 10;
+// 			while (data->map.setup[i])
+// 				i++;
+// 			if (i - start > 10)
+// 				i = 10;
+// 			draw_map_on_frame(data, start, i);
+// 			return ;
+// 		}
+// 		i++;
+// 	}
+// }
 
 void	map_on_frame(t_data *data)
 {

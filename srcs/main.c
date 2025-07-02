@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/01 16:54:42 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/02 10:27:27 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	destroy_imgs(t_data *data)
 {
+	if (!data)
+		return ;
+	mlx_mouse_show(data->mlx, data->win);
 	if (data->frame.ptr)
 		mlx_destroy_image(data->mlx, data->frame.ptr);
 	if (data->map.textures.south.ptr)
@@ -22,17 +25,27 @@ void	destroy_imgs(t_data *data)
 		mlx_destroy_image(data->mlx, data->map.textures.east.ptr);
 	if (data->map.textures.west.ptr)
 		mlx_destroy_image(data->mlx, data->map.textures.west.ptr);
+	if (data->map.textures.door.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.door.ptr);
 	if (data->map.textures.north.ptr)
 		mlx_destroy_image(data->mlx, data->map.textures.north.ptr);
+	if (data->map.textures.ennemy[0].ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.ennemy[0].ptr);
+	if (data->map.textures.ennemy[1].ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.ennemy[1].ptr);
 }
 
 int	clean_exit(t_data *data)
 {
-	if (data && data->mlx && data->win)
-		mlx_destroy_window(data->mlx, data->win);
 	destroy_imgs(data);
 	if (data && data->map.setup)
 		ft_free_tab(data->map.setup);
+	if (data && data->mlx && data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
+	if (data && data->mlx)
+		free(data->mlx);
 	exit(1);
 }
 
@@ -41,7 +54,7 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	if (ac != 2 || !av[1][0])
-		return (0);
+		return (2);
 	ft_memset(&data, 0, sizeof(data));
 	data.map.setup = get_map(av[1]);
 	if (!data.map.setup)
@@ -54,5 +67,7 @@ int	main(int ac, char **av)
 		data.height = HEIGHT;
 	}
 	data.player.last_hit = elapsed_time();
-	setup_mlx(&data);
+	if (setup_mlx(&data))
+		clean_exit(&data);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 17:19:02 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/02 10:17:12 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void	update_frame(t_data *data, float fov_deg, int nb_rays, char **map)
 	angle_step = ((fov_deg * M_PI / 180) / nb_rays);
 	start_angle = data->game.dir - (fov_deg * M_PI / 180) / 2.0;
 	r = 0;
+	data->game.dda.zbuffer = (float *)malloc(sizeof(float) * data->width);
+	if (!data->game.dda.zbuffer)
+		clean_exit(data);
 	while (r < (size_t)nb_rays)
 	{
 		ray_angle = start_angle + r * angle_step;
@@ -50,6 +53,7 @@ void	update_frame(t_data *data, float fov_deg, int nb_rays, char **map)
 		r++;
 	}
 	draw_items(data);
+	free(data->game.dda.zbuffer);
 	ennemy_moves(data);
 }
 
