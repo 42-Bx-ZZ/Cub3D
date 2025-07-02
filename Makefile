@@ -45,7 +45,6 @@ SRCS =	main.c\
 		args_checker.c\
 		parsing/cub_file_handler.c\
 		utils.c\
-		parsing/parsing_utils.c\
 		parsing/path_handler.c\
 		parsing/fc_colors_handler.c\
 		parsing/map_handler.c\
