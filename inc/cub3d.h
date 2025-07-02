@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/01 22:06:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/02 09:25:30 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 #  define LINUX 0
 # endif
 
-# define WIDTH 0
-# define HEIGHT 0
+# define WIDTH 1280
+# define HEIGHT 720
 # define CLOSEBTN 17
 # define STEP 0.1
 # define FOV 60
@@ -53,7 +53,7 @@
 # define HITBOX 0.15
 # define QUALITY 100
 # define ENNEMY_NBR 4
-# define MOUSE_SENSI 0.002
+# define MOUSE_SENSI 0.0002
 # define INVU_TIME 5
 
 # if ENNEMY_NBR >= 2147483647 || ENNEMY_NBR <= 0

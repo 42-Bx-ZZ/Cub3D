@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 22:11:30 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/02 09:26:53 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,19 @@ void	move_view(t_data *data, int delta)
 
 int	move_mouse(int x, int y, t_data *data)
 {
-	static int	last_x = -1;
-	int			delta;
+	int	delta;
 
 	(void)y;
-	if (last_x == -1)
-		return (last_x = x, 0);
-	if (data->keys.replace_cursor == 1)
+	if (data->keys.replace_cursor)
 	{
 		data->keys.replace_cursor = 0;
-		last_x = data->width / 2;
 		return (0);
 	}
-	if (x <= 0 || x > data->width - 50)
-	{
-		mlx_mouse_move(data->mlx, data->win, data->width / 2, data->height / 2);
-		data->keys.replace_cursor = 1;
-		last_x = data->width / 2;
-		return (0);
-	}
-	delta = x - last_x;
-	if (abs(delta) < data->width / 4)
+	delta = x - data->width / 2;
+	if (abs(delta) < data->width / 4 && delta != 0)
 		move_view(data, delta);
-	last_x = x;
+	data->keys.replace_cursor = 1;
+	mlx_mouse_move(data->mlx, data->win, data->width / 2, data->height / 2);
 	return (0);
 }
 
