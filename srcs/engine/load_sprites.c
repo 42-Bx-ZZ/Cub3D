@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 16:44:50 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:45:45 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	load_items(t_data *data)
 		return (1);
 	if (load_xpm(&data->player.laser.sprite, "textures/ray_gun_fp.xpm", data))
 		return (1);
-	if (load_xpm(&data->player.laser.sprite, "textures/gun_fp.xpm", data))
+	if (load_xpm(&data->player.gun.sprite, "textures/gun_fp.xpm", data))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/03 16:12:29 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:45:05 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	destroy_imgs(t_data *data)
 {
 	if (!data)
 		return ;
-	mlx_mouse_show(data->mlx, data->win);
 	if (data->frame.ptr)
 		mlx_destroy_image(data->mlx, data->frame.ptr);
 	if (data->map.textures.south.ptr)
