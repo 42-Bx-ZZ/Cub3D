@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 09:38:17 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:20:12 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	sort_ennemies(t_data *data)
 	t_ennemy	tmp_t;
 
 	i = 0;
-	if (data->gameplay.z_count == 0 
+	if (data->gameplay.z_count == 0
 		|| data->gameplay.z_count == 1)
 		return ;
 	check_dist(data, i);

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 10:15:59 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:19:56 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	hit_ennemy(t_data *data, int i)
 	// 	earn_money(data, 0);
 }
 
-int	check_around_z(t_data *data, int x, int y)
+int	check_spawn(t_data *data, int x, int y)
 {
 	char	**map;
 

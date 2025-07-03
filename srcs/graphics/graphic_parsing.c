@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 09:48:53 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:20:02 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	check_pos(t_data *data, char c, int i, int j)
 	{
 		data->ennemies[data->gameplay.z_count].x_start = i;
 		data->ennemies[data->gameplay.z_count].y_start = j;
-		data->ennemies[data->gameplay.z_count].alive = check_around_z(data, i, j);
+		data->ennemies[data->gameplay.z_count].alive = check_spawn(data, i, j);
 		data->ennemies[data->gameplay.z_count].x = i + 0.5;
 		data->ennemies[data->gameplay.z_count].y = j + 0.5;
 		data->ennemies[data->gameplay.z_count].hp = ENNEMY_HP;

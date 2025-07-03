@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:43:31 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 08:35:29 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:19:30 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void	print_line(t_data *data, int i, int x, int y)
 	while (map[i][j] && j < start + 16)
 	{
 		if (map[i] && map[i][j] && map[i][j] != 'Z' && map[i][j] != '0')
-			draw_square(&data->frame, x + (j - start) * 5, y, minimap_color(map[i][j]));
+			draw_square(&data->frame, x + (j - start) * 5,
+				y, minimap_color(map[i][j]));
 		j++;
 	}
 }
