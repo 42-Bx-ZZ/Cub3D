@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 16:43:08 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:42:49 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ void	hit_ennemy(t_data *data, int i)
 	}
 	else
 	{
-		data->ennemies[i].last_hit = elapsed_time();
+		data->ennemies[i].last_hit = 20;
+		data->ennemies[i].frame = 0;
 		data->ennemies[i].f = data->map.textures.ennemy[2];
+		// 	earn_money(data, 0);
 	}
-	// 	earn_money(data, 0);
 }
 
 int	check_spawn(t_data *data, int x, int y)
