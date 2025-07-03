@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/29 10:26:08 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/03 17:15:25 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # endif
 
 # define CLOSEBTN 17
-# define VALID_CHARS "0 1NSEWD"
+# define VALID_CHARS "0 1NSZDEWD"
 # define PLAYER_CHARS "NSEW"
 
 # include "../libft/inc/libft.h"

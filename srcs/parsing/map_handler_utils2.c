@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:12:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/28 08:58:49 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/03 17:20:34 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	check_after_back(t_data *data, char **map)
 		while (map[y][x])
 		{
 			if (map[y][x] == 'N' || map[y][x] == 'S'
-					|| map[y][x] == 'E' || map[y][x] == 'W')
+					|| map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == 'Z')
 				free_all_and_print_exit(data,
 					"Error\nFinish the game are not possible\n");
 			x++;
