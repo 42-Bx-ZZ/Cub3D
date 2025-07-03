@@ -104,4 +104,29 @@ void	map_on_frame(t_data *data)
 		y += 5;
 		i++;
 	}
+	draw_minimap_border(data);
+}
+
+void	draw_minimap_border(t_data *data)
+{
+	int	x;
+	int	y;
+	int	size;
+
+	size = 16 * 5;
+	x = 20;
+	y = 20;
+	while (x < 20 + size)
+	{
+		put_pixel_img(&data->frame, x, y - 1, 0xFF0000);
+		put_pixel_img(&data->frame, x, y + size, 0xFF0000);
+		x++;
+	}
+	x = 20;
+	while (y < 20 + size)
+	{
+		put_pixel_img(&data->frame, x - 1, y, 0xFF0000);
+		put_pixel_img(&data->frame, x + size, y, 0xFF0000);
+		y++;
+	}
 }
