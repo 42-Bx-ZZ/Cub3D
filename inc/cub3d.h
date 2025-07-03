@@ -242,6 +242,14 @@ void			update_hp(t_data *data);
 int				rgb_colors(int rgb[3]);
 int				ft_tablen(char **map);
 void			draw_crosshair(t_data *data);
+void			draw_left_horizontal_segment(t_data *data, int screen_center_x,
+				int screen_center_y, int spread_value);
+void			draw_right_horizontal_segment(t_data *data, int screen_center_x,
+				int screen_center_y, int spread_value);
+void			draw_top_vertical_segment(t_data *data, int screen_center_x,
+				int screen_center_y, int spread_value);
+void			draw_bottom_vertical_segment(t_data *data, int screen_center_x,
+				int screen_center_y, int spread_value);
 void			ennemy_moves(t_data *data);
 void			draw_enemy(t_data *data, int i);
 void			door_check(t_data *data);

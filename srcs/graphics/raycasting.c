@@ -12,26 +12,6 @@
 
 #include "../../inc/cub3d.h"
 
-void	draw_crosshair(t_data *data)
-{
-	int	x;
-	int	y;
-	int	i;
-
-	x = WIDTH / 2;
-	y = HEIGHT / 2;
-	i = -10;
-	while (i <= 10)
-	{
-		if (i != 0)
-		{
-			put_pixel_img(&data->frame, x + i, y, 0xFFFFFF);
-			put_pixel_img(&data->frame, x, y + i, 0xFFFFFF);
-		}
-		i++;
-	}
-}
-
 void	draw_ceiling(t_data *data, size_t r, int size[2], int color)
 {
 	int	y;

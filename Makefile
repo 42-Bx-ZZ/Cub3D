@@ -57,6 +57,8 @@ SRCS =	main.c\
 		graphics/graphic_parsing.c\
 		graphics/view.c\
 		graphics/raycasting.c\
+		graphics/crosshair.c\
+		graphics/crosshair_utils.c\
 		graphics/raycasting_utils.c\
 		moves/hitbox.c\
 		graphics/dda.c\
