@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 17:20:17 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 09:38:17 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_dist(t_data *data, int i)
 {
-	while (i < ENNEMY_NBR)
+	while (i < data->gameplay.z_count)
 	{
 		if (data->ennemies[i].alive)
 		{
@@ -35,10 +35,11 @@ void	sort_ennemies(t_data *data)
 	t_ennemy	tmp_t;
 
 	i = 0;
-	if (data->ennemies_number == 0 || data->ennemies_number == 1)
+	if (data->gameplay.z_count == 0 
+		|| data->gameplay.z_count == 1)
 		return ;
 	check_dist(data, i);
-	while (i < ENNEMY_NBR - 1)
+	while (i < data->gameplay.z_count)
 	{
 		if (data->ennemies[i].dist < data->ennemies[i + 1].dist)
 		{

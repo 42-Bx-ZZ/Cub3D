@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 03:34:40 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 15:06:02 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 09:38:26 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap_frame(t_data *data)
 	t_img		f_f;
 
 	frame++;
-	if (frame % (20 * data->ennemies_number) == 0)
+	if (frame % (20 * data->gameplay.z_count) == 0)
 	{
 		f = data->map.textures.ennemy[0];
 		f_f = data->map.textures.ennemy[1];
@@ -59,7 +59,7 @@ void	ennemy_moves(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < ENNEMY_NBR)
+	while (i < data->gameplay.z_count)
 	{
 		if (data->ennemies[i].alive)
 			move_ennemy(data, i);

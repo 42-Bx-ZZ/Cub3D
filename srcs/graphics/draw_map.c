@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:43:31 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/02 10:56:33 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 08:35:29 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,79 +33,74 @@ void	put_pixel_map(t_img *img, float y, float x, int color)
 		i++;
 	}
 }
-// void	draw_map_on_frame(t_data *data, int start, int end)
-// {
-// 	char	**map;
-// 	int		i;
-// 	int		j;
 
-// 	i = start;
-// 	map = data->map.setup;
-// 	while (map[i] && i < end)
-// 	{
-// 		j = start;
-// 		while (map[i][j] && j < 10)
-// 		{
-// 			if (map[i][j] == '1')
-// 				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0x000000);
-// 			else if (map[i][j] == '0' || map[i][j] == 'Z')
-// 				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0xFFFFFF);
-// 			else if (map[i][j] == 'P')
-// 				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0xFF0000);
-// 			else if (map[i][j] == 'D')
-// 				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0x0FF000);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
+static void	draw_square(t_img *img, int x, int y, int color)
+{
+	int	size;
+	int	i;
+	int	j;
 
-// void	map_on_frame(t_data *data)
-// {
-// 	int	start;
-// 	int	i;
+	i = 0;
+	size = 5;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			put_pixel_img(img, x + i, y + j, color);
+			j++;
+		}
+		i++;
+	}
+}
 
-// 	i = 0;
-// 	while (data->map.setup[i])
-// 	{
-// 		if (ft_strchr((const char *)data->map.setup[i], 'P'))
-// 		{
-// 			if (i >= 10)
-// 				start = i - 10;
-// 			while (data->map.setup[i])
-// 				i++;
-// 			if (i - start > 10)
-// 				i = 10;
-// 			draw_map_on_frame(data, start, i);
-// 			return ;
-// 		}
-// 		i++;
-// 	}
-// }
+static int	minimap_color(char c)
+{
+	if (c == 'D')
+		return (0x0FF000);
+	if (c == 'P')
+		return (0xFF0000);
+	if (c == '1')
+		return (0xFFFFFF);
+	return (0);
+}
+
+void	print_line(t_data *data, int i, int x, int y)
+{
+	int		j;
+	int		start;
+	char	**map;
+
+	map = data->map.setup;
+	start = (int)data->game.p_x - 8;
+	if (start < 0)
+		start = 0;
+	j = start;
+	while (map[i][j] && j < start + 16)
+	{
+		if (map[i] && map[i][j] && map[i][j] != 'Z' && map[i][j] != '0')
+			draw_square(&data->frame, x + (j - start) * 5, y, minimap_color(map[i][j]));
+		j++;
+	}
+}
 
 void	map_on_frame(t_data *data)
 {
 	char	**map;
 	int		i;
-	int		j;
+	int		end;
+	int		y;
 
-	i = 0;
+	i = (int)data->game.p_y - 8;
+	if (i < 0)
+		i = 0;
+	end = i + 16;
+	y = 20;
 	map = data->map.setup;
-	while (map[i] && (20 + i * 5 + 5) < data->height / 2)
+	while (map[i] && i < end)
 	{
-		j = 0;
-		while (map[i][j] && (20 + j * 5 + 5) < data->width / 2)
-		{
-			if (map[i][j] == '1')
-				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0x000000);
-			else if (map[i][j] == '0' || map[i][j] == 'Z')
-				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0xFFFFFF);
-			else if (map[i][j] == 'P')
-				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0xFF0000);
-			else if (map[i][j] == 'D')
-				put_pixel_map(&data->frame, 20 + i * 5, 20 + j * 5, 0x0FF000);
-			j++;
-		}
+		print_line(data, i, 20, y);
+		y += 5;
 		i++;
 	}
 }

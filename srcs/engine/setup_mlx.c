@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/02 10:21:21 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 09:53:10 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	setup_mlx(t_data *data)
 	mlx_hook(data->win, 6, 1L << 6, &move_mouse, data);
 	mlx_hook(data->win, 2, 1L << 0, &key_press, data);
 	mlx_hook(data->win, 3, 1L << 1, &key_release, data);
+	mlx_mouse_hook(data->win, &mouse_click, data);
 	mlx_loop_hook(data->mlx, update_move, data);
 	mlx_hook(data->win, CLOSEBTN, 0, clean_exit, data);
 	mlx_loop(data->mlx);

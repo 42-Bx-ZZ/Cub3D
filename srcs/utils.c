@@ -6,11 +6,30 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:41:36 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/01 10:49:20 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 09:34:01 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void	count_z(char **map, t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'Z')
+				data->map.z++;
+			j++;
+		}
+		i++;
+	}
+}
 
 int	ft_tablen(char **map)
 {

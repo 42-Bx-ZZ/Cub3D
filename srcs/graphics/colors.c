@@ -6,15 +6,15 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 08:30:43 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 19:44:33 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 09:16:18 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int	argb_colors(int a, int rgb[3])
+int	rgb_colors(int rgb[3])
 {
-	return ((a << 24) | (rgb[0] << 16) | (rgb[1] << 8) | rgb[2]);
+	return ((rgb[0] << 16) | (rgb[1] << 8) | rgb[2]);
 }
 
 int	color_shaders(int color, t_data *data, float i)
@@ -25,6 +25,8 @@ int	color_shaders(int color, t_data *data, float i)
 	float	min_bright;
 	float	dist;
 
+	if (SHADERS == 0)
+		return (color);
 	dist = data->game.perp_wall;
 	if (i != 0.0f)
 		dist = i;

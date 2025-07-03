@@ -6,11 +6,23 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:43:16 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 16:53:11 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:07:43 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+int	mouse_click(int key, int x, int y, t_data *data)
+{
+	(void)x;
+	(void)y;
+	if (key == L_CLICK)
+	{
+		if (data->keys.mouse.l_click == 0)
+			data->keys.mouse.l_click = 1;
+	}
+	return (0);
+}
 
 int	key_press(int key, t_data *data)
 {
@@ -30,8 +42,6 @@ int	key_press(int key, t_data *data)
 		data->keys.shift = 1;
 	if (key == E)
 		data->keys.e = 1;
-	if (key == L_CLICK)
-		data->keys.l_click = 1;
 	if (key == ESC)
 		clean_exit(data);
 	return (0);

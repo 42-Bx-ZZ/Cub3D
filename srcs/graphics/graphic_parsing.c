@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/02 10:17:12 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 09:48:53 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,16 @@ void	check_pos(t_data *data, char c, int i, int j)
 		data->game.p_y = j + 0.5;
 		data->game.dir = get_dir(c);
 	}
-	if (c == 'Z' && data->ennemies_number < ENNEMY_NBR
-		&& SPAWN == 1)
+	if (c == 'Z' && data->gameplay.z_count < ENNEMY_NBR
+		&& SPAWN == 1 && data->gameplay.z_count < data->map.z)
 	{
-		data->ennemies[data->ennemies_number].alive = 1;
-		data->ennemies[data->ennemies_number].x = i + 0.5;
-		data->ennemies[data->ennemies_number].y = j + 0.5;
-		data->ennemies_number++;
+		data->ennemies[data->gameplay.z_count].x_start = i;
+		data->ennemies[data->gameplay.z_count].y_start = j;
+		data->ennemies[data->gameplay.z_count].alive = check_around_z(data, i, j);
+		data->ennemies[data->gameplay.z_count].x = i + 0.5;
+		data->ennemies[data->gameplay.z_count].y = j + 0.5;
+		data->ennemies[data->gameplay.z_count].hp = ENNEMY_HP;
+		data->gameplay.z_count++;
 	}
 }
 
@@ -83,6 +86,7 @@ void	draw_map(t_data *data)
 	char	**map;
 
 	map = data->map.setup;
+	count_z(map, data);
 	i = -1;
 	while (map[++i])
 	{
@@ -90,17 +94,15 @@ void	draw_map(t_data *data)
 		while (map[i][++j])
 			check_pos(data, map[i][j], j, i);
 	}
-	i = 0;
-	while (map[i])
+	i = -1;
+	while (map[++i])
 	{
-		j = 0;
-		while (map[i][j])
+		j = -1;
+		while (map[i][++j])
 		{
 			if (map[i][j] == 'W' || map[i][j] == 'E'
 				|| map[i][j] == 'S' || map[i][j] == 'N')
 				map[i][j] = 'P';
-			j++;
 		}
-		i++;
 	}
 }

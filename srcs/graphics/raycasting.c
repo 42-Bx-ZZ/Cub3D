@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 18:40:58 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 17:26:29 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 09:16:35 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	raycasting(t_data *data, size_t r)
 	size[0] = (data->height / 2) - (wall_height / 2);
 	size[1] = (data->height / 2) + (wall_height / 2);
 	draw_ceiling(data, r, size,
-		argb_colors(0, data->map.textures.ceiling_color));
+		rgb_colors(data->map.textures.ceiling_color));
 	get_frame(size[0], size, data, r);
-	draw_floor(data, r, size, argb_colors(0, data->map.textures.floor_color));
+	draw_floor(data, r, size, rgb_colors(data->map.textures.floor_color));
 }

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:56:38 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 17:25:16 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 08:58:31 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	draw_items(t_data *data)
 
 	i = 0;
 	sort_ennemies(data);
-	while (i < data->ennemies_number)
+	while (i < data->gameplay.z_count)
 	{
 		if (data->ennemies[i].alive)
 			draw_enemy(data, i);

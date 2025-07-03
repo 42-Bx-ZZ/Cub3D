@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 02:12:41 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 19:44:02 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:09:36 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	enemy_screen_x(t_data *data, float dx, float dy)
 	return (screen_x);
 }
 
-static int	enemy_sprite_size(t_data *data, float dx, float dy)
+int	enemy_sprite_size(t_data *data, float dx, float dy)
 {
 	float	dist;
 
@@ -115,9 +115,9 @@ void	draw_enemy(t_data *data, int i)
 	x_y[0] = screen_x - (size / 2);
 	draw_enemy_sprite(data, x_y, size, sqrtf(d_x_y[0] * d_x_y[0]
 			+ d_x_y[1] * d_x_y[1]));
-	if (ennemy_on_center(data, x_y, size, i) && data->keys.e)
+	if (ennemy_on_center(data, x_y, size, i) && data->keys.mouse.l_click)
 	{
-		data->ennemies[i].alive = 0;
-		// EARN MONEY
+		data->keys.mouse.l_click = 0;
+		hit_ennemy(data, i);
 	}
 }

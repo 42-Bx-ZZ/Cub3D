@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/01 16:24:42 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 09:51:22 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,27 @@ void	print_money(t_data *data)
 	free(temp);
 }
 
+void	print_round(t_data *data)
+{
+	char	*round;
+	char	*temp;
+
+	round = ft_itoa(data->gameplay.round + 1);
+	if (!round)
+		clean_exit(data);
+	temp = ft_strjoin("Round ", round);
+	free(round);
+	if (!temp)
+		clean_exit(data);
+	mlx_string_put(data->mlx, data->win, 15, data->height - 10, 0xFFFFFF, temp);
+	free(temp);
+}
+
 void	print_infos(t_data *data)
 {
+	if ((int)(elapsed_time() - data->fps.start) % 10 == 0 && SPAWN == 1)
+		revive_ennemies(data);
 	print_money(data);
 	print_fps(data);
+	print_round(data);
 }

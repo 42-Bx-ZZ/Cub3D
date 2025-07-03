@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/02 10:17:49 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 10:15:06 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,17 @@
 # define CLOSEBTN 17
 # define STEP 0.1
 # define FOV 60
+# define SHADERS 0
 # define VIEW 0.05
 # define RAYS WIDTH
 # define HITBOX 0.15
 # define QUALITY 100
-# define ENNEMY_NBR 4
+# define ENNEMY_NBR 12
 # define MOUSE_SENSI 0.0002
 # define INVU_TIME 5
+# define ENNEMY_HP 1
+# define MONEY 1000
+# define EARN 100
 
 # if ENNEMY_NBR >= 2147483647 || ENNEMY_NBR <= 0
 #  undef ENNEMY_NBR
@@ -72,11 +76,21 @@
 
 struct			s_data;
 
+typedef struct s_gameplay
+{
+	int	round;
+	int	z_count;
+	int	ennemy_hp;
+}	t_gameplay;
+
 typedef struct s_ennemy
 {
 	int			alive;
+	int			hp;
 	float		x;
+	float		x_start;
 	float		y;
+	float		y_start;
 	float		dir;
 	float		dist;
 	int			frame;
@@ -137,6 +151,12 @@ typedef struct s_game
 	float		rays[2];
 }   t_game;
 
+typedef struct s_mouse
+{
+	double	last_hit;
+	int		l_click;
+}	t_mouse;
+
 typedef struct s_keys
 {
 	int			up;
@@ -147,7 +167,7 @@ typedef struct s_keys
 	int			r_arrow;
 	int			shift;
 	int			e;
-	int			l_click;
+	t_mouse		mouse;
 	int			replace_cursor;
 }	t_keys;
 
@@ -171,6 +191,7 @@ typedef struct s_textures
 typedef struct s_map
 {
 	char		**setup;
+	int			z;
 	t_textures	textures;
 }	t_map;
 
@@ -192,19 +213,25 @@ typedef struct s_data
 	t_img		frame;
 	t_game		game;
 	t_keys		keys;
-	int			ennemies_number;
+	t_gameplay	gameplay;
 	char		**cub_file;
 	t_fps		fps;
 	t_player	player;
-	t_ennemy	ennemies[7];
+	t_ennemy	ennemies[ENNEMY_NBR];
 }	t_data;
 
+int				mouse_click(int key, int x, int y, t_data *data);
+int				ennemy_on_center(t_data *data, int x_y[2], int size, int i);
+void			hit_ennemy(t_data *data, int i);
+void			count_z(char **map, t_data *data);
+int				check_around_z(t_data *data, int x, int y);
+void			revive_ennemies(t_data *data);
 int				color_shaders(int color, t_data *data, float i);
 void			draw_items(t_data *data);
 void			sort_ennemies(t_data *data);
 void			map_on_frame(t_data *data);
 void			update_hp(t_data *data);
-int				argb_colors(int a, int rgb[3]);
+int				rgb_colors(int rgb[3]);
 int				ft_tablen(char **map);
 void			draw_crosshair(t_data *data);
 void			ennemy_moves(t_data *data);
