@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 03:34:40 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 09:38:26 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:40:40 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,8 @@
 
 void	swap_frame(t_data *data)
 {
-	static int	frame = -1;
-	t_img		f;
-	t_img		f_f;
-
-	frame++;
-	if (frame % (20 * data->gameplay.z_count) == 0)
-	{
-		f = data->map.textures.ennemy[0];
-		f_f = data->map.textures.ennemy[1];
-		data->map.textures.ennemy[1] = f;
-		data->map.textures.ennemy[0] = f_f;
-		frame = 0;
-	}
+	(void)data;
+	return ;
 }
 
 void	move_ennemy(t_data *data, int i)

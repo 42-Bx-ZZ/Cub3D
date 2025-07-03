@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/03 10:20:37 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:36:53 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,18 @@
 # include <math.h>
 # include <sys/time.h>
 
-struct			s_data;
+typedef struct s_img
+{
+	int			*ptr;
+	int			*data;
+	int			bpp;
+	int			size_line;
+	int			endian;
+	int			height;
+	int			width;
+	int			w_width;
+	int			w_height;
+}	t_img;
 
 typedef struct s_gameplay
 {
@@ -87,6 +98,7 @@ typedef struct s_ennemy
 {
 	int			alive;
 	int			hp;
+	double		last_hit;
 	float		x;
 	float		x_start;
 	float		y;
@@ -94,6 +106,7 @@ typedef struct s_ennemy
 	float		dir;
 	float		dist;
 	int			frame;
+	t_img		f;
 }	t_ennemy;
 
 typedef struct s_dda
@@ -113,18 +126,12 @@ typedef struct s_dda
 	float		*zbuffer;
 }	t_dda;
 
-typedef struct s_img
+
+typedef struct s_gun
 {
-	int			*ptr;
-	int			*data;
-	int			bpp;
-	int			size_line;
-	int			endian;
-	int			height;
-	int			width;
-	int			w_width;
-	int			w_height;
-}	t_img;
+	t_img	sprite;
+	int		power;
+}	t_gun;
 
 typedef struct s_player
 {
@@ -134,7 +141,8 @@ typedef struct s_player
 	int			earn_frames;
 	double		last_hit;
 	double		last_regen;
-	t_img		gun;
+	t_gun		gun;
+	t_gun		laser;
 }	t_player;
 
 typedef struct s_game
@@ -182,7 +190,7 @@ typedef struct s_textures
 	t_img		west;
 	t_img		east;
 	t_img		door;
-	t_img		ennemy[2];
+	t_img		ennemy[3];
 	int			floor_color[3];
 	int			ceiling_color[3];
 	int			frame;

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 10:20:12 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:44:50 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,23 @@ int	load_xpm(t_img *img, char *file, t_data *data)
 	return (0);
 }
 
-// int	load_png(t_img *img, char *file, t_data *data)
-// {
-// 	if (!file)
-// 		return (1);
-// 	img->ptr = mlx_png_file_to_image(data->mlx,
-// 		file, &img->width, &img->height);
-// 	if (!img->ptr)
-// 		return (1);
-// 	img->data = (int *)mlx_get_data_addr(img->ptr,
-// 		&img->bpp, &img->size_line, &img->endian);
-// 	if (!img->data)
-// 		return (1);
-// 	return (0);
-// }
+int	load_items(t_data *data)
+{
+	t_textures *t;
+
+	t = &data->map.textures;
+	if (load_xpm(&t->ennemy[0], "textures/goomba.xpm", data))
+		return (1);
+	if (load_xpm(&t->ennemy[1], "textures/goomba_2.xpm", data))
+		return (1);
+	if (load_xpm(&t->ennemy[2], "textures/zombie_hit.xpm", data))
+		return (1);
+	if (load_xpm(&data->player.laser.sprite, "textures/ray_gun_fp.xpm", data))
+		return (1);
+	if (load_xpm(&data->player.laser.sprite, "textures/gun_fp.xpm", data))
+		return (1);
+	return (0);
+}
 
 int	load_sprites(t_data *data)
 {
@@ -100,9 +103,7 @@ int	load_sprites(t_data *data)
 		return (1);
 	if (load_xpm(&t->door, "textures/door.xpm", data))
 		return (1);
-	if (load_xpm(&t->ennemy[0], "textures/goomba.xpm", data))
-		return (1);
-	if (load_xpm(&t->ennemy[1], "textures/goomba_2.xpm", data))
+	if (load_items(data))
 		return (1);
 	data->map.textures.frame = 0;
 	data->frame.w_height = data->height;

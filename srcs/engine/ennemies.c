@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 10:19:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:43:08 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	hit_ennemy(t_data *data, int i)
 		data->ennemies[i].alive = 0;
 		//earn_money(data, 1); // 1 for kill
 	}
-	// else
+	else
+	{
+		data->ennemies[i].last_hit = elapsed_time();
+		data->ennemies[i].f = data->map.textures.ennemy[2];
+	}
 	// 	earn_money(data, 0);
 }
 
@@ -72,7 +76,7 @@ void	revive_ennemies(t_data *data)
 	{
 		data->ennemies[i].x = data->ennemies[i].x_start;
 		data->ennemies[i].y = data->ennemies[i].y_start;
-		data->ennemies[i].alive = check_around_z(data,
+		data->ennemies[i].alive = check_spawn(data,
 				data->ennemies[i].x_start, data->ennemies[i].y_start);
 		data->ennemies[i].hp = data->gameplay.ennemy_hp;
 		i++;

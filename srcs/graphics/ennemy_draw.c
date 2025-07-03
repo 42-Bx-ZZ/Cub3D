@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 02:12:41 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 10:09:36 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:44:17 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	enemy_sprite_size(t_data *data, float dx, float dy)
 	return ((int)(data->height / dist));
 }
 
-void	draw_enemy_sprite(t_data *data, int x_y[2], int s, float enemy_dist)
+void	draw_enemy_sprite(t_data *data, int x_y[2], int s[2], float dist)
 {
 	int		s_x_y[2];
 	int		t_x_y[2];
@@ -75,22 +75,22 @@ void	draw_enemy_sprite(t_data *data, int x_y[2], int s, float enemy_dist)
 	int		screen_x;
 
 	s_x_y[1] = -1;
-	while (++s_x_y[1] < s && x_y[1] + s_x_y[1] < data->height)
+	while (++s_x_y[1] < s[0] && x_y[1] + s_x_y[1] < data->height)
 	{
 		s_x_y[0] = -1;
-		while (++s_x_y[0] < s && x_y[0] + s_x_y[0] < data->width)
+		while (++s_x_y[0] < s[0] && x_y[0] + s_x_y[0] < data->width)
 		{
 			screen_x = x_y[0] + s_x_y[0];
 			if (screen_x >= 0 && screen_x < data->width
-				&& enemy_dist < data->game.dda.zbuffer[screen_x])
+				&& dist < data->game.dda.zbuffer[screen_x])
 			{
-				t_x_y[0] = s_x_y[0] * data->map.textures.ennemy[0].width / s;
-				t_x_y[1] = s_x_y[1] * data->map.textures.ennemy[0].height / s;
-				color = data->map.textures.ennemy[0].data[t_x_y[1]
-					* (data->map.textures.ennemy[0].size_line / 4) + t_x_y[0]];
+				t_x_y[0] = s_x_y[0] * data->ennemies[s[1]].f.width / s[0];
+				t_x_y[1] = s_x_y[1] * data->ennemies[s[1]].f.height / s[0];
+				color = data->ennemies[s[1]].f.data[t_x_y[1]
+					* (data->ennemies[s[1]].f.size_line / 4) + t_x_y[0]];
 				if ((color & 0x00FFFFFF) != 0)
 					put_pixel_img(&data->frame, screen_x, x_y[1]
-						+ s_x_y[1], color_shaders(color, data, enemy_dist));
+						+ s_x_y[1], color_shaders(color, data, dist));
 			}
 		}
 	}
@@ -100,7 +100,7 @@ void	draw_enemy(t_data *data, int i)
 {
 	float	d_x_y[2];
 	int		screen_x;
-	int		size;
+	int		s[2];
 	int		x_y[2];
 
 	if (!data->ennemies[i].alive)
@@ -110,12 +110,13 @@ void	draw_enemy(t_data *data, int i)
 	screen_x = enemy_screen_x(data, d_x_y[0], d_x_y[1]);
 	if (screen_x < 0 || screen_x >= data->width)
 		return ;
-	size = enemy_sprite_size(data, d_x_y[0], d_x_y[1]);
-	x_y[1] = (data->height / 2) - (size / 2);
-	x_y[0] = screen_x - (size / 2);
-	draw_enemy_sprite(data, x_y, size, sqrtf(d_x_y[0] * d_x_y[0]
+	s[0] = enemy_sprite_size(data, d_x_y[0], d_x_y[1]);
+	x_y[1] = (data->height / 2) - (s[0] / 2);
+	x_y[0] = screen_x - (s[0] / 2);
+	s[1] = i;
+	draw_enemy_sprite(data, x_y, s, sqrtf(d_x_y[0] * d_x_y[0]
 			+ d_x_y[1] * d_x_y[1]));
-	if (ennemy_on_center(data, x_y, size, i) && data->keys.mouse.l_click)
+	if (ennemy_on_center(data, x_y, s[0], i) && data->keys.mouse.l_click)
 	{
 		data->keys.mouse.l_click = 0;
 		hit_ennemy(data, i);

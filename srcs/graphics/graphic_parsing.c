@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 10:20:02 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:37:55 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	check_pos(t_data *data, char c, int i, int j)
 		data->ennemies[data->gameplay.z_count].x = i + 0.5;
 		data->ennemies[data->gameplay.z_count].y = j + 0.5;
 		data->ennemies[data->gameplay.z_count].hp = ENNEMY_HP;
+		data->ennemies[data->gameplay.z_count].f
+			= data->map.textures.ennemy[0];
 		data->gameplay.z_count++;
 	}
 }
