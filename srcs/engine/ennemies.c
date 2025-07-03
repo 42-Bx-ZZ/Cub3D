@@ -12,20 +12,34 @@
 
 #include "../../inc/cub3d.h"
 
+void	earn_money(t_data *data, int type)
+{
+	if (type == 0)
+	{
+		data->player.money += EARN_HIT;
+		printf("Hit! +%d$ (Total: %d$)\n", EARN_HIT, data->player.money);
+	}
+	else if (type == 1)
+	{
+		data->player.money += EARN_KILL;
+		printf("Kill! +%d$ (Total: %d$)\n", EARN_KILL, data->player.money);
+	}
+}
+
 void	hit_ennemy(t_data *data, int i)
 {
 	data->ennemies[i].hp--;
 	if (data->ennemies[i].hp <= 0)
 	{
 		data->ennemies[i].alive = 0;
-		//earn_money(data, 1); // 1 for kill
+		earn_money(data, 1);
 	}
 	else
 	{
 		data->ennemies[i].last_hit = 20;
 		data->ennemies[i].frame = 0;
 		data->ennemies[i].f = data->map.textures.ennemy[2];
-		// 	earn_money(data, 0);
+		earn_money(data, 0);
 	}
 }
 
@@ -71,8 +85,10 @@ void	revive_ennemies(t_data *data)
 	i = 0;
 	if (!ennemies_wiped(data))
 		return ;
-	data->gameplay.ennemy_hp *= 2;
-	printf("%d\n", data->gameplay.ennemy_hp);
+	data->gameplay.round++;
+	data->gameplay.ennemy_hp = ENNEMY_HP + (data->gameplay.round / 5);
+	printf("\n=== ROUND %d ===\n", data->gameplay.round);
+	printf("Zombie HP: %d\n", data->gameplay.ennemy_hp);
 	while (i < data->gameplay.z_count)
 	{
 		data->ennemies[i].x = data->ennemies[i].x_start;
@@ -82,5 +98,4 @@ void	revive_ennemies(t_data *data)
 		data->ennemies[i].hp = data->gameplay.ennemy_hp;
 		i++;
 	}
-	data->gameplay.round++;
 }

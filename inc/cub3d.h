@@ -56,9 +56,10 @@
 # define ENNEMY_NBR 12
 # define MOUSE_SENSI 0.0002
 # define INVU_TIME 5
-# define ENNEMY_HP 1
-# define MONEY 1000
-# define EARN 100
+# define ENNEMY_HP 3
+# define MONEY 0
+# define EARN_HIT 10
+# define EARN_KILL 100
 
 # if ENNEMY_NBR >= 2147483647 || ENNEMY_NBR <= 0
 #  undef ENNEMY_NBR
@@ -231,6 +232,7 @@ typedef struct s_data
 int				mouse_click(int key, int x, int y, t_data *data);
 int				ennemy_on_center(t_data *data, int x_y[2], int size, int i);
 void			hit_ennemy(t_data *data, int i);
+void			earn_money(t_data *data, int type);
 void			count_z(char **map, t_data *data);
 int				check_spawn(t_data *data, int x, int y);
 void			revive_ennemies(t_data *data);
