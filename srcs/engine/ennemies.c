@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 18:42:49 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/03 20:03:41 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	hit_ennemy(t_data *data, int i)
 	}
 }
 
-int	check_spawn(t_data *data, int x, int y)
+int	check_spawn(t_data *data, int y, int x)
 {
 	char	**map;
 
