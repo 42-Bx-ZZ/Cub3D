@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/03 09:44:23 by lowatell         ###   ########.fr        #
+#    Updated: 2025/07/04 09:30:59 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRCS =	main.c\
 		graphics/draw_map.c\
 		graphics/draw_items.c\
 		engine/ennemies.c\
+		engine/gun_animation.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
