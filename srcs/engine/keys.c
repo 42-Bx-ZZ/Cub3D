@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:43:16 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 09:30:45 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 09:32:36 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	mouse_click(int key, int x, int y, t_data *data)
 		if (data->keys.mouse.l_click == 0)
 			data->keys.mouse.l_click = 1;
 	}
-	if (key == 4 || key == 5)
+	if (key == SCROLL_UP || key == SCROLL_DOWN)
 		swap_gun(data);
 	return (0);
 }

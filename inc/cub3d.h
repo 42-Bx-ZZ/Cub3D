@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/04 09:29:58 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 09:32:19 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #  define SHIFT 65505
 #  define E 101
 #  define L_CLICK 1
+#  define SCROLL_UP 4
+#  define SCROLL_DOWN 5
 #  define LINUX 1
 # else
 #  include "../minilibx_opengl_20191021/mlx.h"
@@ -40,6 +42,8 @@
 #  define SHIFT 65505
 #  define E 101
 #  define L_CLICK 1
+#  define SCROLL_UP 4
+#  define SCROLL_DOWN 5
 #  define LINUX 0
 # endif
 
