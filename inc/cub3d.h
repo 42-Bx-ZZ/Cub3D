@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/03 16:36:53 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 09:08:09 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_gameplay
 	int	round;
 	int	z_count;
 	int	ennemy_hp;
+	int	last_earn;
 }	t_gameplay;
 
 typedef struct s_ennemy
@@ -229,6 +230,9 @@ typedef struct s_data
 	t_ennemy	ennemies[ENNEMY_NBR];
 }	t_data;
 
+void			swap_frame(t_data *data, int i);
+void			print_earn(t_data *data, int earn);
+int				minimap_color(char c);
 int				mouse_click(int key, int x, int y, t_data *data);
 int				ennemy_on_center(t_data *data, int x_y[2], int size, int i);
 void			hit_ennemy(t_data *data, int i);

@@ -6,11 +6,22 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 08:30:43 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 16:20:04 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 08:47:00 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+int	minimap_color(char c)
+{
+	if (c == 'D')
+		return (0x0FF000);
+	if (c == 'P')
+		return (0xFF0000);
+	if (c == '1')
+		return (0xFFFFFF);
+	return (0);
+}
 
 int	rgb_colors(int rgb[3])
 {

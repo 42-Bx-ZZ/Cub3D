@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 09:51:22 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 09:17:44 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,16 @@ void	print_fps(t_data *data)
 	free(fps);
 	if (!temp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, data->width - 40, 10, 0xFFFFFF, temp);
+	mlx_string_put(data->mlx, data->win, data->width - 40, 10, 0xFFFF00, temp);
 	free(temp);
 }
 
-void	print_earn(t_data *data)
+void	print_earn(t_data *data, int earn)
 {
 	char	*money;
 	char	*temp;
-	int		base;
 
-	base = 100;
-	money = ft_itoa(base);
+	money = ft_itoa(earn);
 	if (!money)
 		clean_exit(data);
 	temp = ft_strjoin(money, " $");
@@ -47,10 +45,9 @@ void	print_earn(t_data *data)
 		clean_exit(data);
 	if (data->player.earn_frames-- >= 0)
 		mlx_string_put(data->mlx, data->win, (data->width / 2)
-			+ 40, (data->height / 2)
-			- data->player.earn_frames, 0xFFFF00, temp);
+			+ 40, (data->height / 2) - (data->height / 10)
+			+ data->player.earn_frames, 0xFFFF00, temp);
 	free(temp);
-	data->player.money += base;
 }
 
 void	print_money(t_data *data)
@@ -65,7 +62,7 @@ void	print_money(t_data *data)
 	free(money);
 	if (!temp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, data->width - 40, 20, 0xFFFFFF, temp);
+	mlx_string_put(data->mlx, data->win, data->width - 40, 20, 0xFFFF00, temp);
 	free(temp);
 }
 
@@ -91,5 +88,6 @@ void	print_infos(t_data *data)
 		revive_ennemies(data);
 	print_money(data);
 	print_fps(data);
+	print_earn(data, data->gameplay.last_earn);
 	print_round(data);
 }

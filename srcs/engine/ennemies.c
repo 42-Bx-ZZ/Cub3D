@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 20:03:41 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 09:16:33 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,22 @@ void	earn_money(t_data *data, int type)
 	if (type == 0)
 	{
 		data->player.money += EARN_HIT;
+		data->gameplay.last_earn = EARN_HIT;
+		data->player.earn_frames = 20;
 		printf("Hit! +%d$ (Total: %d$)\n", EARN_HIT, data->player.money);
 	}
 	else if (type == 1)
 	{
 		data->player.money += EARN_KILL;
+		data->gameplay.last_earn = EARN_KILL;
+		data->player.earn_frames = 20;
 		printf("Kill! +%d$ (Total: %d$)\n", EARN_KILL, data->player.money);
 	}
 }
 
 void	hit_ennemy(t_data *data, int i)
 {
+	data->keys.mouse.l_click = 0;
 	data->ennemies[i].hp--;
 	if (data->ennemies[i].hp <= 0)
 	{
@@ -91,6 +96,7 @@ void	revive_ennemies(t_data *data)
 	printf("Zombie HP: %d\n", data->gameplay.ennemy_hp);
 	while (i < data->gameplay.z_count)
 	{
+		swap_frame(data, i);
 		data->ennemies[i].x = data->ennemies[i].x_start;
 		data->ennemies[i].y = data->ennemies[i].y_start;
 		data->ennemies[i].alive = check_spawn(data,

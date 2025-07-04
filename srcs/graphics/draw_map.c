@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:43:31 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 10:19:30 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 08:47:33 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,6 @@ static void	draw_square(t_img *img, int x, int y, int color)
 	}
 }
 
-static int	minimap_color(char c)
-{
-	if (c == 'D')
-		return (0x0FF000);
-	if (c == 'P')
-		return (0xFF0000);
-	if (c == '1')
-		return (0xFFFFFF);
-	return (0);
-}
-
 void	print_line(t_data *data, int i, int x, int y)
 {
 	int		j;
@@ -83,28 +72,6 @@ void	print_line(t_data *data, int i, int x, int y)
 				y, minimap_color(map[i][j]));
 		j++;
 	}
-}
-
-void	map_on_frame(t_data *data)
-{
-	char	**map;
-	int		i;
-	int		end;
-	int		y;
-
-	i = (int)data->game.p_y - 8;
-	if (i < 0)
-		i = 0;
-	end = i + 16;
-	y = 20;
-	map = data->map.setup;
-	while (map[i] && i < end)
-	{
-		print_line(data, i, 20, y);
-		y += 5;
-		i++;
-	}
-	draw_minimap_border(data);
 }
 
 void	draw_minimap_border(t_data *data)
@@ -130,3 +97,26 @@ void	draw_minimap_border(t_data *data)
 		y++;
 	}
 }
+
+void	map_on_frame(t_data *data)
+{
+	char	**map;
+	int		i;
+	int		end;
+	int		y;
+
+	i = (int)data->game.p_y - 8;
+	if (i < 0)
+		i = 0;
+	end = i + 16;
+	y = 20;
+	map = data->map.setup;
+	while (map[i] && i < end)
+	{
+		print_line(data, i, 20, y);
+		y += 5;
+		i++;
+	}
+	draw_minimap_border(data);
+}
+
