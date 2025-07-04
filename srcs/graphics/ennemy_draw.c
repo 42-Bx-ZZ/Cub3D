@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 02:12:41 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 08:53:44 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:48:38 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,9 @@ void	draw_enemy(t_data *data, int i)
 	s[1] = i;
 	draw_enemy_sprite(data, x_y, s, sqrtf(d_x_y[0] * d_x_y[0]
 			+ d_x_y[1] * d_x_y[1]));
-	if (ennemy_on_center(data, x_y, s[0], i) && data->keys.mouse.l_click == 1)
+	if (data->keys.mouse.firing && ennemy_on_center(data, x_y, s[0], i))
 	{
-		hit_ennemy(data, i);
+		data->player.target = i;
+		data->player.targeting = 1;
 	}
 }

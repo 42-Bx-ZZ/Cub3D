@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:56:38 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 09:27:38 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 13:09:21 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	draw_gun(t_data *data)
 	int		y;
 	int		color;
 
-	gun_x = data->width - data->player.gun.sprite.width;
-	gun_y = data->height - data->player.gun.sprite.height;
+	gun_x = data->width - data->player.gun.idle.width;
+	gun_y = data->height - data->player.gun.idle.height;
 	y = 0;
-	while (y < data->player.gun.sprite.height)
+	while (y < data->player.gun.idle.height)
 	{
 		x = 0;
-		while (x < data->player.gun.sprite.width)
+		while (x < data->player.gun.idle.width)
 		{
-			color = data->player.gun.sprite.data[y
-				* (data->player.gun.sprite.size_line / 4) + x];
+			color = data->player.gun.idle.data[y
+				* (data->player.gun.idle.size_line / 4) + x];
 			if ((color & 0x00FFFFFF) != 0)
 				put_pixel_img(&data->frame, gun_x + x, gun_y + y, color);
 			x++;
@@ -42,15 +42,23 @@ void	draw_items(t_data *data)
 {
 	int	i;
 
-	i = 0;
+	i = data->gameplay.z_count - 1;
 	sort_ennemies(data);
-	while (i < data->gameplay.z_count)
+	while (i >= 0)
 	{
 		if (data->ennemies[i].alive)
 			draw_enemy(data, i);
-		i++;
+		i--;
+	}
+	if (data->keys.mouse.firing && data->player.targeting)
+	{
+		data->keys.mouse.fire_frames = 20;
+		data->keys.mouse.firing = 0;
+		hit_ennemy(data, data->player.target);
+		data->player.targeting = 0;
 	}
 	draw_crosshair(data);
+	swap_gun_stance(data);
 	draw_gun(data);
 	map_on_frame(data);
 }

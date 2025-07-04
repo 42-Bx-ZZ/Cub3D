@@ -6,52 +6,11 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 09:19:05 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:03:47 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-void	check_dist(t_data *data, int i)
-{
-	while (i < data->gameplay.z_count)
-	{
-		if (data->ennemies[i].alive)
-		{
-			data->ennemies[i].dist = sqrtf(powf(data->ennemies[i].x
-						- data->game.p_x, 2)
-					+ powf(data->ennemies[i].y - data->game.p_y, 2));
-		}
-		else
-			data->ennemies[i].dist = 999999.0f;
-		i++;
-	}
-}
-
-void	sort_ennemies(t_data *data)
-{
-	int			i;
-	t_ennemy	tmp;
-	t_ennemy	tmp_t;
-
-	i = 0;
-	if (data->gameplay.z_count == 0
-		|| data->gameplay.z_count == 1)
-		return ;
-	check_dist(data, i);
-	while (i < data->gameplay.z_count)
-	{
-		if (data->ennemies[i].dist < data->ennemies[i + 1].dist)
-		{
-			tmp = data->ennemies[i];
-			tmp_t = data->ennemies[i + 1];
-			data->ennemies[i] = tmp_t;
-			data->ennemies[i + 1] = tmp;
-			i = 0;
-		}
-		i++;
-	}
-}
 
 int	load_xpm(t_img *img, char *file, t_data *data)
 {
@@ -70,6 +29,25 @@ int	load_xpm(t_img *img, char *file, t_data *data)
 	return (0);
 }
 
+int	load_guns(t_data *data)
+{
+	if (load_xpm(&data->player.laser.idle, "textures/ray_gun_fp.xpm", data))
+		return (1);
+	if (load_xpm(&data->player.gun.idle, "textures/gun_fp.xpm", data))
+		return (1);
+	if (load_xpm(&data->player.gun.firing, "textures/gun_fp.xpm", data))
+		return (1);
+	if (load_xpm(&data->player.laser.firing, "textures/gun_fp.xpm", data))
+		return (1);
+	if (load_xpm(&data->player.gun.moving, "textures/gun_fp.xpm", data))
+		return (1);
+	if (load_xpm(&data->player.laser.moving, "textures/gun_fp.xpm", data))
+		return (1);
+	data->player.gun.power = 1;
+	data->player.laser.power = 2;
+	return (0);
+}
+
 int	load_items(t_data *data)
 {
 	t_textures	*t;
@@ -81,9 +59,7 @@ int	load_items(t_data *data)
 		return (1);
 	if (load_xpm(&t->ennemy[2], "textures/zombie_hit.xpm", data))
 		return (1);
-	if (load_xpm(&data->player.laser.sprite, "textures/ray_gun_fp.xpm", data))
-		return (1);
-	if (load_xpm(&data->player.gun.sprite, "textures/gun_fp.xpm", data))
+	if (load_guns(data))
 		return (1);
 	return (0);
 }

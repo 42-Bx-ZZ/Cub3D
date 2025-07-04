@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 09:16:33 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:17:32 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	earn_money(t_data *data, int type)
 
 void	hit_ennemy(t_data *data, int i)
 {
-	data->keys.mouse.l_click = 0;
+	data->keys.mouse.firing = 0;
 	data->ennemies[i].hp--;
 	if (data->ennemies[i].hp <= 0)
 	{

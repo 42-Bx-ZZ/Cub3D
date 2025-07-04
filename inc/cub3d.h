@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/04 09:32:19 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 13:04:11 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,10 @@ typedef struct s_dda
 
 typedef struct s_gun
 {
-	t_img	sprite;
+	t_img	idle;
+	t_img	moving;
+	t_img	firing;
+	int		stance; // 1 = idle, 2 = move, 3 = shot
 	int		power;
 }	t_gun;
 
@@ -147,6 +150,8 @@ typedef struct s_player
 	int			earn_frames;
 	double		last_hit;
 	double		last_regen;
+	int			target;
+	int			targeting;
 	t_gun		gun;
 	t_gun		laser;
 }	t_player;
@@ -168,7 +173,8 @@ typedef struct s_game
 typedef struct s_mouse
 {
 	double	last_hit;
-	int		l_click;
+	int		firing;
+	int		fire_frames;
 }	t_mouse;
 
 typedef struct s_keys
@@ -235,6 +241,7 @@ typedef struct s_data
 }	t_data;
 
 
+void			swap_gun_stance(t_data *data);
 void			swap_gun(t_data *data);
 void			swap_frame(t_data *data, int i);
 void			print_earn(t_data *data, int earn);

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:43:16 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 09:32:36 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:20:28 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ int	mouse_click(int key, int x, int y, t_data *data)
 {
 	(void)x;
 	(void)y;
+	if (data->keys.mouse.firing == 1)
+		return (0);
 	if (key == L_CLICK)
 	{
-		if (data->keys.mouse.l_click == 0)
-			data->keys.mouse.l_click = 1;
+		if (data->keys.mouse.firing == 0 && data->keys.mouse.fire_frames <= 0)
+			data->keys.mouse.firing = 1;
 	}
 	if (key == SCROLL_UP || key == SCROLL_DOWN)
 		swap_gun(data);

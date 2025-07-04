@@ -6,11 +6,27 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/03 18:45:05 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:13:00 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void	clean_guns(t_data *data)
+{
+	if (data->player.gun.idle.ptr)
+		mlx_destroy_image(data->mlx, data->player.gun.idle.ptr);
+	if (data->player.laser.idle.ptr)
+		mlx_destroy_image(data->mlx, data->player.laser.idle.ptr);
+	if (data->player.gun.moving.ptr)
+		mlx_destroy_image(data->mlx, data->player.gun.moving.ptr);
+	if (data->player.laser.moving.ptr)
+		mlx_destroy_image(data->mlx, data->player.laser.moving.ptr);
+	if (data->player.gun.firing.ptr)
+		mlx_destroy_image(data->mlx, data->player.gun.firing.ptr);
+	if (data->player.laser.moving.ptr)
+		mlx_destroy_image(data->mlx, data->player.laser.firing.ptr);
+}
 
 void	destroy_imgs(t_data *data)
 {
@@ -34,10 +50,7 @@ void	destroy_imgs(t_data *data)
 		mlx_destroy_image(data->mlx, data->map.textures.ennemy[1].ptr);
 	if (data->map.textures.ennemy[2].ptr)
 		mlx_destroy_image(data->mlx, data->map.textures.ennemy[2].ptr);
-	if (data->player.gun.sprite.ptr)
-		mlx_destroy_image(data->mlx, data->player.gun.sprite.ptr);
-	if (data->player.laser.sprite.ptr)
-		mlx_destroy_image(data->mlx, data->player.laser.sprite.ptr);
+	clean_guns(data);
 }
 
 int	clean_exit(t_data *data)

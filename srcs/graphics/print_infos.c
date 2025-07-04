@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 09:17:44 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:21:15 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	print_infos(t_data *data)
 {
 	if ((int)(elapsed_time() - data->fps.start) % 10 == 0 && SPAWN == 1)
 		revive_ennemies(data);
+	data->keys.mouse.fire_frames--;
 	print_money(data);
 	print_fps(data);
 	print_earn(data, data->gameplay.last_earn);
