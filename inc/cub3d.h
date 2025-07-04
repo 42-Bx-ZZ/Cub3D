@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/04 13:04:11 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 14:18:05 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # endif
 
 # define WIDTH 1280
-# define HEIGHT 720
+# define HEIGHT 700
 # define CLOSEBTN 17
 # define STEP 0.1
 # define FOV 60
@@ -64,6 +64,10 @@
 # define MONEY 0
 # define EARN_HIT 10
 # define EARN_KILL 100
+# define LOADING_BAR_WIDTH 600
+# define LOADING_BAR_HEIGHT 8
+# define LOADING_STEPS 100
+# define OPENING_ANIMATION_STEPS 20
 
 # if ENNEMY_NBR >= 2147483647 || ENNEMY_NBR <= 0
 #  undef ENNEMY_NBR
@@ -78,6 +82,7 @@
 # include <stdio.h>
 # include <math.h>
 # include <sys/time.h>
+# include <unistd.h>
 
 typedef struct s_img
 {
@@ -302,5 +307,9 @@ void			free_all_and_print_exit(t_data *data, char *msg);
 void			check_and_parse_cub_file(t_data *data);
 void			check_and_parse_wall_path(t_data *data, char *line, char *type);
 void			check_and_parse_fc_colors(t_data *data, char *line, char type);
+void			show_loading_screen(t_data *data);
+void			copy_scaled_image(t_data *data, void *src_img, int src_w, int src_h);
+void			draw_loading_bar_on_buffer(t_data *data, int progress);
+void			opening_animation(t_data *data);
 
 #endif

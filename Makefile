@@ -73,6 +73,8 @@ SRCS =	main.c\
 		graphics/draw_items.c\
 		engine/ennemies.c\
 		engine/gun_animation.c\
+		graphics/loading_screen.c\
+		graphics/loading_screen_utils.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
