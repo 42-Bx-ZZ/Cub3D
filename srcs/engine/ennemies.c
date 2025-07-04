@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 12:17:32 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 13:12:41 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	earn_money(t_data *data, int type)
 void	hit_ennemy(t_data *data, int i)
 {
 	data->keys.mouse.firing = 0;
-	data->ennemies[i].hp--;
+	data->ennemies[i].hp = data->ennemies[i].hp - data->player.gun.power;
 	if (data->ennemies[i].hp <= 0)
 	{
 		data->ennemies[i].alive = 0;
