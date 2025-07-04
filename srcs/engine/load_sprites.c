@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 18:45:45 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 09:19:05 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	load_xpm(t_img *img, char *file, t_data *data)
 
 int	load_items(t_data *data)
 {
-	t_textures *t;
+	t_textures	*t;
 
 	t = &data->map.textures;
 	if (load_xpm(&t->ennemy[0], "textures/goomba.xpm", data))
