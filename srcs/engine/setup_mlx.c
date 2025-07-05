@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/03 09:53:10 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/04 14:18:05 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,17 @@ int	setup_mlx(t_data *data)
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "cub3D");
 	if (!data->win)
 		return (1);
+	data->frame.ptr = mlx_new_image(data->mlx, data->width, data->height);
+	if (!data->frame.ptr)
+		return (1);
+	data->frame.data = (int *)mlx_get_data_addr(data->frame.ptr,
+			&data->frame.bpp, &data->frame.size_line, &data->frame.endian);
+	if (!data->frame.data)
+		return (1);
+	show_loading_screen(data);
 	if (load_sprites(data))
 		return (1);
+	opening_animation(data);
 	data->fps.start = elapsed_time();
 	mlx_mouse_hide(data->mlx, data->win);
 	mlx_hook(data->win, 6, 1L << 6, &move_mouse, data);
