@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 13:51:22 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/06 13:55:35 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:19:19 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	draw_health_bar(t_data *data)
 	int		bar_y;
 
 	health_width = calculate_health_width(data->player.hp);
-	bar_x = data->width - 220;
+	bar_x = data->width / 2 - 110;
 	bar_y = data->height - 40;
 	y = bar_y;
 	while (y < bar_y + 20)

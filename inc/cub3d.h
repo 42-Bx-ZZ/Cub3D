@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/06 13:54:15 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:24:06 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ typedef struct s_img
 	int			size_line;
 	int			endian;
 	int			height;
+	int			w_height;
 	int			width;
 	int			w_width;
-	int			w_height;
 }	t_img;
 
 typedef struct s_gameplay
@@ -169,15 +169,14 @@ typedef struct s_game
 	double		dir_x;
 	double		dir_y;
 	t_dda		dda;
-	float		perp_wall;
 	float		r_x_fy;
 	float		r_y_fy;
+	float		perp_wall;
 	float		rays[2];
 }   t_game;
 
 typedef struct s_mouse
 {
-	double	last_hit;
 	int		firing;
 	int		fire_frames;
 }	t_mouse;
@@ -232,8 +231,6 @@ typedef struct s_data
     void    	*win;
 	int			width;
 	int			height;
-	int			mouse_x;
-	int			mouse_y;
 	t_map		map;
 	t_img		frame;
 	t_game		game;

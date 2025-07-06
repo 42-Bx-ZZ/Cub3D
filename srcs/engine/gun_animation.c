@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 09:28:08 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 13:15:15 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:31:26 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,29 @@ void	swap_imgs(t_img *a, t_img *b)
 
 void	swap_gun_stance(t_data *data)
 {
+	data->player.targeting = 0;
 	if (data->keys.mouse.fire_frames > 0 && data->player.gun.stance == 0)
 	{
 		swap_imgs(&data->player.gun.idle, &data->player.gun.firing);
-		data->keys.mouse.fire_frames = 20;
 		data->player.gun.stance = 2;
 		printf("swap to stance 2\n");
 	}
-	if (data->keys.mouse.fire_frames <= 0 && data->player.gun.stance == 2)
+	else if (data->keys.mouse.fire_frames <= 0 && data->player.gun.stance == 2)
 	{
 		swap_imgs(&data->player.gun.idle, &data->player.gun.firing);
 		swap_imgs(&data->player.gun.idle, &data->player.gun.moving);
-		data->keys.mouse.fire_frames = 20;
 		data->player.gun.stance = 1;
+		data->keys.mouse.fire_frames = 20;
 		printf("swap to stance 1\n");
 	}
-	if (data->keys.mouse.fire_frames <= 0 && data->player.gun.stance == 1)
+	else if (data->keys.mouse.fire_frames <= 0 && data->player.gun.stance == 1)
 	{
 		swap_imgs(&data->player.gun.idle, &data->player.gun.moving);
-		printf("swap to stance 0\n");
 		data->player.gun.stance = 0;
+		printf("swap to stance 0 (idle)\n");
 	}
+	if (data->keys.mouse.fire_frames > 0)
+		data->keys.mouse.fire_frames--;
 }
 
 void	swap_gun(t_data *data)
