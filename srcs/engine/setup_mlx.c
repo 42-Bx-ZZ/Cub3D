@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 14:18:05 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/06 13:52:46 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,18 @@ int	keys_hook(int key, t_data *data)
 	return (0);
 }
 
+void	hook_manager(t_data *data)
+{
+	mlx_mouse_hide(data->mlx, data->win);
+	mlx_hook(data->win, 6, 1L << 6, &move_mouse, data);
+	mlx_hook(data->win, 2, 1L << 0, &key_press, data);
+	mlx_hook(data->win, 3, 1L << 1, &key_release, data);
+	mlx_mouse_hook(data->win, &mouse_click, data);
+	mlx_loop_hook(data->mlx, update_move, data);
+	mlx_hook(data->win, CLOSEBTN, 0, clean_exit, data);
+	mlx_loop(data->mlx);
+}
+
 int	setup_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
@@ -71,13 +83,6 @@ int	setup_mlx(t_data *data)
 		return (1);
 	opening_animation(data);
 	data->fps.start = elapsed_time();
-	mlx_mouse_hide(data->mlx, data->win);
-	mlx_hook(data->win, 6, 1L << 6, &move_mouse, data);
-	mlx_hook(data->win, 2, 1L << 0, &key_press, data);
-	mlx_hook(data->win, 3, 1L << 1, &key_release, data);
-	mlx_mouse_hook(data->win, &mouse_click, data);
-	mlx_loop_hook(data->mlx, update_move, data);
-	mlx_hook(data->win, CLOSEBTN, 0, clean_exit, data);
-	mlx_loop(data->mlx);
+	hook_manager(data);
 	return (0);
 }

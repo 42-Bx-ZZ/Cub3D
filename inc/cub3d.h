@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/04 14:18:05 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/06 13:54:15 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,6 +267,7 @@ int				rgb_colors(int rgb[3]);
 int				ft_tablen(char **map);
 void			draw_crosshair(t_data *data);
 void			draw_gun(t_data *data);
+void			draw_health_bar(t_data *data);
 void			draw_left_horizontal_segment(t_data *data, int screen_center_x,
 				int screen_center_y, int spread_value);
 void			draw_right_horizontal_segment(t_data *data, int screen_center_x,
