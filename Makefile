@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
+#    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/06 13:53:03 by lowatell         ###   ########.fr        #
+#    Updated: 2025/07/07 17:57:02 by zaiicko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRCS =	main.c\
 		parsing/wall_path_handler.c\
 		parsing/fc_colors_handler.c\
 		engine/setup_mlx.c\
+		engine/setup_mlx_utils.c\
 		moves/moves.c\
 		engine/get_map.c\
 		engine/load_sprites.c\
@@ -75,6 +76,7 @@ SRCS =	main.c\
 		engine/gun_animation.c\
 		graphics/loading_screen.c\
 		graphics/loading_screen_utils.c\
+		graphics/loading_screen_utils2.c\
 		graphics/health_bar.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))

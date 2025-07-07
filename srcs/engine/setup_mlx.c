@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/06 13:52:46 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/07 17:57:33 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	hook_manager(t_data *data)
 	mlx_hook(data->win, 2, 1L << 0, &key_press, data);
 	mlx_hook(data->win, 3, 1L << 1, &key_release, data);
 	mlx_mouse_hook(data->win, &mouse_click, data);
-	mlx_loop_hook(data->mlx, update_move, data);
+	mlx_loop_hook(data->mlx, unified_loop_hook, data);
 	mlx_hook(data->win, CLOSEBTN, 0, clean_exit, data);
 	mlx_loop(data->mlx);
 }
@@ -81,7 +81,6 @@ int	setup_mlx(t_data *data)
 	show_loading_screen(data);
 	if (load_sprites(data))
 		return (1);
-	opening_animation(data);
 	data->fps.start = elapsed_time();
 	hook_manager(data);
 	return (0);

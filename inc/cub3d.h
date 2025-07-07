@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/06 14:24:06 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/07 17:52:35 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@
 # define LOADING_BAR_HEIGHT 8
 # define LOADING_STEPS 100
 # define OPENING_ANIMATION_STEPS 20
+# define STATE_LOADING 1
+# define STATE_OPENING 2
+# define STATE_GAME 3
 
 # if ENNEMY_NBR >= 2147483647 || ENNEMY_NBR <= 0
 #  undef ENNEMY_NBR
@@ -137,7 +140,6 @@ typedef struct s_dda
 	float		*zbuffer;
 }	t_dda;
 
-
 typedef struct s_gun
 {
 	t_img	idle;
@@ -164,7 +166,7 @@ typedef struct s_player
 typedef struct s_game
 {
 	float		p_x;
-	float   	p_y;
+	float		p_y;
 	float		dir;
 	double		dir_x;
 	double		dir_y;
@@ -173,7 +175,7 @@ typedef struct s_game
 	float		r_y_fy;
 	float		perp_wall;
 	float		rays[2];
-}   t_game;
+}	t_game;
 
 typedef struct s_mouse
 {
@@ -219,7 +221,7 @@ typedef struct s_map
 	t_textures	textures;
 }	t_map;
 
-typedef	struct	s_fps
+typedef struct s_fps
 {
 	int			fps;
 	double		start;
@@ -227,10 +229,13 @@ typedef	struct	s_fps
 
 typedef struct s_data
 {
-    void    	*mlx;
-    void    	*win;
+	void		*mlx;
+	void		*win;
 	int			width;
 	int			height;
+	int			loading_progress;
+	int			loading_active;
+	int			game_state;
 	t_map		map;
 	t_img		frame;
 	t_game		game;
@@ -241,7 +246,6 @@ typedef struct s_data
 	t_player	player;
 	t_ennemy	ennemies[ENNEMY_NBR];
 }	t_data;
-
 
 void			swap_gun_stance(t_data *data);
 void			swap_gun(t_data *data);
@@ -266,13 +270,13 @@ void			draw_crosshair(t_data *data);
 void			draw_gun(t_data *data);
 void			draw_health_bar(t_data *data);
 void			draw_left_horizontal_segment(t_data *data, int screen_center_x,
-				int screen_center_y, int spread_value);
+					int screen_center_y, int spread_value);
 void			draw_right_horizontal_segment(t_data *data, int screen_center_x,
-				int screen_center_y, int spread_value);
+					int screen_center_y, int spread_value);
 void			draw_top_vertical_segment(t_data *data, int screen_center_x,
-				int screen_center_y, int spread_value);
+					int screen_center_y, int spread_value);
 void			draw_bottom_vertical_segment(t_data *data, int screen_center_x,
-				int screen_center_y, int spread_value);
+					int screen_center_y, int spread_value);
 void			ennemy_moves(t_data *data);
 void			draw_enemy(t_data *data, int i);
 void			door_check(t_data *data);
@@ -291,23 +295,29 @@ void			raycasting(t_data *data, size_t r);
 float			get_dir(char c);
 void			moves(int key, t_data *data);
 void			view(int key, t_data *data);
-void			update_frame(t_data *data, float fov_deg, int nb_rays, char **map);
+void			update_frame(t_data *data, float fov_deg, int nb_rays,
+					char **map);
 void			draw_map(t_data *data);
 int				load_sprites(t_data *data);
-int	    		clean_exit(t_data *data);
-char    		**get_map(char *file);
-int     		setup_mlx(t_data *data);
-int     		keys_hook(int key, t_data *data);
+int				clean_exit(t_data *data);
+char			**get_map(char *file);
+int				setup_mlx(t_data *data);
+int				keys_hook(int key, t_data *data);
 void			check_args(int ac, char **av);
 void			extract_all_cub_data(t_data *data, char *file);
 void			free_all_data(t_data *data);
 void			free_all_and_print_exit(t_data *data, char *msg);
 void			check_and_parse_cub_file(t_data *data);
-void			check_and_parse_wall_path(t_data *data, char *line, char *type);
+void			check_and_parse_wall_path(t_data *data, char *line,
+					char *type);
 void			check_and_parse_fc_colors(t_data *data, char *line, char type);
 void			show_loading_screen(t_data *data);
-void			copy_scaled_image(t_data *data, void *src_img, int src_w, int src_h);
+int				loading_loop_hook(t_data *data);
+void			copy_scaled_image(t_data *data, void *img, int iw, int ih);
 void			draw_loading_bar_on_buffer(t_data *data, int progress);
 void			opening_animation(t_data *data);
+int				opening_loop_hook(t_data *data);
+void			draw_opening_mask(t_data *data, int mask_height);
+int				unified_loop_hook(t_data *data);
 
 #endif
