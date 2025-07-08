@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/08 12:41:43 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:57:08 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 # define CLOSEBTN 17
 # define STEP 0.1
 # define FOV 60
-# define SHADERS 0
+# define SHADERS 1
 # define VIEW 0.05
 # define RAYS WIDTH
 # define HITBOX 0.15

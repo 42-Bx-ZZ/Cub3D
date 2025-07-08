@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 08:30:43 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 08:47:00 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:58:28 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	color_shaders(int color, t_data *data, float i)
 	if (i != 0.0f)
 		dist = i;
 	max_dist = 7.0f;
-	min_bright = 0.1f;
+	min_bright = 0.2f;
 	if (dist >= max_dist)
 		factor = min_bright;
 	else
