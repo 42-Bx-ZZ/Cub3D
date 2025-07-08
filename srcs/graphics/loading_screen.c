@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:51 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/09 00:36:49 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:50:10 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	loading_loop_hook(t_data *data)
 	if (data->loading_progress > LOADING_STEPS)
 	{
 		mlx_destroy_image(data->mlx, loading_img);
+		data->map.textures.loading.ptr = NULL;
 		data->game_state = STATE_OPENING;
 		data->loading_progress = 0;
 	}

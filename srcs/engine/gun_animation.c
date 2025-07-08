@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 09:28:08 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/08 12:28:46 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:50:38 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	swap_gun_stance(t_data *data)
 		swap_imgs(&data->player.gun.idle, &data->player.gun.firing);
 		swap_imgs(&data->player.gun.idle, &data->player.gun.moving);
 		data->player.gun.stance = 1;
-		data->keys.mouse.fire_frames = 20;
+		data->keys.mouse.fire_frames = 10;
 	}
 	else if (data->keys.mouse.fire_frames <= 0 && data->player.gun.stance == 1)
 	{

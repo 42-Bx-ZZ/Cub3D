@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:56:38 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/08 11:59:38 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:50:58 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	draw_items(t_data *data)
 		hit_ennemy(data, data->player.target);
 	else if (data->keys.mouse.firing)
 	{
-		data->keys.mouse.fire_frames = 20;
+		data->keys.mouse.fire_frames = 10;
 		data->keys.mouse.firing = 0;
 	}
 	swap_gun_stance(data);
