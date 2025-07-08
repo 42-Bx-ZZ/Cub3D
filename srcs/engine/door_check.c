@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 17:35:36 by lowatell          #+#    #+#             */
-/*   Updated: 2025/06/25 01:46:50 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:42:59 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,41 @@ void	door_check(t_data *data)
 	temp = data->player.money;
 	if (data->player.money >= 500 && data->keys.e)
 		data->player.money -= open_door(data);
+	if (temp != data->player.money)
+		printf("Your new sold is: %d\n", data->player.money);
+}
+
+int	box_open(t_data *data)
+{
+	int		x;
+	int		y;
+	char	**map;
+
+	x = data->game.p_x;
+	y = data->game.p_y;
+	map = data->map.setup;
+	if (map[y][x] && map[y + 1] && map[y + 1][x] && map[y + 1][x] == 'B'
+		&& data->keys.e && data->player.money >= 2500)
+		return (map[y + 1][x] = '0', 2500);
+	if (map[y][x] && map[y - 1] && map[y - 1][x] && map[y - 1][x] == 'B'
+		&& data->keys.e && data->player.money >= 2500)
+		return (map[y - 1][x] = '0', 2500);
+	if (map[y][x] && map[y][x + 1] && map[y][x + 1] && map[y][x + 1] == 'B'
+		&& data->keys.e && data->player.money >= 2500)
+		return (map[y][x + 1] = '0', 2500);
+	if (map[y][x] && map[y][x - 1] && map[y][x - 1] && map[y][x - 1] == 'B'
+		&& data->keys.e && data->player.money >= 2500)
+		return (map[y][x - 1] = '0', 2500);
+	return (0);
+}
+
+void	box_check(t_data *data)
+{
+	int	temp;
+
+	temp = data->player.money;
+	if (data->player.money >= 500 && data->keys.e)
+		data->player.money -= box_open(data);
 	if (temp != data->player.money)
 		printf("Your new sold is: %d\n", data->player.money);
 }

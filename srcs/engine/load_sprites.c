@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/06 13:54:09 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:09:43 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ int	load_guns(t_data *data)
 {
 	if (load_xpm(&data->player.laser.idle, "textures/ray_gun_fp.xpm", data))
 		return (1);
-	if (load_xpm(&data->player.gun.idle, "textures/gun_fp.xpm", data))
+	if (load_xpm(&data->player.gun.idle, "textures/gun_idle.xpm", data))
 		return (1);
-	if (load_xpm(&data->player.gun.firing, "textures/gun_fp.xpm", data))
+	if (load_xpm(&data->player.gun.firing, "textures/gun_shot.xpm", data))
 		return (1);
-	if (load_xpm(&data->player.laser.firing, "textures/gun_fp.xpm", data))
+	if (load_xpm(&data->player.laser.firing, "textures/ray_gun_fp.xpm", data))
 		return (1);
-	if (load_xpm(&data->player.gun.moving, "textures/gun_fp.xpm", data))
+	if (load_xpm(&data->player.gun.moving, "textures/gun_move.xpm", data))
 		return (1);
-	if (load_xpm(&data->player.laser.moving, "textures/gun_fp.xpm", data))
+	if (load_xpm(&data->player.laser.moving, "textures/ray_gun_fp.xpm", data))
 		return (1);
 	data->player.gun.power = 1;
 	data->player.laser.power = 2;
@@ -53,9 +53,9 @@ int	load_items(t_data *data)
 	t_textures	*t;
 
 	t = &data->map.textures;
-	if (load_xpm(&t->ennemy[0], "textures/goomba.xpm", data))
+	if (load_xpm(&t->ennemy[0], "textures/zombie_move.xpm", data))
 		return (1);
-	if (load_xpm(&t->ennemy[1], "textures/goomba_2.xpm", data))
+	if (load_xpm(&t->ennemy[1], "textures/zombie_move_2.xpm", data))
 		return (1);
 	if (load_xpm(&t->ennemy[2], "textures/zombie_hit.xpm", data))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/06 13:54:12 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:26:51 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ int	main(int ac, char **av)
 		data.width = WIDTH;
 		data.height = HEIGHT;
 	}
+	data.map.textures.floor_color[0] = 33;
+	data.map.textures.floor_color[1] = 33;
+	data.map.textures.floor_color[2] = 33;
+	data.map.textures.ceiling_color[0] = 0;
+	data.map.textures.ceiling_color[1] = 0;
+	data.map.textures.ceiling_color[2] = 100;
 	data.player.last_hit = elapsed_time();
 	if (setup_mlx(&data))
 		clean_exit(&data);
