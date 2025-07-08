@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/08 12:09:43 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:51:59 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ int	load_xpm(t_img *img, char *file, t_data *data)
 
 int	load_guns(t_data *data)
 {
-	if (load_xpm(&data->player.laser.idle, "textures/ray_gun_fp.xpm", data))
+	if (load_xpm(&data->player.laser.idle, "textures/ray_gun_idle.xpm", data))
 		return (1);
 	if (load_xpm(&data->player.gun.idle, "textures/gun_idle.xpm", data))
 		return (1);
 	if (load_xpm(&data->player.gun.firing, "textures/gun_shot.xpm", data))
 		return (1);
-	if (load_xpm(&data->player.laser.firing, "textures/ray_gun_fp.xpm", data))
+	if (load_xpm(&data->player.laser.firing, "textures/ray_gun_shot.xpm", data))
 		return (1);
 	if (load_xpm(&data->player.gun.moving, "textures/gun_move.xpm", data))
 		return (1);
-	if (load_xpm(&data->player.laser.moving, "textures/ray_gun_fp.xpm", data))
+	if (load_xpm(&data->player.laser.moving, "textures/ray_gun_shot.xpm", data))
 		return (1);
 	data->player.gun.power = 1;
 	data->player.laser.power = 2;
