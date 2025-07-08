@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loading_screen.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 11:13:51 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/07 17:52:35 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/09 00:36:49 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	loading_loop_hook(t_data *data)
 		loading_img = init_loading_image(data, &img_width, &img_height);
 	if (!loading_img)
 		return (0);
+	data->map.textures.loading.ptr = loading_img;
 	copy_scaled_image(data, loading_img, img_width, img_height);
 	draw_loading_bar_on_buffer(data, data->loading_progress);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame.ptr, 0, 0);

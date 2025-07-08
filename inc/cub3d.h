@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/08 20:57:08 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:41:21 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,7 @@ typedef struct s_textures
 	t_img		east;
 	t_img		door;
 	t_img		ennemy[3];
+	t_img		loading;
 	int			floor_color[3];
 	int			ceiling_color[3];
 	int			frame;
@@ -321,7 +322,7 @@ void			draw_opening_mask(t_data *data, int mask_height);
 int				unified_loop_hook(t_data *data);
 int				enemy_screen_x(t_data *data, float dx, float dy);
 int				enemy_sprite_size(t_data *data, float dx, float dy);
-int				check_way(char **map, int x, int y);
+int				check_way(char **map, int x, int y, t_data *data);
 char			**map_copy(char **tab);
 
 #endif

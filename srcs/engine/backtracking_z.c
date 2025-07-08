@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:33:38 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/08 13:38:45 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:46:10 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**map_copy(char **tab)
 	i = 0;
 	while (tab[i])
 		i++;
-	map = (char **)malloc(sizeof(char *) * i + 1);
+	map = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!map)
 		return (NULL);
 	i = 0;
@@ -56,15 +56,16 @@ void	backtracking(char **map, int x, int y)
 			backtracking(map, x - 1, y);
 }
 
-int	check_way(char **map, int y, int x)
+int	check_way(char **map, int y, int x, t_data *data)
 {
 	char	**n_map;
 	int		i;
 	int		j;
 
+	n_map = 0;
 	n_map = map_copy(map);
 	if (!n_map)
-		return (ft_free_tab(n_map), 0);
+		return (clean_exit(data), 0);
 	backtracking(n_map, y, x);
 	i = 0;
 	while (n_map[i])
