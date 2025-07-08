@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/08 13:33:22 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:21:48 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	destroy_imgs(t_data *data)
 		mlx_destroy_image(data->mlx, data->map.textures.ennemy[1].ptr);
 	if (data->map.textures.ennemy[2].ptr)
 		mlx_destroy_image(data->mlx, data->map.textures.ennemy[2].ptr);
+	if (data->frame.ptr)
+		mlx_destroy_image(data->mlx, data->frame.ptr);
 	clean_guns(data);
 }
 

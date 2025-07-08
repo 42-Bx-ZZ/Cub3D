@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 03:34:40 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/08 11:40:15 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:33:40 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	swap_frame(t_data *data, int i)
 	if (data->ennemies[i].last_hit <= 0
 		&& data->ennemies[i].f.ptr == data->map.textures.ennemy[2].ptr)
 		data->ennemies[i].f = data->map.textures.ennemy[0];
-	else if (data->ennemies[i].frame % 30 == 0)
+	else if (data->ennemies[i].frame % 10 == 0)
 	{
 		data->ennemies[i].frame = 0;
 		if (data->ennemies[i].f.ptr == data->map.textures.ennemy[0].ptr)
