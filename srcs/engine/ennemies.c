@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/06 14:30:09 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:34:51 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,8 @@ int	check_spawn(t_data *data, int y, int x)
 	char	**map;
 
 	map = data->map.setup;
-	if (map[x] && map[x + 1] && map[x][y] && map[x + 1][y])
-		if (map[x + 1][y] == '0')
-			return (1);
-	if (x > 0 && map[x] && map[x - 1] && map[x][y] && map[x - 1][y])
-		if (map[x - 1][y] == '0')
-			return (1);
-	if (map[x] && map[x][y] && map[x][y + 1])
-		if (map[x][y + 1] == '0')
-			return (1);
-	if (y > 0 && map[x] && map[x][y] && map[x][y - 1])
-		if (map[x][y - 1] == '0')
-			return (1);
+	if (check_way(map, x, y))
+		return (1);
 	return (0);
 }
 
@@ -97,10 +87,10 @@ void	revive_ennemies(t_data *data)
 	while (i < data->gameplay.z_count)
 	{
 		swap_frame(data, i);
-		data->ennemies[i].x = data->ennemies[i].x_start;
-		data->ennemies[i].y = data->ennemies[i].y_start;
 		data->ennemies[i].alive = check_spawn(data,
-				data->ennemies[i].x_start, data->ennemies[i].y_start);
+			data->ennemies[i].x_start, data->ennemies[i].y_start);
+		data->ennemies[i].x = data->ennemies[i].x_start + 0.5;
+		data->ennemies[i].y = data->ennemies[i].y_start + 0.5;
 		data->ennemies[i].hp = data->gameplay.ennemy_hp;
 		i++;
 	}

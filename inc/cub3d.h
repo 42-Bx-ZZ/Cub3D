@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/08 12:30:18 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:41:43 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,5 +321,7 @@ void			draw_opening_mask(t_data *data, int mask_height);
 int				unified_loop_hook(t_data *data);
 int				enemy_screen_x(t_data *data, float dx, float dy);
 int				enemy_sprite_size(t_data *data, float dx, float dy);
+int				check_way(char **map, int x, int y);
+char			**map_copy(char **tab);
 
 #endif

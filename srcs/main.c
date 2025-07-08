@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/08 12:26:51 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:33:22 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int ac, char **av)
 	data.map.setup = get_map(av[1]);
 	if (!data.map.setup)
 		clean_exit(&data);
-	data.player.money = MONEY;
+	data.player.money = MONEY + 100 * 100;
 	data.gameplay.ennemy_hp = ENNEMY_HP;
 	data.player.hp = 100;
 	if (HEIGHT > 0 && WIDTH > 0)

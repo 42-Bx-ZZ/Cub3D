@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:44:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/04 12:19:24 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:38:55 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	check_pos(t_data *data, char c, int i, int j)
 		data->game.p_x = i + 0.5;
 		data->game.p_y = j + 0.5;
 		data->game.dir = get_dir(c);
+		data->map.setup[j][i] = 'P';
 	}
 	if (c == 'Z' && data->gameplay.z_count < ENNEMY_NBR
 		&& SPAWN == 1 && data->gameplay.z_count < data->map.z)

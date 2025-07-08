@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 02:12:41 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/08 12:19:16 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:21:06 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	draw_enemy_sprite(t_data *data, int x_y[2], int s[2], float dist)
 	while (++s_x_y[1] < s[0] && x_y[1] + s_x_y[1] < data->height)
 	{
 		s_x_y[0] = -1;
-		while (++s_x_y[0] < s[0] && x_y[0] + s_x_y[0] < data->map.textures.ennemy->w_width)
+		while (++s_x_y[0] < s[0] && x_y[0] + s_x_y[0] < data->width)
 		{
 			screen_x = x_y[0] + s_x_y[0];
 			if (screen_x >= 0 && screen_x < data->width
