@@ -6,7 +6,7 @@
 #    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/09 22:48:10 by zaiicko          ###   ########.fr        #
+#    Updated: 2025/07/09 23:52:44 by zaiicko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,8 @@ SRCS =	main.c\
 		graphics/health_bar.c\
 		engine/backtracking_z.c\
 		engine/boss.c\
+		clean_utils.c\
+		clean_utils2.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
