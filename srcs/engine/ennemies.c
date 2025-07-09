@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/09 17:37:22 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:48:36 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	revive_ennemies(t_data *data)
 	if (data->gameplay.z_count <= 0 || !ennemies_wiped(data))
 		return ;
 	data->gameplay.round++;
-	data->gameplay.ennemy_hp = ENNEMY_HP + (data->gameplay.round / 5);
+	data->gameplay.ennemy_hp = ENNEMY_HP + (data->gameplay.round / 2);
 	while (++i < data->gameplay.z_count)
 	{
 		swap_frame(data, i);
