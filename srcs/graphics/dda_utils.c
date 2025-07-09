@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_checker.c                                     :+:      :+:    :+:   */
+/*   dda_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 02:27:07 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/09 22:49:04 by zaiicko          ###   ########.fr       */
+/*   Created: 2025/06/24 14:38:39 by lowatell          #+#    #+#             */
+/*   Updated: 2025/06/24 18:30:57 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
-void	check_args(int ac, char **av)
+int	get_dda_step(float dir)
 {
-	if (ac == 2 && ft_strncmp(&av[1][ft_strlen(av[1]) - 4], ".cub", 4) == 0)
-		return ;
-	else
-		ft_print_exit("Error\nWrong arguments : ./cub3d <maps/map1.cub>");
+	if (dir < 0)
+		return (-1);
+	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/06/28 13:30:27 by zaiicko          ###   ########.fr        #
+#    Updated: 2025/07/09 22:48:10 by zaiicko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
+MATH_FLAG = -lm
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 INC_DIR = inc
@@ -51,6 +52,37 @@ SRCS =	main.c\
 		parsing/map_handler_utils.c\
 		parsing/cub_file_handler_utils.c\
 		parsing/map_handler_utils2.c\
+		engine/setup_mlx.c\
+		engine/setup_mlx_utils.c\
+		moves/moves.c\
+		engine/get_map.c\
+		engine/load_sprites.c\
+		engine/keys.c\
+		graphics/graphic_parsing.c\
+		graphics/view.c\
+		graphics/raycasting.c\
+		graphics/crosshair.c\
+		graphics/crosshair_utils.c\
+		graphics/raycasting_utils.c\
+		moves/hitbox.c\
+		graphics/dda.c\
+		graphics/dda_utils.c\
+		engine/door_check.c\
+		graphics/print_infos.c\
+		graphics/ennemy_draw.c\
+		engine/ennemy_moves.c\
+		graphics/colors.c\
+		engine/hp_manager.c\
+		graphics/draw_map.c\
+		graphics/draw_items.c\
+		engine/ennemies.c\
+		engine/gun_animation.c\
+		graphics/loading_screen.c\
+		graphics/loading_screen_utils.c\
+		graphics/loading_screen_utils2.c\
+		graphics/health_bar.c\
+		engine/backtracking_z.c\
+		engine/boss.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
@@ -62,7 +94,7 @@ $(NAME): $(OBJ) $(LIBFT)
 		@mkdir -p tmp
 		@touch tmp/t && chmod 777 tmp/t
 		@make 2>/tmp/t -sC $(MLX) --no-print-directory
-		@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXA) -o $(NAME) $(FLAGS)
+		@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXA) -o $(NAME) $(FLAGS) $(MATH_FLAG)
 
 $(LIBFT):
 		@make -C $(LIBFT_DIR) --no-print-directory

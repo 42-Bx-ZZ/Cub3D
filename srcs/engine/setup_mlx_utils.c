@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_checker.c                                     :+:      :+:    :+:   */
+/*   setup_mlx_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 02:27:07 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/09 22:49:04 by zaiicko          ###   ########.fr       */
+/*   Created: 2025/07/07 17:05:00 by zaiicko           #+#    #+#             */
+/*   Updated: 2025/07/07 17:57:58 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
-void	check_args(int ac, char **av)
+int	unified_loop_hook(t_data *data)
 {
-	if (ac == 2 && ft_strncmp(&av[1][ft_strlen(av[1]) - 4], ".cub", 4) == 0)
-		return ;
-	else
-		ft_print_exit("Error\nWrong arguments : ./cub3d <maps/map1.cub>");
+	if (data->game_state == STATE_LOADING)
+		loading_loop_hook(data);
+	else if (data->game_state == STATE_OPENING)
+		opening_loop_hook(data);
+	else if (data->game_state == STATE_GAME)
+		update_move(data);
+	return (0);
 }
