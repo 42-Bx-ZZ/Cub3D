@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 03:34:40 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/09 00:33:40 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:37:49 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	sort_ennemies(t_data *data)
 
 void	swap_frame(t_data *data, int i)
 {
+	if (data->ennemies[i].boss)
+		swap_frame_boss(data, i);
 	if (data->ennemies[i].alive == 0
 		&& data->ennemies[i].f.ptr == data->map.textures.ennemy[2].ptr)
 	{

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/09 00:41:21 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:38:58 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_ennemy
 	float		dir;
 	float		dist;
 	int			frame;
+	int			boss;
 	t_img		f;
 }	t_ennemy;
 
@@ -210,6 +211,7 @@ typedef struct s_textures
 	t_img		door;
 	t_img		ennemy[3];
 	t_img		loading;
+	t_img		boss[3];
 	int			floor_color[3];
 	int			ceiling_color[3];
 	int			frame;
@@ -248,6 +250,8 @@ typedef struct s_data
 	t_ennemy	ennemies[ENNEMY_NBR];
 }	t_data;
 
+
+void			swap_frame_boss(t_data *data, int i);
 void			swap_gun_stance(t_data *data);
 void			swap_gun(t_data *data);
 void			swap_frame(t_data *data, int i);
@@ -324,5 +328,6 @@ int				enemy_screen_x(t_data *data, float dx, float dy);
 int				enemy_sprite_size(t_data *data, float dx, float dy);
 int				check_way(char **map, int x, int y, t_data *data);
 char			**map_copy(char **tab);
+int				is_boss(void);
 
 #endif

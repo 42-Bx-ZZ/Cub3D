@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/09 00:29:45 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:46:09 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,17 @@ int	load_items(t_data *data)
 	t_textures	*t;
 
 	t = &data->map.textures;
-	if (load_xpm(&t->ennemy[0], "textures/zombie_move.xpm", data))
+	if (load_xpm(&t->ennemy[0], "textures/zombie_move_1.xpm", data))
 		return (1);
 	if (load_xpm(&t->ennemy[1], "textures/zombie_move_2.xpm", data))
 		return (1);
 	if (load_xpm(&t->ennemy[2], "textures/zombie_hit.xpm", data))
+		return (1);
+	if (load_xpm(&t->boss[0], "textures/boss.xpm", data))
+		return (1);
+	if (load_xpm(&t->boss[1], "textures/boss_2.xpm", data))
+		return (1);
+	if (load_xpm(&t->boss[2], "textures/boss.xpm", data))
 		return (1);
 	if (load_guns(data))
 		return (1);

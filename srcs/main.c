@@ -6,11 +6,41 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/09 00:40:18 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:06:15 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void	clean_walls(t_data *data)
+{	
+	if (data->map.textures.south.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.south.ptr);
+	if (data->map.textures.east.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.east.ptr);
+	if (data->map.textures.west.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.west.ptr);
+	if (data->map.textures.door.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.door.ptr);
+	if (data->map.textures.north.ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.north.ptr);
+}
+
+void	clean_zombies(t_data *data)
+{
+	if (data->map.textures.ennemy[0].ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.ennemy[0].ptr);
+	if (data->map.textures.ennemy[1].ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.ennemy[1].ptr);
+	if (data->map.textures.ennemy[2].ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.ennemy[2].ptr);
+	if (data->map.textures.boss[0].ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.boss[0].ptr);
+	if (data->map.textures.boss[1].ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.boss[1].ptr);
+	if (data->map.textures.boss[2].ptr)
+		mlx_destroy_image(data->mlx, data->map.textures.boss[2].ptr);
+}
 
 void	clean_guns(t_data *data)
 {
@@ -34,24 +64,10 @@ void	destroy_imgs(t_data *data)
 		return ;
 	if (data->frame.ptr)
 		mlx_destroy_image(data->mlx, data->frame.ptr);
-	if (data->map.textures.south.ptr)
-		mlx_destroy_image(data->mlx, data->map.textures.south.ptr);
-	if (data->map.textures.east.ptr)
-		mlx_destroy_image(data->mlx, data->map.textures.east.ptr);
-	if (data->map.textures.west.ptr)
-		mlx_destroy_image(data->mlx, data->map.textures.west.ptr);
-	if (data->map.textures.door.ptr)
-		mlx_destroy_image(data->mlx, data->map.textures.door.ptr);
-	if (data->map.textures.north.ptr)
-		mlx_destroy_image(data->mlx, data->map.textures.north.ptr);
-	if (data->map.textures.ennemy[0].ptr)
-		mlx_destroy_image(data->mlx, data->map.textures.ennemy[0].ptr);
-	if (data->map.textures.ennemy[1].ptr)
-		mlx_destroy_image(data->mlx, data->map.textures.ennemy[1].ptr);
-	if (data->map.textures.ennemy[2].ptr)
-		mlx_destroy_image(data->mlx, data->map.textures.ennemy[2].ptr);
 	if (data->map.textures.loading.ptr)
 		mlx_destroy_image(data->mlx, data->map.textures.loading.ptr);
+	clean_walls(data);
+	clean_zombies(data);
 	clean_guns(data);
 }
 

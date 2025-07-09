@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 08:47:20 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/09 00:41:28 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:37:22 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,26 @@ void	revive_ennemies(t_data *data)
 {
 	int	i;
 
-	i = 0;
-	if (!ennemies_wiped(data))
+	i = -1;
+	if (data->gameplay.z_count <= 0 || !ennemies_wiped(data))
 		return ;
 	data->gameplay.round++;
 	data->gameplay.ennemy_hp = ENNEMY_HP + (data->gameplay.round / 5);
-	printf("\n=== ROUND %d ===\n", data->gameplay.round);
-	printf("Zombie HP: %d\n", data->gameplay.ennemy_hp);
-	while (i < data->gameplay.z_count)
+	while (++i < data->gameplay.z_count)
 	{
 		swap_frame(data, i);
 		data->ennemies[i].alive = check_spawn(data,
 				data->ennemies[i].x_start, data->ennemies[i].y_start);
 		data->ennemies[i].x = data->ennemies[i].x_start + 0.5;
 		data->ennemies[i].y = data->ennemies[i].y_start + 0.5;
+		data->ennemies[i].boss = is_boss();
 		data->ennemies[i].hp = data->gameplay.ennemy_hp;
-		i++;
+		if (data->ennemies[i].boss)
+		{
+			data->ennemies[i].hp = data->gameplay.ennemy_hp * 2;
+			data->ennemies[i].f = data->map.textures.boss[0];
+		}
+		else
+			data->ennemies[i].f = data->map.textures.ennemy[0];
 	}
 }

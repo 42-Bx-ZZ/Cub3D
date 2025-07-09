@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/08 12:41:59 by lowatell         ###   ########.fr        #
+#    Updated: 2025/07/09 17:15:22 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRCS =	main.c\
 		graphics/loading_screen_utils2.c\
 		graphics/health_bar.c\
 		engine/backtracking_z.c\
+		engine/boss.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 
