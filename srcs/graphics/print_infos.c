@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/09 18:01:31 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:47:29 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	print_money(t_data *data)
 	free(money);
 	if (!temp)
 		clean_exit(data);
+	mlx_string_put(data->mlx, data->win, data->width - 40,
+		20, 0xFFFF00, temp);
 	free(temp);
 }
 
@@ -90,7 +92,7 @@ void	print_infos(t_data *data)
 		data->keys.mouse.fire_frames--;
 	print_money(data);
 	print_fps(data);
-	if (data->player.earn_frames == 20)
+	if (data->player.earn_frames > 0)
 		print_earn(data, data->gameplay.last_earn);
 	print_round(data);
 	data->fps.fps++;
