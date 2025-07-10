@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
+#    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/10 19:20:50 by zaiicko          ###   ########.fr        #
+#    Updated: 2025/07/10 21:58:30 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ MAC_FLAGS = -lmlx -framework OpenGL -framework AppKit -L $(MAC_MLX)
 
 ifeq ($(shell uname -s), Linux)
 	MLX = $(LINUX_MLX)
-	MLXA = $(LINUX_MLX)/*.a
+	MLXA = $(LINUX_MLX)/libmlx.a $(LINUX_MLX)/libmlx_Linux.a
 	FLAGS = $(LINUX_FLAGS)
 else ifeq ($(shell uname -s), Darwin)
 	MLX = $(MAC_MLX)

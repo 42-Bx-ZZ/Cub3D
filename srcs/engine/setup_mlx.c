@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:55:07 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/10 17:51:08 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 22:05:46 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	keys_hook(int key, t_data *data)
 
 void	hook_manager(t_data *data)
 {
-	mlx_mouse_hide(data->mlx, data->win);
 	mlx_hook(data->win, 6, 1L << 6, &move_mouse, data);
 	mlx_hook(data->win, 2, 1L << 0, &key_press, data);
 	mlx_hook(data->win, 3, 1L << 1, &key_release, data);
