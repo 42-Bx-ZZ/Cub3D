@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 18:20:16 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:18:39 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,5 +368,6 @@ int		enemy_sprite_size(t_data *data, float dx, float dy);
 int		check_way(char **map, int x, int y, t_data *data);
 char	**map_copy(char **tab);
 int		is_boss(void);
+void	init_game_data(t_data *data);
 
 #endif

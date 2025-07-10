@@ -6,7 +6,7 @@
 #    By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/09 23:52:44 by zaiicko          ###   ########.fr        #
+#    Updated: 2025/07/10 19:20:50 by zaiicko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ else
 endif
 
 SRCS =	main.c\
-		args_checker.c\
 		parsing/cub_file_handler.c\
 		utils.c\
 		parsing/path_handler.c\
