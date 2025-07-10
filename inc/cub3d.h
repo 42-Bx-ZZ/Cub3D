@@ -6,7 +6,7 @@
 /*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/09 22:52:37 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/10 03:53:03 by zaiicko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,15 +213,15 @@ typedef struct s_textures
 	int		ceiling_color[3];
 	int		c_flag;
 	int		f_flag;
-	t_img		north;
-	t_img		south;
-	t_img		west;
-	t_img		east;
-	t_img		door;
-	t_img		ennemy[3];
-	t_img		loading;
-	t_img		boss[3];
-	int			frame;
+	t_img	north;
+	t_img	south;
+	t_img	west;
+	t_img	east;
+	t_img	door;
+	t_img	ennemy[3];
+	t_img	loading;
+	t_img	boss[3];
+	int		frame;
 }	t_textures;
 
 typedef struct s_map
@@ -244,8 +244,8 @@ typedef struct s_fps
 
 typedef struct s_data
 {
-	char	**cub_file;
-	int		cub_len;
+	char		**cub_file;
+	int			cub_len;
 	void		*mlx;
 	void		*win;
 	int			width;
@@ -280,83 +280,75 @@ void	copy_without_space(t_data *data);
 void	check_if_finishable(t_data *data);
 void	check_if_directory(t_data *data, char *file);
 void	check_if_empty(t_data *data, int i);
-void			swap_frame_boss(t_data *data, int i);
-void			swap_gun_stance(t_data *data);
-void			swap_gun(t_data *data);
-void			swap_frame(t_data *data, int i);
-void			print_earn(t_data *data, int earn);
-int				minimap_color(char c);
-int				mouse_click(int key, int x, int y, t_data *data);
-int				ennemy_on_center(t_data *data, int x_y[2], int size, int i);
-void			hit_ennemy(t_data *data, int i);
-void			earn_money(t_data *data, int type);
-void			count_z(char **map, t_data *data);
-int				check_spawn(t_data *data, int x, int y);
-void			revive_ennemies(t_data *data);
-int				color_shaders(int color, t_data *data, float i);
-void			draw_items(t_data *data);
-void			sort_ennemies(t_data *data);
-void			map_on_frame(t_data *data);
-void			update_hp(t_data *data);
-int				rgb_colors(int rgb[3]);
-int				ft_tablen(char **map);
-void			draw_crosshair(t_data *data);
-void			draw_gun(t_data *data);
-void			draw_health_bar(t_data *data);
-void			draw_left_horizontal_segment(t_data *data, int screen_center_x,
-					int screen_center_y, int spread_value);
-void			draw_right_horizontal_segment(t_data *data, int screen_center_x,
-					int screen_center_y, int spread_value);
-void			draw_top_vertical_segment(t_data *data, int screen_center_x,
-					int screen_center_y, int spread_value);
-void			draw_bottom_vertical_segment(t_data *data, int screen_center_x,
-					int screen_center_y, int spread_value);
-void			ennemy_moves(t_data *data);
-void			draw_enemy(t_data *data, int i);
-void			door_check(t_data *data);
-void			dda(t_data *data, float ray_angle, char **map);
-int				get_dda_step(float dir);
-int				is_blocked(t_data *data, float x, float y, float hitbox);
-void			print_infos(t_data *data);
-double			elapsed_time(void);
-int				get_frame(int y, int size[2], t_data *data, int r);
-t_img			*wall_side(t_data *data);
-void			put_pixel_img(t_img *img, int x, int y, int color);
-int				update_move(t_data *data);
-int				key_press(int key, t_data *data);
-int				key_release(int key, t_data *data);
-void			raycasting(t_data *data, size_t r);
-float			get_dir(char c);
-void			moves(int key, t_data *data);
-void			view(int key, t_data *data);
-void			update_frame(t_data *data, float fov_deg, int nb_rays,
-					char **map);
-void			draw_map(t_data *data);
-int				load_sprites(t_data *data);
-int				clean_exit(t_data *data);
-char			**get_map(char *file);
-int				setup_mlx(t_data *data);
-int				keys_hook(int key, t_data *data);
-void			check_args(int ac, char **av);
-void			extract_all_cub_data(t_data *data, char *file);
-void			free_all_data(t_data *data);
-void			free_all_and_print_exit(t_data *data, char *msg);
-void			check_and_parse_cub_file(t_data *data);
-void			check_and_parse_wall_path(t_data *data, char *line,
-					char *type);
-void			check_and_parse_fc_colors(t_data *data, char *line, char type);
-void			show_loading_screen(t_data *data);
-int				loading_loop_hook(t_data *data);
-void			copy_scaled_image(t_data *data, void *img, int iw, int ih);
-void			draw_loading_bar_on_buffer(t_data *data, int progress);
-void			opening_animation(t_data *data);
-int				opening_loop_hook(t_data *data);
-void			draw_opening_mask(t_data *data, int mask_height);
-int				unified_loop_hook(t_data *data);
-int				enemy_screen_x(t_data *data, float dx, float dy);
-int				enemy_sprite_size(t_data *data, float dx, float dy);
-int				check_way(char **map, int x, int y, t_data *data);
-char			**map_copy(char **tab);
-int				is_boss(void);
+void	swap_frame_boss(t_data *data, int i);
+void	swap_gun_stance(t_data *data);
+void	swap_gun(t_data *data);
+void	swap_frame(t_data *data, int i);
+void	print_earn(t_data *data, int earn);
+int		minimap_color(char c);
+int		mouse_click(int key, int x, int y, t_data *data);
+int		ennemy_on_center(t_data *data, int x_y[2], int size, int i);
+void	hit_ennemy(t_data *data, int i);
+void	earn_money(t_data *data, int type);
+void	count_z(char **map, t_data *data);
+int		check_spawn(t_data *data, int x, int y);
+void	revive_ennemies(t_data *data);
+int		color_shaders(int color, t_data *data, float i);
+void	draw_items(t_data *data);
+void	sort_ennemies(t_data *data);
+void	map_on_frame(t_data *data);
+void	update_hp(t_data *data);
+int		rgb_colors(int rgb[3]);
+int		ft_tablen(char **map);
+void	draw_crosshair(t_data *data);
+void	draw_gun(t_data *data);
+void	draw_health_bar(t_data *data);
+void	draw_left_horizontal_segment(t_data *data, int screen_center_x,
+			int screen_center_y, int spread_value);
+void	draw_right_horizontal_segment(t_data *data, int screen_center_x,
+			int screen_center_y, int spread_value);
+void	draw_top_vertical_segment(t_data *data, int screen_center_x,
+			int screen_center_y, int spread_value);
+void	draw_bottom_vertical_segment(t_data *data, int screen_center_x,
+			int screen_center_y, int spread_value);
+void	ennemy_moves(t_data *data);
+void	draw_enemy(t_data *data, int i);
+void	door_check(t_data *data);
+void	dda(t_data *data, float ray_angle, char **map);
+int		get_dda_step(float dir);
+int		is_blocked(t_data *data, float x, float y, float hitbox);
+void	print_infos(t_data *data);
+double	elapsed_time(void);
+int		get_frame(int y, int size[2], t_data *data, int r);
+t_img	*wall_side(t_data *data);
+void	put_pixel_img(t_img *img, int x, int y, int color);
+int		update_move(t_data *data);
+int		key_press(int key, t_data *data);
+int		key_release(int key, t_data *data);
+void	raycasting(t_data *data, size_t r);
+float	get_dir(char c);
+void	moves(int key, t_data *data);
+void	view(int key, t_data *data);
+void	update_frame(t_data *data, float fov_deg, int nb_rays,
+			char **map);
+void	draw_map(t_data *data);
+int		load_sprites(t_data *data);
+int		clean_exit(t_data *data);
+char	**get_map(char *file);
+int		setup_mlx(t_data *data);
+int		keys_hook(int key, t_data *data);
+void	show_loading_screen(t_data *data);
+int		loading_loop_hook(t_data *data);
+void	copy_scaled_image(t_data *data, void *img, int iw, int ih);
+void	draw_loading_bar_on_buffer(t_data *data, int progress);
+void	opening_animation(t_data *data);
+int		opening_loop_hook(t_data *data);
+void	draw_opening_mask(t_data *data, int mask_height);
+int		unified_loop_hook(t_data *data);
+int		enemy_screen_x(t_data *data, float dx, float dy);
+int		enemy_sprite_size(t_data *data, float dx, float dy);
+int		check_way(char **map, int x, int y, t_data *data);
+char	**map_copy(char **tab);
+int		is_boss(void);
 
 #endif
