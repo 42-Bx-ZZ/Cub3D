@@ -6,11 +6,27 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:49:40 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 11:38:09 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:48:22 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+static void	free_guns_txt(t_data *data)
+{
+	if (data->map.textures.gun_idle)
+		free(data->map.textures.gun_idle);
+	if (data->map.textures.gun_move)
+		free(data->map.textures.gun_move);
+	if (data->map.textures.gun_shot)
+		free(data->map.textures.gun_shot);
+	if (data->map.textures.laser_idle)
+		free(data->map.textures.laser_idle);
+	if (data->map.textures.laser_move)
+		free(data->map.textures.laser_move);
+	if (data->map.textures.laser_shot)
+		free(data->map.textures.laser_shot);
+}
 
 static void	free_all_txt_struct(t_data *data)
 {
@@ -34,6 +50,7 @@ static void	free_all_txt_struct(t_data *data)
 		free(data->map.textures.east_path);
 	if (data->map.textures.west_path)
 		free(data->map.textures.west_path);
+	free_guns_txt(data);
 }
 
 void	free_all_data(t_data *data)

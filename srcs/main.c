@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:29:57 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 10:00:02 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:33:07 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac != 2 || !av[1][0])
-		return (2);
+	check_args(ac, av);
 	ft_memset(&data, 0, sizeof(data));
 	data.player.money = MONEY;
 	data.gameplay.ennemy_hp = ENNEMY_HP;

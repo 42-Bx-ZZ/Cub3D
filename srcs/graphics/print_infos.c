@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_infos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student->s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/09 18:47:29 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:13:53 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,97 @@
 
 void	print_fps(t_data *data)
 {
-	char	*fps;
-	char	*temp;
+	t_infos	*t;
 
+	t = &data->infos;
 	if (elapsed_time() - data->fps.start < 1)
-		fps = ft_strdup("...");
+		t->value = ft_strdup("...");
 	else
-		fps = ft_itoa(data->fps.fps / (elapsed_time() - data->fps.start));
-	if (!fps)
+		t->value = ft_itoa(data->fps.fps / (elapsed_time() - data->fps.start));
+	if (!t->value)
 		clean_exit(data);
-	temp = ft_strjoin(fps, " FPS");
-	free(fps);
-	if (!temp)
+	t->value_f = 1;
+	t->tmp = ft_strjoin(t->value, " FPS");
+	data->infos.tmp_f = 1;
+	free(t->value);
+	t->value_f = 0;
+	if (!t->tmp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, data->width - 40, 10, 0xFFFF00, temp);
-	free(temp);
+	mlx_string_put(data->mlx, data->win, data->width - 40, 10, 0xFFFF00, t->tmp);
+	free(t->tmp);
+	data->infos.tmp_f = 0;
+	data->infos.tmp = NULL;
+	data->infos.value = NULL;
 }
 
 void	print_earn(t_data *data, int earn)
 {
-	char	*money;
-	char	*temp;
+	t_infos	*t;
 
-	money = ft_itoa(earn);
-	if (!money)
+	t = &data->infos;
+	t->value = ft_itoa(earn);
+	if (!t->value)
 		clean_exit(data);
-	temp = ft_strjoin(money, " $");
-	free(money);
-	if (!temp)
+	t->value_f = 1;
+	t->tmp = ft_strjoin(t->value, " $");
+	data->infos.tmp_f = 1;
+	free(t->value);
+	t->value_f = 0;
+	if (!t->tmp)
 		clean_exit(data);
 	if (data->player.earn_frames-- >= 0)
 		mlx_string_put(data->mlx, data->win, (data->width / 2)
 			+ 40, (data->height / 2) - (data->height / 10)
-			+ data->player.earn_frames, 0xFFFF00, temp);
-	free(temp);
+			+ data->player.earn_frames, 0xFFFF00, t->tmp);
+	free(t->tmp);
+	data->infos.tmp_f = 0;
+	data->infos.tmp = NULL;
+	data->infos.value = NULL;
 }
 
 void	print_money(t_data *data)
 {
-	char	*money;
-	char	*temp;
+	t_infos	*t;
 
-	money = ft_itoa(data->player.money);
-	if (!money)
+	t = &data->infos;
+	t->value = ft_itoa(data->player.money);
+	if (!t->value)
 		clean_exit(data);
-	temp = ft_strjoin(money, " $");
-	free(money);
-	if (!temp)
+	t->value_f = 1;
+	t->tmp = ft_strjoin(t->value, " $");
+	data->infos.tmp_f = 1;
+	free(t->value);
+	t->value_f = 0;
+	if (!t->tmp)
 		clean_exit(data);
 	mlx_string_put(data->mlx, data->win, data->width - 40,
-		20, 0xFFFF00, temp);
-	free(temp);
+		20, 0xFFFF00, t->tmp);
+	free(t->tmp);
+	data->infos.tmp_f = 0;
+	data->infos.tmp = NULL;
+	data->infos.value = NULL;
 }
 
 void	print_round(t_data *data)
 {
-	char	*round;
-	char	*temp;
+	t_infos	*t;
 
-	round = ft_itoa(data->gameplay.round + 1);
-	if (!round)
+	t = &data->infos;
+	t->value = ft_itoa(data->gameplay.round + 1);
+	if (!t->value)
 		clean_exit(data);
-	temp = ft_strjoin("Round ", round);
-	free(round);
-	if (!temp)
+	t->value_f = 1;
+	t->tmp = ft_strjoin("Round ", t->value);
+	data->infos.tmp_f = 1;
+	free(t->value);
+	t->value_f = 0;
+	if (!t->tmp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, 15, data->height - 10, 0xFFFFFF, temp);
-	free(temp);
+	mlx_string_put(data->mlx, data->win, 15, data->height - 10, 0xFFFFFF, t->tmp);
+	free(t->tmp);
+	data->infos.tmp_f = 0;
+	data->infos.tmp = NULL;
+	data->infos.value = NULL;
 }
 
 void	print_infos(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:51:31 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 10:34:01 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:21:24 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ static void	clean_guns(t_data *data)
 
 static void	destroy_imgs(t_data *data)
 {
-	if (!data)
-		return ;
 	if (data->frame.ptr)
 		mlx_destroy_image(data->mlx, data->frame.ptr);
 	if (data->map.textures.loading.ptr)
@@ -73,14 +71,16 @@ static void	destroy_imgs(t_data *data)
 
 int	clean_exit(t_data *data)
 {
-	if (!data)
-		exit(1);
 	free_all_data(data);
 	destroy_imgs(data);
 	if (data && data->mlx && data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
 		mlx_destroy_display(data->mlx);
+	if (data->infos.value && data->infos.value_f)
+		free(data->infos.value);
+	if (data->infos.tmp && data->infos.tmp_f)
+		free(data->infos.tmp);
 	if (data && data->mlx)
 		free(data->mlx);
 	exit(1);

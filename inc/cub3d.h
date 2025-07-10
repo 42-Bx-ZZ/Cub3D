@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 11:36:07 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:20:16 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,14 @@
 # include <math.h>
 # include <sys/time.h>
 # include <unistd.h>
+
+typedef struct s_infos
+{
+	char		*tmp;
+	int			tmp_f;
+	char		*value;
+	int			value_f;
+}	t_infos;
 
 typedef struct s_img
 {
@@ -270,6 +278,7 @@ typedef struct s_data
 	t_fps		fps;
 	t_player	player;
 	t_ennemy	ennemies[ENNEMY_NBR];
+	t_infos		infos;
 }	t_data;
 
 void	check_args(int ac, char **av);
