@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/10 10:30:20 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:38:51 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,20 @@ int	load_xpm(t_img *img, char *file, t_data *data)
 
 int	load_guns(t_data *data)
 {
-	if (load_xpm(&data->player.laser.idle, "textures/laser_idle.xpm", data))
+	t_textures	*t;
+
+	t = &data->map.textures;
+	if (load_xpm(&data->player.laser.idle, t->laser_idle, data))
 		return (1);
-	if (load_xpm(&data->player.gun.idle, "textures/gun_idle.xpm", data))
+	if (load_xpm(&data->player.gun.idle, t->gun_idle, data))
 		return (1);
-	if (load_xpm(&data->player.gun.firing, "textures/gun_shot.xpm", data))
+	if (load_xpm(&data->player.gun.firing, t->gun_shot, data))
 		return (1);
-	if (load_xpm(&data->player.laser.firing, "textures/laser_shot.xpm", data))
+	if (load_xpm(&data->player.laser.firing, t->laser_shot, data))
 		return (1);
-	if (load_xpm(&data->player.gun.moving, "textures/gun_move.xpm", data))
+	if (load_xpm(&data->player.gun.moving, t->gun_move, data))
 		return (1);
-	if (load_xpm(&data->player.laser.moving, "textures/laser_move.xpm", data))
+	if (load_xpm(&data->player.laser.moving, t->laser_move, data))
 		return (1);
 	data->player.gun.power = 1;
 	data->player.laser.power = 2;
@@ -76,15 +79,15 @@ int	load_sprites(t_data *data)
 
 	t = &data->map.textures;
 	if (load_xpm(&t->north, data->map.textures.north_path, data))
-		return (ft_printf("%s\n", data->map.textures.north_path), 1);
+		return (1);
 	if (load_xpm(&t->south, data->map.textures.south_path, data))
-		return (ft_printf("%s\n", data->map.textures.south_path), 1);
+		return (1);
 	if (load_xpm(&t->east, data->map.textures.east_path, data))
-		return (ft_printf("%s\n", data->map.textures.east_path), 1);
+		return (1);
 	if (load_xpm(&t->west, data->map.textures.west_path, data))
-		return (ft_printf("%s\n", data->map.textures.west_path), 1);
+		return (1);
 	if (load_xpm(&t->door, data->map.textures.door_path, data))
-		return (ft_printf("%s\n", data->map.textures.door_path), 1);
+		return (1);
 	if (load_items(data))
 		return (1);
 	data->map.textures.frame = 0;

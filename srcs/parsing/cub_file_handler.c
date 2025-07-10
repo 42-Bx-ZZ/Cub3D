@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 10:22:08 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:18:47 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	extract_all_cub_data(t_data *data, char *file)
 
 static int	check_texture(t_data *data, int *i)
 {
-	char	*id[10];
+	char	*id[17];
 	int		j;
 
 	init_texture_id(id);

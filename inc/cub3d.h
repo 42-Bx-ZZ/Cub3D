@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 10:30:40 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:36:07 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,12 @@ typedef struct s_textures
 	char	*z_hit;
 	char	*boss_idle;
 	char	*boss_move;
+	char	*laser_idle;
+	char	*laser_move;
+	char	*laser_shot;
+	char	*gun_idle;
+	char	*gun_move;
+	char	*gun_shot;
 	int		floor_color[3];
 	int		ceiling_color[3];
 	int		c_flag;

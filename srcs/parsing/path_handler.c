@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 10:18:05 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:38:17 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ static void	parse_and_verif(t_data *data, char **path, char *new_path)
 		free_all_and_print_exit(data, "Error\nToo much wall path\n");
 	}
 	*path = new_path;
+}
+
+static void	parse_path_guns(t_data *data, char *path, char *type)
+{
+	if (ft_strncmp(type, "LI", 2) == 0)
+		parse_and_verif(data, &data->map.textures.laser_idle, path);
+	else if (ft_strncmp(type, "LM", 2) == 0)
+		parse_and_verif(data, &data->map.textures.laser_move, path);
+	else if (ft_strncmp(type, "LS", 2) == 0)
+		parse_and_verif(data, &data->map.textures.laser_shot, path);
+	else if (ft_strncmp(type, "GI", 2) == 0)
+		parse_and_verif(data, &data->map.textures.gun_idle, path);
+	else if (ft_strncmp(type, "GM", 2) == 0)
+		parse_and_verif(data, &data->map.textures.gun_move, path);
+	else if (ft_strncmp(type, "GS", 2) == 0)
+		parse_and_verif(data, &data->map.textures.gun_shot, path);
 }
 
 static void	parse_path(t_data *data, char *path, char *type)
@@ -44,6 +60,8 @@ static void	parse_path(t_data *data, char *path, char *type)
 		parse_and_verif(data, &data->map.textures.boss_move, path);
 	else if (ft_strncmp(type, "BI", 2) == 0)
 		parse_and_verif(data, &data->map.textures.boss_idle, path);
+	else
+		parse_path_guns(data, path, type);
 }
 
 static char	*verif_and_extract(t_data *data, int i, char *line)
@@ -55,7 +73,8 @@ static char	*verif_and_extract(t_data *data, int i, char *line)
 	while (line[i])
 	{
 		if (line[i] != ' ' && line[i] != '.')
-			free_all_and_print_exit(data, "Error\nCub file data are not valid\n");
+			free_all_and_print_exit(data,
+				"Error\nCub file data are not valid\n");
 		if (line[i] == '.')
 			break ;
 		i++;

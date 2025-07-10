@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 03:41:56 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 10:32:20 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:11:54 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,11 @@ void	check_if_all_cub_data(t_data *data)
 		|| data->map.textures.c_flag == 0 || data->map.textures.f_flag == 0
 		|| !data->map.setup || !data->map.textures.door_path
 		|| !data->map.textures.z_idle || !data->map.textures.z_move
-		|| !data->map.textures.z_hit || !data->map.textures.boss_move || !data->map.textures.boss_idle)
+		|| !data->map.textures.z_hit || !data->map.textures.boss_move
+		|| !data->map.textures.boss_idle || !data->map.textures.laser_idle
+		|| !data->map.textures.laser_shot || !data->map.textures.laser_move
+		|| !data->map.textures.gun_idle || !data->map.textures.gun_move
+		|| !data->map.textures.gun_shot)
 		free_all_and_print_exit(data,
 			"Error\nLack of data required in cub_file\n");
 }

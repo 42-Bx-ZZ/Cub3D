@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 20:30:06 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 10:21:47 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:17:02 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,13 @@ void	init_texture_id(char **id)
 	id[7] = "ZH ";
 	id[8] = "BI ";
 	id[9] = "BM ";
-	id[10] = NULL;
+	id[10] = "GI ";
+	id[11] = "GM ";
+	id[12] = "GS ";
+	id[13] = "LI ";
+	id[14] = "LM ";
+	id[15] = "LS ";
+	id[16] = NULL;
 }
 
 void	check_if_directory(t_data *data, char *file)

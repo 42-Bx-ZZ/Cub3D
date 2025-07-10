@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:05:51 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 10:06:05 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:37:43 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static char	*verif_and_extract(t_data *data, int *i, char *line, int int_flag)
 	{
 		if ((line[*i] != ' ' && !ft_isdigit(line[*i]))
 			|| (line[*i] == ' ' && int_flag > 0))
-			free_all_and_print_exit(data, "Error\nCub file data are not valid\n");
+			free_all_and_print_exit(data,
+				"Error\nCub file data are not valid\n");
 		if (ft_isdigit(line[*i]))
 			break ;
 		(*i)++;
