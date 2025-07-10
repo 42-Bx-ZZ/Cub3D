@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:51:31 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/09 23:57:01 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/10 10:34:01 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,10 @@ static void	destroy_imgs(t_data *data)
 
 int	clean_exit(t_data *data)
 {
+	if (!data)
+		exit(1);
+	free_all_data(data);
 	destroy_imgs(data);
-	if (data && data->map.setup)
-		ft_free_tab(data->map.setup);
 	if (data && data->mlx && data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_file_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/29 10:26:26 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/10 10:22:08 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,12 @@ void	extract_all_cub_data(t_data *data, char *file)
 	check_map_ending(data);
 	replace_line_breaks(data);
 	close(fd);
+	check_and_parse_cub_file(data);
 }
 
 static int	check_texture(t_data *data, int *i)
 {
-	char	*id[8];
+	char	*id[10];
 	int		j;
 
 	init_texture_id(id);
@@ -96,7 +97,7 @@ void	check_and_parse_cub_file(t_data *data)
 		else if (data->cub_file[i][0] == ' ' || data->cub_file[i][0] == '1')
 			check_and_parse_map(data, &i);
 		else if (data->cub_file[i][0] != '\0')
-			free_all_and_print_exit(data, "Error\nWrong data in cub file");
+			free_all_and_print_exit(data, "Error\nWrong data in cub file\n");
 		i++;
 	}
 	check_if_all_cub_data(data);

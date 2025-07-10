@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/01 10:43:04 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/10 10:18:05 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,16 @@ static void	parse_path(t_data *data, char *path, char *type)
 		parse_and_verif(data, &data->map.textures.east_path, path);
 	else if (ft_strncmp(type, "DO", 2) == 0)
 		parse_and_verif(data, &data->map.textures.door_path, path);
-	else if (ft_strncmp(type, "ZF", 2) == 0)
-		parse_and_verif(data, &data->map.textures.zfront_path, path);
-	else if (ft_strncmp(type, "ZB", 2) == 0)
-		parse_and_verif(data, &data->map.textures.zback_path, path);
+	else if (ft_strncmp(type, "ZI", 2) == 0)
+		parse_and_verif(data, &data->map.textures.z_idle, path);
+	else if (ft_strncmp(type, "ZM", 2) == 0)
+		parse_and_verif(data, &data->map.textures.z_move, path);
+	else if (ft_strncmp(type, "ZH", 2) == 0)
+		parse_and_verif(data, &data->map.textures.z_hit, path);
+	else if (ft_strncmp(type, "BM", 2) == 0)
+		parse_and_verif(data, &data->map.textures.boss_move, path);
+	else if (ft_strncmp(type, "BI", 2) == 0)
+		parse_and_verif(data, &data->map.textures.boss_idle, path);
 }
 
 static char	*verif_and_extract(t_data *data, int i, char *line)
@@ -49,7 +55,7 @@ static char	*verif_and_extract(t_data *data, int i, char *line)
 	while (line[i])
 	{
 		if (line[i] != ' ' && line[i] != '.')
-			free_all_and_print_exit(data, "Error\nCub file data are not valid");
+			free_all_and_print_exit(data, "Error\nCub file data are not valid\n");
 		if (line[i] == '.')
 			break ;
 		i++;
@@ -75,7 +81,7 @@ void	check_and_parse_path(t_data *data, char *line, char *type)
 	if (fd < 0)
 	{
 		free(path);
-		free_all_and_print_exit(data, "Error\nCan't open wall file");
+		free_all_and_print_exit(data, "Error\nCan't open wall file\n");
 	}
 	parse_path(data, path, type);
 	close(fd);

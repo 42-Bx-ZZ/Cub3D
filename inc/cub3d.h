@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 03:53:03 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/10 10:30:40 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define WIDTH 1280
 # define HEIGHT 700
 # define CLOSEBTN 17
-# define VALID_CHARS "0 1NSZDEWD"
+# define VALID_CHARS "0 1NSZDEW"
 # define PLAYER_CHARS "NSEW"
 # define STEP 0.1
 # define FOV 60
@@ -207,8 +207,11 @@ typedef struct s_textures
 	char	*west_path;
 	char	*east_path;
 	char	*door_path;
-	char	*zfront_path;
-	char	*zback_path;
+	char	*z_idle;
+	char	*z_move;
+	char	*z_hit;
+	char	*boss_idle;
+	char	*boss_move;
 	int		floor_color[3];
 	int		ceiling_color[3];
 	int		c_flag;

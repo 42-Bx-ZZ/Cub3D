@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/09 17:46:09 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:30:20 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ int	load_items(t_data *data)
 	t_textures	*t;
 
 	t = &data->map.textures;
-	if (load_xpm(&t->ennemy[0], "textures/zombie_move_1.xpm", data))
+	if (load_xpm(&t->ennemy[0], data->map.textures.z_idle, data))
 		return (1);
-	if (load_xpm(&t->ennemy[1], "textures/zombie_move_2.xpm", data))
+	if (load_xpm(&t->ennemy[1], data->map.textures.z_move, data))
 		return (1);
-	if (load_xpm(&t->ennemy[2], "textures/zombie_hit.xpm", data))
+	if (load_xpm(&t->ennemy[2], data->map.textures.z_hit, data))
 		return (1);
-	if (load_xpm(&t->boss[0], "textures/boss.xpm", data))
+	if (load_xpm(&t->boss[0], data->map.textures.boss_idle, data))
 		return (1);
-	if (load_xpm(&t->boss[1], "textures/boss_2.xpm", data))
+	if (load_xpm(&t->boss[1], data->map.textures.boss_move, data))
 		return (1);
-	if (load_xpm(&t->boss[2], "textures/boss.xpm", data))
+	if (load_xpm(&t->boss[2], data->map.textures.boss_idle, data))
 		return (1);
 	if (load_guns(data))
 		return (1);
@@ -75,16 +75,16 @@ int	load_sprites(t_data *data)
 	t_textures	*t;
 
 	t = &data->map.textures;
-	if (load_xpm(&t->north, "textures/wall_1.xpm", data))
-		return (1);
-	if (load_xpm(&t->south, "textures/wall_2.xpm", data))
-		return (1);
-	if (load_xpm(&t->east, "textures/wall_3.xpm", data))
-		return (1);
-	if (load_xpm(&t->west, "textures/wall_4.xpm", data))
-		return (1);
-	if (load_xpm(&t->door, "textures/door.xpm", data))
-		return (1);
+	if (load_xpm(&t->north, data->map.textures.north_path, data))
+		return (ft_printf("%s\n", data->map.textures.north_path), 1);
+	if (load_xpm(&t->south, data->map.textures.south_path, data))
+		return (ft_printf("%s\n", data->map.textures.south_path), 1);
+	if (load_xpm(&t->east, data->map.textures.east_path, data))
+		return (ft_printf("%s\n", data->map.textures.east_path), 1);
+	if (load_xpm(&t->west, data->map.textures.west_path, data))
+		return (ft_printf("%s\n", data->map.textures.west_path), 1);
+	if (load_xpm(&t->door, data->map.textures.door_path, data))
+		return (ft_printf("%s\n", data->map.textures.door_path), 1);
 	if (load_items(data))
 		return (1);
 	data->map.textures.frame = 0;

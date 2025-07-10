@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:49:40 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/09 23:56:42 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/10 10:32:57 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@ static void	free_all_txt_struct(t_data *data)
 {
 	if (data->map.textures.door_path)
 		free(data->map.textures.door_path);
-	if (data->map.textures.zback_path)
-		free(data->map.textures.zback_path);
-	if (data->map.textures.zfront_path)
-		free(data->map.textures.zfront_path);
+	if (data->map.textures.z_hit)
+		free(data->map.textures.z_hit);
+	if (data->map.textures.z_idle)
+		free(data->map.textures.z_idle);
+	if (data->map.textures.z_move)
+		free(data->map.textures.z_move);	
+	if (data->map.textures.boss_idle)
+		free(data->map.textures.boss_idle);
+	if (data->map.textures.boss_move)
+		free(data->map.textures.boss_move);
 	if (data->map.textures.north_path)
 		free(data->map.textures.north_path);
 	if (data->map.textures.south_path)

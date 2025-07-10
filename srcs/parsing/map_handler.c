@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 01:23:10 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/28 14:01:24 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/10 10:03:18 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	verif_if_valid_char(t_data *data)
 		j = 0;
 		while (data->map.setup[i][j])
 		{
+			ft_printf("%c\n", data->map.setup[i][j]);
 			if (!ft_strchr(VALID_CHARS, data->map.setup[i][j]))
 				free_all_and_print_exit(data, "Error\nWrong char in map\n");
 			j++;

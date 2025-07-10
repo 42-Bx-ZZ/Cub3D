@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fc_colors_handler.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:05:51 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/06/28 13:53:56 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/10 10:06:05 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*color_protect_substr(t_data *data, char *line, int i, int j)
 	else if (ft_strlen(value) > 3)
 	{
 		free(value);
-		free_all_and_print_exit(data, "Error\nCub file data are not valid");
+		free_all_and_print_exit(data, "Error\nCub file data are not valid\n");
 	}
 	return (value);
 }
@@ -37,7 +37,7 @@ static char	*verif_and_extract(t_data *data, int *i, char *line, int int_flag)
 	{
 		if ((line[*i] != ' ' && !ft_isdigit(line[*i]))
 			|| (line[*i] == ' ' && int_flag > 0))
-			free_all_and_print_exit(data, "Error\nCub file data are not valid");
+			free_all_and_print_exit(data, "Error\nCub file data are not valid\n");
 		if (ft_isdigit(line[*i]))
 			break ;
 		(*i)++;
@@ -48,7 +48,7 @@ static char	*verif_and_extract(t_data *data, int *i, char *line, int int_flag)
 	if ((line[j] == ',' && line[j + 1]) || (int_flag == 2 && line[j] == '\0'))
 		value = color_protect_substr(data, line, *i, j);
 	else
-		free_all_and_print_exit(data, "Error\nCub file data are not valid");
+		free_all_and_print_exit(data, "Error\nCub file data are not valid\n");
 	if (int_flag != 2)
 		j++;
 	*i = j;
