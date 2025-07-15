@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 03:41:56 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 11:11:54 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:13:32 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	check_empty_line_case(t_data *data, int i, int j)
 					"Error\nThe map need to be in one part\n");
 			}
 			free_all_and_print_exit(data,
-				"Error\nThe map aren't last in cub_file\n");
+				"Error\nThe map must be the last element in the file\n");
 		}
 		j++;
 	}

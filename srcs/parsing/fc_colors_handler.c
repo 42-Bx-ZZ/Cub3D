@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:05:51 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 11:37:43 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:08:36 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static char	*color_protect_substr(t_data *data, char *line, int i, int j)
 	value = ft_substr(line, i, j - i);
 	if (!value)
 		free_all_and_print_exit(data, "Error\nMalloc failed");
-	else if (ft_strlen(value) > 3)
+	else if (ft_strlen(value) > 3 || ft_strlen(value) <= 0)
 	{
 		free(value);
-		free_all_and_print_exit(data, "Error\nCub file data are not valid\n");
+		free_all_and_print_exit(data, "Error\nColor in cub file not valid\n");
 	}
 	return (value);
 }
@@ -38,7 +38,7 @@ static char	*verif_and_extract(t_data *data, int *i, char *line, int int_flag)
 		if ((line[*i] != ' ' && !ft_isdigit(line[*i]))
 			|| (line[*i] == ' ' && int_flag > 0))
 			free_all_and_print_exit(data,
-				"Error\nCub file data are not valid\n");
+				"Error\nColor in cub file not valid\n");
 		if (ft_isdigit(line[*i]))
 			break ;
 		(*i)++;
@@ -49,7 +49,7 @@ static char	*verif_and_extract(t_data *data, int *i, char *line, int int_flag)
 	if ((line[j] == ',' && line[j + 1]) || (int_flag == 2 && line[j] == '\0'))
 		value = color_protect_substr(data, line, *i, j);
 	else
-		free_all_and_print_exit(data, "Error\nCub file data are not valid\n");
+		free_all_and_print_exit(data, "Error\nColor in cub file not valid\n");
 	if (int_flag != 2)
 		j++;
 	*i = j;
@@ -117,4 +117,6 @@ void	check_and_parse_fc_colors(t_data *data, char *line, char type)
 			free(value);
 		}
 	}
+	if (!line[i] && !value)
+		free_all_and_print_exit(data, "Error\nColor in cub file not valid\n");
 }

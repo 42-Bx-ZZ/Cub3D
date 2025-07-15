@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 01:31:02 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 17:44:01 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:06:05 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,9 @@ void	check_and_parse_path(t_data *data, char *line, char *type)
 	if (fd < 0)
 	{
 		free(path);
-		free_all_and_print_exit(data, "Error\nCan't open wall file\n");
+		ft_putstr_fd("Error\nCan't open: ", 2);
+		ft_putstr_fd(type, 2);
+		free_all_and_print_exit(data, " texture.\n");
 	}
 	parse_path(data, path, type);
 	close(fd);

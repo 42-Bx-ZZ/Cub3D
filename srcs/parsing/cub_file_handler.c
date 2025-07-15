@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 11:18:47 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:13:45 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	check_map_ending(t_data *data)
 	if (data->cub_file[data->cub_len - 1]
 		[ft_strlen(data->cub_file[data->cub_len - 1]) - 1] == '\n')
 		free_all_and_print_exit(data,
-			"Error\nThe map aren't last in cub_file\n");
+			"Error\nThe map must be the last element in the file\n");
 }
 
 static void	replace_line_breaks(t_data *data)
