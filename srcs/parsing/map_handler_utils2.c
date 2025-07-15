@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_handler_utils2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaiicko <meskrabe@student.s19.be>          +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:12:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/03 17:20:34 by zaiicko          ###   ########.fr       */
+/*   Updated: 2025/07/15 10:39:21 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ static void	back_tracking(t_data *data, char **map, int y, int x)
 	if (!map[y][x - 1] || !map[y - 1] || !map[y + 1] || !map[y][x + 1]
 		|| map[y][x - 1] == ' ' || map[y][x + 1] == ' '
 		|| map[y - 1][x] == ' ' || map[y + 1][x] == ' ')
+	{
+		ft_free_tab(map);
 		free_all_and_print_exit(data,
 			"Error\nMap must be surrounded by walls\n");
+	}
 	map[y][x] = 'G';
 	if (map[y + 1][x] != 'G' && map[y + 1][x] != '1')
 		back_tracking(data, map, y + 1, x);
@@ -30,26 +33,26 @@ static void	back_tracking(t_data *data, char **map, int y, int x)
 		back_tracking(data, map, y, x - 1);
 }
 
-static void	check_after_back(t_data *data, char **map)
-{
-	int	y;
-	int	x;
+// static void	check_after_back(t_data *data, char **map)
+// {
+// 	int	y;
+// 	int	x;
 
-	y = 0;
-	while (y < data->map.len)
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == 'N' || map[y][x] == 'S'
-					|| map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == 'Z')
-				free_all_and_print_exit(data,
-					"Error\nFinish the game are not possible\n");
-			x++;
-		}
-		y++;
-	}
-}
+// 	y = 0;
+// 	while (y < data->map.len)
+// 	{
+// 		x = 0;
+// 		while (map[y][x])
+// 		{
+// 			if (map[y][x] == 'N' || map[y][x] == 'S'
+// 					|| map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == 'Z')
+// 				free_all_and_print_exit(data,
+// 					"Error\nFinish the game are not possible\n");
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }
 
 void	check_if_finishable(t_data *data)
 {
@@ -72,6 +75,6 @@ void	check_if_finishable(t_data *data)
 	}
 	map[i] = NULL;
 	back_tracking(data, map, data->map.y_player, data->map.x_player);
-	check_after_back(data, map);
+	//check_after_back(data, map);
 	ft_free_tab(map);
 }
