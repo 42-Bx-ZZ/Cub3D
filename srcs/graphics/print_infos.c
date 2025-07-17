@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_infos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lowatell <lowatell@student->s19.be>         +#+  +:+       +#+        */
+/*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 18:48:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/10 18:13:53 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/17 09:05:04 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	print_fps(t_data *data)
 	t->value_f = 0;
 	if (!t->tmp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, data->width - 40, 10, 0xFFFF00, t->tmp);
+	mlx_string_put(data->mlx, data->win,
+		data->width - 40, 10, 0xFFFF00, t->tmp);
 	free(t->tmp);
 	data->infos.tmp_f = 0;
 	data->infos.tmp = NULL;
@@ -100,7 +101,8 @@ void	print_round(t_data *data)
 	t->value_f = 0;
 	if (!t->tmp)
 		clean_exit(data);
-	mlx_string_put(data->mlx, data->win, 15, data->height - 10, 0xFFFFFF, t->tmp);
+	mlx_string_put(data->mlx, data->win,
+		15, data->height - 10, 0xFFFFFF, t->tmp);
 	free(t->tmp);
 	data->infos.tmp_f = 0;
 	data->infos.tmp = NULL;
