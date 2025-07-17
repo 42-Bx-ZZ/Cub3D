@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/10 21:58:30 by lowatell         ###   ########.fr        #
+#    Updated: 2025/07/17 09:33:17 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,7 @@ SRCS =	main.c\
 		engine/boss.c\
 		clean_utils.c\
 		clean_utils2.c\
+		is_valid_map_char.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 

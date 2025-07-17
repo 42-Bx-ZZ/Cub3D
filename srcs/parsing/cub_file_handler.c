@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/15 11:13:45 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/17 09:33:52 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,14 @@ void	check_and_parse_cub_file(t_data *data)
 			check_and_parse_fc_colors(data, data->cub_file[i], 'F');
 		else if (ft_strncmp(data->cub_file[i], "C ", 2) == 0)
 			check_and_parse_fc_colors(data, data->cub_file[i], 'C');
-		else if (data->cub_file[i][0] == ' ' || data->cub_file[i][0] == '1')
+		else if (is_valid_map_char(data->cub_file[i][0]))
 			check_and_parse_map(data, &i);
 		else if (data->cub_file[i][0] != '\0')
+		{
+			for ( int i = 0; data->cub_file[i]; i++)
+				ft_printf("%s\n", data->cub_file[i]);
 			free_all_and_print_exit(data, "Error\nWrong data in cub file\n");
+		}
 		i++;
 	}
 	check_if_all_cub_data(data);
