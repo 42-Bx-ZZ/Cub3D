@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 20:30:06 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/10 11:17:02 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/17 08:59:05 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	count_file_lines(char *file)
 	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		ft_print_exit("Error\nCan't open .cub file");
+		ft_print_exit("Error\nCan't open .cub file\n");
 	line = get_next_line(fd);
 	while (line)
 	{
