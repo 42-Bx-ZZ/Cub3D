@@ -1,0 +1,27 @@
+NO ./textures/wall_1.xpm
+SO ./textures/wall_3.xpm
+EA ./textures/wall_2.xpm
+WE ./textures/wall_4.xpm
+DO ./textures/door.xpm
+
+ZI ./textures/zombie_move_2.xpm
+ZM ./textures/zombie_move_1.xpm
+ZH ./textures/zombie_hit.xpm
+BI ./textures/boss.xpm
+BM ./textures/boss_2.xpm
+
+LI ./textures/laser_idle.xpm
+LM ./textures/laser_move.xpm
+LS ./textures/laser_shot.xpm
+GI ./textures/gun_idle.xpm
+GM ./textures/gun_move.xpm
+GS ./textures/gun_shot.xpm
+F 33,33,33
+C 33,33,33
+
+000000
+0N0000
+000000
+000000
+000000
+000000

@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:02:55 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/17 09:33:52 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/23 12:24:46 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,7 @@ void	check_and_parse_cub_file(t_data *data)
 		else if (is_valid_map_char(data->cub_file[i][0]))
 			check_and_parse_map(data, &i);
 		else if (data->cub_file[i][0] != '\0')
-		{
-			for ( int i = 0; data->cub_file[i]; i++)
-				ft_printf("%s\n", data->cub_file[i]);
 			free_all_and_print_exit(data, "Error\nWrong data in cub file\n");
-		}
 		i++;
 	}
 	check_if_all_cub_data(data);

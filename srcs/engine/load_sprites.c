@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:45:18 by lowatell          #+#    #+#             */
-/*   Updated: 2025/07/10 11:40:47 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/23 13:00:22 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ int	load_guns(t_data *data)
 
 	t = &data->map.textures;
 	if (load_xpm(&data->player.laser.idle, t->laser_idle, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture LI corrupted\n", 2), 1);
 	if (load_xpm(&data->player.gun.idle, t->gun_idle, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture GI corrupted\n", 2), 1);
 	if (load_xpm(&data->player.gun.firing, t->gun_shot, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture GS corrupted\n", 2), 1);
 	if (load_xpm(&data->player.laser.firing, t->laser_shot, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture LS corrupted\n", 2), 1);
 	if (load_xpm(&data->player.gun.moving, t->gun_move, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture GM corrupted\n", 2), 1);
 	if (load_xpm(&data->player.laser.moving, t->laser_move, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture LM corrupted\n", 2), 1);
 	data->player.gun.power = 1;
 	data->player.laser.power = 2;
 	return (0);
@@ -57,15 +57,15 @@ int	load_items(t_data *data)
 
 	t = &data->map.textures;
 	if (load_xpm(&t->ennemy[0], data->map.textures.z_idle, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture ZI corrupted\n", 2), 1);
 	if (load_xpm(&t->ennemy[1], data->map.textures.z_move, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture ZM corrupted\n", 2), 1);
 	if (load_xpm(&t->ennemy[2], data->map.textures.z_hit, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture ZH corrupted\n", 2), 1);
 	if (load_xpm(&t->boss[0], data->map.textures.boss_idle, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture BI corrupted\n", 2), 1);
 	if (load_xpm(&t->boss[1], data->map.textures.boss_move, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture BM corrupted\n", 2), 1);
 	if (load_xpm(&t->boss[2], data->map.textures.boss_idle, data))
 		return (1);
 	if (load_guns(data))
@@ -79,15 +79,15 @@ int	load_sprites(t_data *data)
 
 	t = &data->map.textures;
 	if (load_xpm(&t->north, data->map.textures.north_path, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture NO corrupted\n", 2), 1);
 	if (load_xpm(&t->south, data->map.textures.south_path, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture SO corrupted\n", 2), 1);
 	if (load_xpm(&t->east, data->map.textures.east_path, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture EA corrupted\n", 2), 1);
 	if (load_xpm(&t->west, data->map.textures.west_path, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture WE corrupted\n", 2), 1);
 	if (load_xpm(&t->door, data->map.textures.door_path, data))
-		return (1);
+		return (ft_putstr_fd("Error\nTexture DO corrupted\n", 2), 1);
 	if (load_items(data))
 		return (1);
 	data->map.textures.frame = 0;
