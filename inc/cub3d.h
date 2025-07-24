@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/24 11:13:56 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:11:28 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@
 #  define LINUX 0
 # endif
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 1600
+# define HEIGHT 800
 # define CLOSEBTN 17
 # define VALID_CHARS "0 1NSZDEW"
 # define PLAYER_CHARS "NSEW"

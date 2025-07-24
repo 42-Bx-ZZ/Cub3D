@@ -6,14 +6,14 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/17 09:33:17 by lowatell         ###   ########.fr        #
+#    Updated: 2025/07/24 12:10:41 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -O3
 MATH_FLAG = -lm
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
