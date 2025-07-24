@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/24 12:11:28 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:19:10 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -370,6 +370,5 @@ char	**map_copy(char **tab);
 int		is_boss(void);
 void	init_game_data(t_data *data);
 int		is_valid_map_char(char c);
-
 
 #endif
