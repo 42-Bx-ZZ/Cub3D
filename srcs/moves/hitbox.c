@@ -69,7 +69,10 @@ int	is_player(t_data *data, float x, float y, float hitbox)
 			return (1);
 		data->player.hp -= 25;
 		if (data->player.hp <= 0)
+		{
+			ft_putstr_fd("Game Over\n", 1);
 			clean_exit(data);
+		}
 		return (1);
 	}
 	return (0);
