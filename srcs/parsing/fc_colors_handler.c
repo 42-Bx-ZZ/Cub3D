@@ -18,7 +18,7 @@ static char	*color_protect_substr(t_data *data, char *line, int i, int j)
 
 	value = ft_substr(line, i, j - i);
 	if (!value)
-		free_all_and_print_exit(data, "Error\nMalloc failed");
+		free_all_and_print_exit(data, "Error\nMalloc failed\n");
 	else if (ft_strlen(value) > 3 || ft_strlen(value) <= 0)
 	{
 		free(value);

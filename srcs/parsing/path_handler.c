@@ -84,7 +84,7 @@ static char	*verif_and_extract(t_data *data, int i, char *line)
 		j++;
 	path = ft_substr(line, i, j - i);
 	if (!path)
-		free_all_and_print_exit(data, "Error\nMalloc failed");
+		free_all_and_print_exit(data, "Error\nMalloc failed\n");
 	return (path);
 }
 
