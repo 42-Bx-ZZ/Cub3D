@@ -17,7 +17,7 @@ static void	parse_and_verif(t_data *data, char **path, char *new_path)
 	if (*path)
 	{
 		free(new_path);
-		free_all_and_print_exit(data, "Error\nToo much wall path\n");
+		free_all_and_print_exit(data, "Error\nToo much texture path\n");
 	}
 	*path = new_path;
 }
