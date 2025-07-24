@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/17 09:33:07 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:13:56 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@
 #  define LINUX 0
 # endif
 
-# define WIDTH 1280
-# define HEIGHT 700
+# define WIDTH 800
+# define HEIGHT 600
 # define CLOSEBTN 17
 # define VALID_CHARS "0 1NSZDEW"
 # define PLAYER_CHARS "NSEW"
@@ -60,7 +60,7 @@
 # define HITBOX 0.15
 # define QUALITY 100
 # define ENNEMY_NBR 12
-# define MOUSE_SENSI 0.0002
+# define MOUSE_SENSI 0.0007
 # define INVU_TIME 5
 # define ENNEMY_HP 3
 # define MONEY 0
