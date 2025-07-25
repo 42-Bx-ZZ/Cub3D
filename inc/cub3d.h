@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/24 12:23:11 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/25 17:42:43 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 #  define ESC 65307
 #  define L_ARROW 65361
 #  define R_ARROW 65363
-#  define P 112
 #  define SHIFT 65505
 #  define E 101
 #  define L_CLICK 1
@@ -38,9 +37,8 @@
 #  define ESC 53
 #  define L_ARROW 123
 #  define R_ARROW 124
-#  define P 112
-#  define SHIFT 65505
-#  define E 101
+#  define SHIFT 257
+#  define E 14
 #  define L_CLICK 1
 #  define SCROLL_UP 4
 #  define SCROLL_DOWN 5

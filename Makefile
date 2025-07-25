@@ -6,14 +6,14 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 13:23:26 by zaiicko           #+#    #+#              #
-#    Updated: 2025/07/24 12:10:41 by lowatell         ###   ########.fr        #
+#    Updated: 2025/07/25 17:40:19 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -O3
+CFLAGS = -Wall -Werror -Wextra
 MATH_FLAG = -lm
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -33,13 +33,18 @@ ifeq ($(shell uname -s), Linux)
 	MLX = $(LINUX_MLX)
 	MLXA = $(LINUX_MLX)/libmlx.a $(LINUX_MLX)/libmlx_Linux.a
 	FLAGS = $(LINUX_FLAGS)
+	EXIT_FILE = exit_clean_linux.c
+	SETUP_MLX = engine/setup_mlx_linux.c
 else ifeq ($(shell uname -s), Darwin)
 	MLX = $(MAC_MLX)
 	MLXA = $(MAC_MLX)/*.a
 	FLAGS = $(MAC_FLAGS)
+	EXIT_FILE = exit_clean_mac.c
+	SETUP_MLX = engine/setup_mlx_mac.c
 else
 	MLXA = 
 	FLAGS = 
+	EXIT_FILE = exit_clean_linux.c
 endif
 
 SRCS =	main.c\
@@ -51,7 +56,6 @@ SRCS =	main.c\
 		parsing/map_handler_utils.c\
 		parsing/cub_file_handler_utils.c\
 		parsing/map_handler_utils2.c\
-		engine/setup_mlx.c\
 		engine/setup_mlx_utils.c\
 		moves/moves.c\
 		engine/get_map.c\
@@ -83,7 +87,8 @@ SRCS =	main.c\
 		engine/backtracking_z.c\
 		engine/boss.c\
 		clean_utils.c\
-		clean_utils2.c\
+		$(EXIT_FILE)\
+		$(SETUP_MLX)\
 		is_valid_map_char.c\
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
