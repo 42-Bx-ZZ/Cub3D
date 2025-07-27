@@ -58,7 +58,8 @@ This project combines:
 - 🖼️ **Loading screen** before gameplay starts  
 - 🔁 **Weapon switching** using mouse scroll wheel  
 - 🎯 **Dynamic crosshair** that shifts depending on walking or sprinting  
-- 🌑 **Distance-based shadows** for improved immersion  
+- 🌑 **Distance-based shadows** for improved immersion
+- ❤️ **Health bar that regenerates over time if no recent damage**
 
 ---
 
@@ -113,7 +114,7 @@ C 225,30,0
 - Uses **MiniLibX** for graphics and input
 - **Cross-platform:** macOS & Linux compatible
 - Memory is strictly managed — **no leaks allowed**
-- Makefile includes: `all`, `clean`, `fclean`, `re`, and `bonus`
+- Makefile includes: `all`, `clean`, `fclean`, and `re`
 - `.cub` file parser is robust and spec-compliant
 
 ---
