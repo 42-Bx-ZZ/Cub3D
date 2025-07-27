@@ -134,6 +134,14 @@ If the mandatory part is validated flawlessly, additional features may be includ
 
 ---
 
+## 🎥 Video link
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">here</a>
+</p>
+
+---
+
 ## Screenshot
 
 <img width="214" height="188" alt="Capture d’écran 2024-08-02 à 03 04 46" src="https://github.com/user-attachments/assets/cc961eec-0b1a-42b1-b505-01172c95cea6" />
