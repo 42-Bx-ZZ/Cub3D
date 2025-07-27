@@ -18,7 +18,10 @@ This project combines:
 📚 [Raycasting Tutorial (lodev.org)](https://lodev.org/cgtutor/raycasting.html)
 
 ---
-<img src="game_gif.gif" width="500"/>
+<p align="center">
+  <img src="game_gif.gif" width="500"/>
+</p>
+
 ## Features
 
 ### 🗺️ Map & File Parsing
