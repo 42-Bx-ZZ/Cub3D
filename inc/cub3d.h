@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:15:33 by zaiicko           #+#    #+#             */
-/*   Updated: 2025/07/25 17:42:43 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/07/27 14:00:34 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@
 # define RAYS WIDTH
 # define HITBOX 0.15
 # define ENNEMY_NBR 12
-# define MOUSE_SENSI 0.0007
+# define MOUSE_SENSI 0.0003
 # define INVU_TIME 1
 # define ENNEMY_HP 3
-# define MONEY 0
+# define MONEY 400
 # define EARN_HIT 10
 # define EARN_KILL 100
 # define LOADING_BAR_WIDTH 600
