@@ -65,7 +65,7 @@ This project combines:
 
 ## Usage
 
-### 1. Clone & Init Libft
+### 1. Init Libft
 
 ```bash
 git submodule update --init --recursive
