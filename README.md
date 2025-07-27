@@ -54,7 +54,7 @@ This project combines:
 
 - 💰 **In-game money system**: players earn money by killing zombies  
 - 🚪 **Doors unlockable for $500**, allowing access to new areas  
-- 📈 **Wave system (manches)**:
+- 📈 **Wave system (round)**:
   - Zombies increase in HP and difficulty each round
   - New wave starts after clearing the previous one
 - 👹 **Zombie boss**:
