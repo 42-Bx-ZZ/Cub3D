@@ -19,7 +19,9 @@ This project combines:
 
 ---
 <p align="center">
-  <img src="game_gif.gif" width="500"/>
+  <a href="https://www.youtube.com/watch?v=VtuF6C7RSM8" target="_blank">
+    <img src="game_gif.gif" width="500"/>
+  </a>
 </p>
 
 ## Features
