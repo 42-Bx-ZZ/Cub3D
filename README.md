@@ -136,9 +136,7 @@ If the mandatory part is validated flawlessly, additional features may be includ
 
 ## 🎥 Video link
 
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">here</a>
-</p>
+<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">here</a>
 
 ---
 
